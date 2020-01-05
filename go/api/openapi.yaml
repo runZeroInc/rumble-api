@@ -1,0 +1,2486 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: support@rumble.run
+  description: Rumble Network Discovery API
+  license:
+    name: Commercial
+    url: https://rumble.run/terms
+  title: Rumble API
+  version: 1.0.0
+servers:
+- description: Rumble Console
+  url: https://console.rumble.run/api/v1.0
+tags:
+- description: Requires Organization Key
+  name: Organization
+- description: Requires Export Token or Organization Key
+  name: Export
+- description: Unauthenticated
+  name: Public
+paths:
+  /releases/agent/version:
+    get:
+      operationId: getLatestAgentVersion
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComponentVersion'
+          description: component version
+      summary: Returns latest agent version.
+      tags:
+      - Public
+  /releases/scanner/version:
+    get:
+      operationId: getLatestScannerVersion
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComponentVersion'
+          description: component version
+      summary: Returns latest scanner version.
+      tags:
+      - Public
+  /releases/platform/version:
+    get:
+      operationId: getLatestPlatformVersion
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComponentVersion'
+          description: component version
+      summary: Returns latest platform version.
+      tags:
+      - Public
+  /export/org/assets.json:
+    get:
+      operationId: exportAssetsJSON
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Asset'
+                type: array
+          description: filtered asset results
+        401:
+          description: Access token is missing or invalid
+      summary: Exports the asset inventory.
+      tags:
+      - Export
+  /export/org/assets.jsonl:
+    get:
+      operationId: exportAssetsJSONL
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+          description: filtered asset results
+        401:
+          description: Access token is missing or invalid
+      summary: Asset inventory as JSON line-delimited.
+      tags:
+      - Export
+  /export/org/assets.csv:
+    get:
+      operationId: exportAssetsCSV
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        200:
+          content:
+            text/csv:
+              schema:
+                format: binary
+                type: string
+          description: filtered asset results
+        401:
+          description: Access token is missing or invalid
+      summary: Asset inventory as CSV.
+      tags:
+      - Export
+  /export/org/assets.nmap.xml:
+    get:
+      operationId: exportAssetsNmapXML
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        200:
+          content:
+            text/xml:
+              schema:
+                format: binary
+                type: string
+          description: filtered asset results
+        401:
+          description: Access token is missing or invalid
+      summary: Asset inventory as Nmap-style XML.
+      tags:
+      - Export
+  /export/org/services.json:
+    get:
+      operationId: exportServicesJSON
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Service'
+                type: array
+          description: filtered service results
+        401:
+          description: Access token is missing or invalid
+      summary: Service inventory as JSON.
+      tags:
+      - Export
+  /export/org/services.jsonl:
+    get:
+      operationId: exportServicesJSONL
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+          description: filtered service results
+        401:
+          description: Access token is missing or invalid
+      summary: Service inventory as JSON line-delimited.
+      tags:
+      - Export
+  /export/org/services.csv:
+    get:
+      operationId: exportServicesCSV
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        200:
+          content:
+            text/csv:
+              schema:
+                format: binary
+                type: string
+          description: filtered service results
+        401:
+          description: Access token is missing or invalid
+      summary: Service inventory as CSV.
+      tags:
+      - Export
+  /export/org/sites.json:
+    get:
+      operationId: exportSitesJSON
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Site'
+                type: array
+          description: all sites
+        401:
+          description: Access token is missing or invalid
+      summary: Export all sites.
+      tags:
+      - Export
+  /export/org/sites.jsonl:
+    get:
+      operationId: exportSitesJSONL
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+          description: all sites
+        401:
+          description: Access token is missing or invalid
+      summary: Site list as JSON line-delimited.
+      tags:
+      - Export
+  /export/org/sites.csv:
+    get:
+      operationId: exportSitesCSV
+      responses:
+        200:
+          content:
+            text/csv:
+              schema:
+                format: binary
+                type: string
+          description: all sites
+        401:
+          description: Access token is missing or invalid
+      summary: Site list as CSV.
+      tags:
+      - Export
+  /export/org/wireless.json:
+    get:
+      operationId: exportWirelessJSON
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Wireless'
+                type: array
+          description: filtered wireless results
+        401:
+          description: Access token is missing or invalid
+      summary: Wireless inventory as JSON.
+      tags:
+      - Export
+  /export/org/wireless.jsonl:
+    get:
+      operationId: exportWirelessJSONL
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+          description: filtered wireless results
+        401:
+          description: Access token is missing or invalid
+      summary: Wireless inventory as JSON line-delimited.
+      tags:
+      - Export
+  /export/org/wireless.csv:
+    get:
+      operationId: exportWirelessCSV
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        200:
+          content:
+            text/csv:
+              schema:
+                format: binary
+                type: string
+          description: filtered wireless results
+        401:
+          description: Access token is missing or invalid
+      summary: Wireless inventory as CSV.
+      tags:
+      - Export
+  /org:
+    get:
+      operationId: getOrganization
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+          description: organization details
+        401:
+          description: Access token is missing or invalid
+      summary: Get organization details.
+      tags:
+      - Organization
+    patch:
+      operationId: updateOrganization
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrgOptions'
+        description: organization options
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+          description: organization details
+        401:
+          description: Access token is missing or invalid
+      summary: Update organization details.
+      tags:
+      - Organization
+  /org/key:
+    get:
+      operationId: getKey
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIKey'
+          description: api key details
+        401:
+          description: Access token is missing or invalid
+      summary: Get API key details.
+      tags:
+      - Organization
+  /org/agents:
+    get:
+      operationId: getAgents
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Agent'
+                type: array
+          description: array of agents
+        401:
+          description: Access token is missing or invalid
+      summary: Get all agents.
+      tags:
+      - Organization
+  /org/agents/{agent_id}:
+    delete:
+      operationId: removeAgent
+      parameters:
+      - description: UUID of the agent to remove
+        explode: false
+        in: path
+        name: agent_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        204:
+          description: empty response
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Remove and uninstall an agent.
+      tags:
+      - Organization
+    get:
+      operationId: getAgent
+      parameters:
+      - description: UUID of the agent
+        explode: false
+        in: path
+        name: agent_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+          description: agent details
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Get details for a single agent.
+      tags:
+      - Organization
+    patch:
+      operationId: updateAgentSite
+      parameters:
+      - description: UUID of the agent to update
+        explode: false
+        in: path
+        name: agent_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentSiteID'
+        description: site_id to associate with the agent
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+          description: agent details
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Update the site associated with agent.
+      tags:
+      - Organization
+  /org/agents/{agent_id}/update:
+    post:
+      operationId: upgradeAgent
+      parameters:
+      - description: UUID of the agent to update
+        explode: false
+        in: path
+        name: agent_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        204:
+          description: empty response
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Force an agent to update and restart.
+      tags:
+      - Organization
+  /org/sites:
+    get:
+      operationId: getSites
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Site'
+                type: array
+          description: array of sites
+        401:
+          description: Access token is missing or invalid
+      summary: Get all sites.
+      tags:
+      - Organization
+    put:
+      operationId: createSite
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SiteOptions'
+        description: site definition
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+          description: site details
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Create a new site.
+      tags:
+      - Organization
+  /org/sites/{site_id}:
+    delete:
+      operationId: removeSite
+      parameters:
+      - description: UUID or name of the site to remove
+        explode: false
+        in: path
+        name: site_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        204:
+          description: empty response
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Remove a site and associated assets.
+      tags:
+      - Organization
+    get:
+      operationId: getSite
+      parameters:
+      - description: UUID or name of the site
+        explode: false
+        in: path
+        name: site_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+          description: site details
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Get site details.
+      tags:
+      - Organization
+    patch:
+      operationId: updateSite
+      parameters:
+      - description: UUID or name of the site to update
+        explode: false
+        in: path
+        name: site_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SiteOptions'
+        description: site object
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+          description: site details
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Update a site definition.
+      tags:
+      - Organization
+  /org/sites/{site_id}/import:
+    put:
+      operationId: importScanData
+      parameters:
+      - description: UUID or name of the site to import scan data into
+        explode: false
+        in: path
+        name: site_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              format: binary
+              type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: import task
+        401:
+          description: Access token is missing or invalid
+        403:
+          description: License has expired
+        404:
+          description: Resource not found
+        500:
+          description: Request could not be processed
+      summary: Import a scan data file into a site.
+      tags:
+      - Organization
+  /org/sites/{site_id}/scan:
+    put:
+      operationId: createScan
+      parameters:
+      - description: UUID or name of the site to scan
+        explode: false
+        in: path
+        name: site_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ScanOptions'
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: a created scan task
+        401:
+          description: Access token is missing or invalid
+        403:
+          description: License has expired
+        404:
+          description: Resource not found
+        500:
+          description: Request could not be processed
+      summary: Create a scan task for a given site.
+      tags:
+      - Organization
+  /org/assets:
+    get:
+      operationId: getAssets
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Asset'
+                type: array
+          description: array of assets
+        401:
+          description: Access token is missing or invalid
+      summary: Get all assets.
+      tags:
+      - Organization
+  /org/assets/{asset_id}:
+    delete:
+      operationId: removeAsset
+      parameters:
+      - description: UUID of the asset to remove
+        explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        204:
+          description: empty response
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Remove an asset.
+      tags:
+      - Organization
+    get:
+      operationId: getAsset
+      parameters:
+      - description: UUID of the asset to retrieve
+        explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+          description: asset details
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Get asset details.
+      tags:
+      - Organization
+  /org/assets/{asset_id}/comments:
+    patch:
+      operationId: updateAssetComments
+      parameters:
+      - description: UUID of the asset to update
+        explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetComments'
+        description: comments to apply to the asset
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+          description: asset details
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Update asset comments.
+      tags:
+      - Organization
+  /org/assets/{asset_id}/tags:
+    patch:
+      operationId: updateAssetTags
+      parameters:
+      - description: UUID of the agent to update
+        explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetTags'
+        description: tags to apply to the asset
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+          description: asset details
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Update asset tags.
+      tags:
+      - Organization
+  /org/services:
+    get:
+      operationId: getServices
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Service'
+                type: array
+          description: array of services
+        401:
+          description: Access token is missing or invalid
+      summary: Get all services.
+      tags:
+      - Organization
+  /org/services/{service_id}:
+    delete:
+      operationId: removeService
+      parameters:
+      - description: UUID of the service to remove
+        explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        204:
+          description: empty response
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Remove a service.
+      tags:
+      - Organization
+    get:
+      operationId: getService
+      parameters:
+      - description: UUID of the service to retrieve
+        explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+          description: service details
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Get service details.
+      tags:
+      - Organization
+  /org/wireless:
+    get:
+      operationId: getWirelessLANs
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Wireless'
+                type: array
+          description: array of wireless LANs
+        401:
+          description: Access token is missing or invalid
+      summary: Get all wireless LANs.
+      tags:
+      - Organization
+  /org/wirelesss/{wireless_id}:
+    delete:
+      operationId: removeWirelessLAN
+      parameters:
+      - description: UUID of the wireless LAN to remove
+        explode: false
+        in: path
+        name: wireless_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        204:
+          description: empty response
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Remove a wireless LAN.
+      tags:
+      - Organization
+    get:
+      operationId: getWirelessLAN
+      parameters:
+      - description: UUID of the wireless LAN to retrieve
+        explode: false
+        in: path
+        name: wireless_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wireless'
+          description: wireless details
+        401:
+          description: Access token is missing or invalid
+      summary: Get wireless LAN details.
+      tags:
+      - Organization
+  /org/tasks:
+    get:
+      operationId: getTasks
+      parameters:
+      - description: an optional status string for filtering results
+        explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Task'
+                type: array
+          description: array of tasks
+        401:
+          description: Access token is missing or invalid
+      summary: Get all tasks (last 1000).
+      tags:
+      - Organization
+  /org/tasks/{task_id}:
+    get:
+      operationId: getTask
+      parameters:
+      - description: UUID of the task to retrieve
+        explode: false
+        in: path
+        name: task_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: task details
+        401:
+          description: Access token is missing or invalid
+      summary: Get task details.
+      tags:
+      - Organization
+    patch:
+      operationId: updateTask
+      parameters:
+      - description: UUID of the task to update
+        explode: false
+        in: path
+        name: task_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+        description: task object
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: task details
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Update task parameters.
+      tags:
+      - Organization
+  /org/tasks/{task_id}/data:
+    get:
+      operationId: getTaskScanData
+      parameters:
+      - description: UUID of the task
+        explode: false
+        in: path
+        name: task_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        200:
+          $ref: '#/components/schemas/URL'
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Returns a temporary task scan data url.
+      tags:
+      - Organization
+  /org/tasks/{task_id}/changes:
+    get:
+      operationId: getTaskChangeReport
+      parameters:
+      - description: UUID of the task
+        explode: false
+        in: path
+        name: task_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        200:
+          $ref: '#/components/schemas/URL'
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Returns a temporary task change report data url.
+      tags:
+      - Organization
+  /org/tasks/{task_id}/stop:
+    post:
+      operationId: stopTask
+      parameters:
+      - description: UUID of the task to stop
+        explode: false
+        in: path
+        name: task_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        200:
+          $ref: '#/components/schemas/Task'
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Signal that a task should be stopped or canceled.
+      tags:
+      - Organization
+  /org/tasks/{task_id}/hide:
+    post:
+      operationId: hideTask
+      parameters:
+      - description: UUID of the task to hide
+        explode: false
+        in: path
+        name: task_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        200:
+          $ref: '#/components/schemas/Task'
+        401:
+          description: Access token is missing or invalid
+        404:
+          description: Resource not found
+      summary: Signal that a completed task should be hidden.
+      tags:
+      - Organization
+components:
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+    LicenseExpiredError:
+      description: License has expired
+    ProcessingError:
+      description: Request could not be processed
+    NotFoundError:
+      description: Resource not found
+  schemas:
+    ComponentVersion:
+      description: A component ID and version
+      example:
+        id: agent
+        version: 1.0.0
+      properties:
+        id:
+          example: agent
+          format: string
+          type: string
+        version:
+          example: 1.0.0
+          format: string
+          type: string
+      required:
+      - id
+      - version
+      type: object
+    URL:
+      description: A URL to a resource
+      properties:
+        id:
+          example: http://rumble.run/docs/
+          format: url
+          type: string
+      required:
+      - url
+      type: object
+    ScanOptions:
+      properties:
+        targets:
+          example: 192.168.0.0/24
+          type: string
+        excludes:
+          example: 192.168.0.3
+          type: string
+        scan-name:
+          example: My Scan
+          type: string
+        scan-description:
+          example: Scan of Wireless
+          type: string
+        scan-frequency:
+          enum:
+          - once
+          - hourly
+          - daily
+          - weekly
+          - monthly
+          type: string
+        scan-start:
+          example: 1578155820
+          format: unixtime
+          type: integer
+        agent:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        rate:
+          example: 10000
+          type: integer
+        max-host-rate:
+          example: 100
+          type: integer
+        passes:
+          example: 3
+          type: integer
+        max-sockets:
+          example: 500
+          type: integer
+        max-group-size:
+          example: 4096
+          type: integer
+        tcp-ports:
+          example: 1-1000,5000-6000
+          type: string
+        screenshots:
+          example: true
+          type: boolean
+        nameservers:
+          example: 8.8.8.8
+          type: string
+        probes:
+          description: Optional probe list, otherwise all probes are used
+          example: arp,bacnet,connect,dns,echo,ike,ipmi,mdns,memcache,mssql,natpmp,netbios,pca,rdns,rpcbind,sip,snmp,ssdp,syn,ubnt,wlan-list,wsd
+          type: string
+      required:
+      - targets
+      type: object
+    AgentSiteID:
+      properties:
+        site_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+      required:
+      - site_id
+      type: object
+    OrgOptions:
+      example:
+        name: My Organization
+        description: Wobbly Widgets, Inc.
+      properties:
+        name:
+          example: My Organization
+          type: string
+        description:
+          example: Wobbly Widgets, Inc.
+          type: string
+      type: object
+    SiteOptions:
+      example:
+        excludes: 192.168.10.1
+        scope: 192.168.10.0/24
+        name: New Site
+        description: County Office
+      properties:
+        name:
+          example: New Site
+          type: string
+        description:
+          example: County Office
+          type: string
+        scope:
+          example: 192.168.10.0/24
+          type: string
+        excludes:
+          example: 192.168.10.1
+          type: string
+      required:
+      - name
+      type: object
+    AssetComments:
+      example:
+        comments: Sales Laptop
+      properties:
+        comments:
+          example: Sales Laptop
+          type: string
+      required:
+      - comments
+      type: object
+    AssetTags:
+      example:
+        tags:
+          key: TagValue
+      properties:
+        tags:
+          additionalProperties:
+            example: TagValue
+            type: string
+          type: object
+      required:
+      - tags
+      type: object
+    Asset:
+      example:
+        addresses:
+        - 192.168.0.1
+        - 192.168.0.1
+        first_seen: 1576300370
+        alive: true
+        last_seen: 1576300370
+        agent_name: LAPTOP-F4P1R6
+        credentials:
+          key:
+            key: true
+        created_at: 1576300370
+        service_count_udp: 1
+        mac_vendors:
+        - Dell
+        - Dell
+        type: Server
+        last_agent_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        service_ports_udp:
+        - "53"
+        - "53"
+        hw: Dell PowerEdge 2500
+        lowest_rtt: 1
+        service_ports_products:
+        - bind
+        - bind
+        updated_at: 1576300370
+        detected_by: icmp
+        id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        service_ports_protocols:
+        - ssh
+        - ssh
+        org_name: Test Labs
+        addresses_extra:
+        - 192.168.100.1
+        - 192.168.100.1
+        comments: File Server
+        os: Ubuntu Linux
+        last_task_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        os_version: "18.04"
+        service_count: 10
+        domains:
+        - www
+        - www
+        service_count_tcp: 7
+        newest_mac_vendor: Intel Corporate
+        lowest_ttl: 0
+        newest_mac: 11:22:33:44:55:66
+        service_count_arp: 1
+        services:
+          key:
+            key: services
+        service_ports_tcp:
+        - "22"
+        - "22"
+        tags:
+          key: tags
+        site_name: Primary
+        names:
+        - www
+        - www
+        service_count_icmp: 1
+        rtts:
+          key: '{}'
+        organization_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        macs:
+        - 11:22:33:44:55:66
+        - 11:22:33:44:55:66
+        site_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        attributes:
+          key: attributes
+        newest_mac_age: 1304035200000000000
+      properties:
+        id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        created_at:
+          example: 1576300370
+          format: int64
+          type: number
+        updated_at:
+          example: 1576300370
+          format: int64
+          type: number
+        organization_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        site_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        alive:
+          example: true
+          format: boolean
+          type: boolean
+        first_seen:
+          example: 1576300370
+          format: int64
+          type: number
+        last_seen:
+          example: 1576300370
+          format: int64
+          type: number
+        detected_by:
+          example: icmp
+          type: string
+        type:
+          example: Server
+          type: string
+        os:
+          example: Ubuntu Linux
+          type: string
+        os_version:
+          example: "18.04"
+          type: string
+        hw:
+          example: Dell PowerEdge 2500
+          type: string
+        addresses:
+          items:
+            example: 192.168.0.1
+            type: string
+          type: array
+        addresses_extra:
+          items:
+            example: 192.168.100.1
+            type: string
+          type: array
+        macs:
+          items:
+            example: 11:22:33:44:55:66
+            format: mac
+            type: string
+          type: array
+        mac_vendors:
+          items:
+            example: Dell
+            type: string
+          type: array
+        names:
+          items:
+            example: www
+            type: string
+          type: array
+        domains:
+          items:
+            example: www
+            type: string
+          type: array
+        service_count:
+          example: 10
+          format: int64
+          type: number
+        service_count_tcp:
+          example: 7
+          format: int64
+          type: number
+        service_count_udp:
+          example: 1
+          format: int64
+          type: number
+        service_count_arp:
+          example: 1
+          format: int64
+          type: number
+        service_count_icmp:
+          example: 1
+          format: int64
+          type: number
+        lowest_ttl:
+          example: 0
+          format: int64
+          type: number
+        lowest_rtt:
+          example: 1
+          format: int64
+          type: number
+        last_agent_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        last_task_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        newest_mac:
+          example: 11:22:33:44:55:66
+          format: mac
+          type: string
+        newest_mac_vendor:
+          example: Intel Corporate
+          type: string
+        newest_mac_age:
+          example: 1304035200000000000
+          format: int64
+          type: number
+        comments:
+          example: File Server
+          type: string
+        service_ports_tcp:
+          items:
+            example: "22"
+            format: port
+            type: string
+          type: array
+        service_ports_udp:
+          items:
+            example: "53"
+            format: port
+            type: string
+          type: array
+        service_ports_protocols:
+          items:
+            example: ssh
+            type: string
+          type: array
+        service_ports_products:
+          items:
+            example: bind
+            type: string
+          type: array
+        org_name:
+          example: Test Labs
+          type: string
+        site_name:
+          example: Primary
+          type: string
+        agent_name:
+          example: LAPTOP-F4P1R6
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        services:
+          additionalProperties:
+            additionalProperties:
+              type: string
+            type: object
+          type: object
+        rtts:
+          additionalProperties: true
+          type: object
+        credentials:
+          additionalProperties:
+            additionalProperties:
+              type: boolean
+            type: object
+          type: object
+        attributes:
+          additionalProperties:
+            type: string
+          type: object
+      required:
+      - id
+      - version
+      type: object
+    Service:
+      example:
+        addresses:
+        - 192.168.0.1
+        - 192.168.0.1
+        last_seen: 1576300370
+        agent_name: LAPTOP-F4P1R6
+        service_screenshot_link: service_screenshot_link
+        type: Server
+        last_agent_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        hw: Dell PowerEdge 2500
+        lowest_rtt: 1
+        service_ports_products:
+        - bind
+        - bind
+        service_protocol: http tls
+        service_data:
+          key: service_data
+        id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        service_ports_protocols:
+        - ssh
+        - ssh
+        addresses_extra:
+        - 192.168.100.1
+        - 192.168.100.1
+        service_updated_at: 1576300370
+        domains:
+        - CORPNET
+        - CORPNET
+        newest_mac_vendor: Intel Corporate
+        lowest_ttl: 0
+        newest_mac: 11:22:33:44:55:66
+        tags:
+          key: tags
+        site_name: Primary
+        service_count_icmp: 1
+        service_link: http://192.168.0.1:80/
+        organization_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        macs:
+        - 11:22:33:44:55:66
+        - 11:22:33:44:55:66
+        site_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        service_asset_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        service_port: 80
+        newest_mac_age: 1304035200000000000
+        first_seen: 1576300370
+        alive: true
+        credentials:
+          key:
+            key: true
+        created_at: 1576300370
+        service_count_udp: 1
+        service_summary: Login Page
+        mac_vendors:
+        - Dell
+        - Dell
+        service_address: 192.168.0.1
+        service_ports_udp:
+        - "53"
+        - "53"
+        service_created_at: 1576300370
+        updated_at: 1576300370
+        detected_by: icmp
+        service_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        org_name: Test Labs
+        comments: File Server
+        os: Ubuntu Linux
+        last_task_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        service_transport: tcp
+        os_version: "18.04"
+        service_count: 10
+        service_count_tcp: 7
+        service_count_arp: 1
+        services:
+          key:
+            key: services
+        service_ports_tcp:
+        - "22"
+        - "22"
+        names:
+        - www
+        - www
+        rtts:
+          key: '{}'
+        attributes:
+          key: attributes
+        service_vhost: www
+      properties:
+        service_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        service_asset_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        service_created_at:
+          example: 1576300370
+          format: int64
+          type: number
+        service_updated_at:
+          example: 1576300370
+          format: int64
+          type: number
+        service_address:
+          example: 192.168.0.1
+          type: string
+        service_transport:
+          example: tcp
+          type: string
+        service_vhost:
+          example: www
+          type: string
+        service_port:
+          example: 80
+          format: port
+          type: number
+        service_data:
+          additionalProperties:
+            type: string
+          type: object
+        service_protocol:
+          example: http tls
+          type: string
+        service_summary:
+          example: Login Page
+          type: string
+        service_screenshot_link:
+          type: string
+        service_link:
+          example: http://192.168.0.1:80/
+          type: string
+        id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        created_at:
+          example: 1576300370
+          format: int64
+          type: number
+        updated_at:
+          example: 1576300370
+          format: int64
+          type: number
+        organization_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        site_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        alive:
+          example: true
+          format: boolean
+          type: boolean
+        first_seen:
+          example: 1576300370
+          format: int64
+          type: number
+        last_seen:
+          example: 1576300370
+          format: int64
+          type: number
+        detected_by:
+          example: icmp
+          type: string
+        type:
+          example: Server
+          type: string
+        os:
+          example: Ubuntu Linux
+          type: string
+        os_version:
+          example: "18.04"
+          type: string
+        hw:
+          example: Dell PowerEdge 2500
+          type: string
+        addresses:
+          items:
+            example: 192.168.0.1
+            type: string
+          type: array
+        addresses_extra:
+          items:
+            example: 192.168.100.1
+            type: string
+          type: array
+        macs:
+          items:
+            example: 11:22:33:44:55:66
+            format: mac
+            type: string
+          type: array
+        mac_vendors:
+          items:
+            example: Dell
+            type: string
+          type: array
+        names:
+          items:
+            example: www
+            type: string
+          type: array
+        domains:
+          items:
+            example: CORPNET
+            type: string
+          type: array
+        service_count:
+          example: 10
+          format: int64
+          type: number
+        service_count_tcp:
+          example: 7
+          format: int64
+          type: number
+        service_count_udp:
+          example: 1
+          format: int64
+          type: number
+        service_count_arp:
+          example: 1
+          format: int64
+          type: number
+        service_count_icmp:
+          example: 1
+          format: int64
+          type: number
+        lowest_ttl:
+          example: 0
+          format: int64
+          type: number
+        lowest_rtt:
+          example: 1
+          format: int64
+          type: number
+        last_agent_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        last_task_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        newest_mac:
+          example: 11:22:33:44:55:66
+          format: mac
+          type: string
+        newest_mac_vendor:
+          example: Intel Corporate
+          type: string
+        newest_mac_age:
+          example: 1304035200000000000
+          format: int64
+          type: number
+        comments:
+          example: File Server
+          type: string
+        service_ports_tcp:
+          items:
+            example: "22"
+            format: port
+            type: string
+          type: array
+        service_ports_udp:
+          items:
+            example: "53"
+            format: port
+            type: string
+          type: array
+        service_ports_protocols:
+          items:
+            example: ssh
+            type: string
+          type: array
+        service_ports_products:
+          items:
+            example: bind
+            type: string
+          type: array
+        org_name:
+          example: Test Labs
+          type: string
+        site_name:
+          example: Primary
+          type: string
+        agent_name:
+          example: LAPTOP-F4P1R6
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        services:
+          additionalProperties:
+            additionalProperties:
+              type: string
+            type: object
+          type: object
+        rtts:
+          additionalProperties: true
+          type: object
+        credentials:
+          additionalProperties:
+            additionalProperties:
+              type: boolean
+            type: object
+          type: object
+        attributes:
+          additionalProperties:
+            type: string
+          type: object
+      required:
+      - id
+      - service_id
+      type: object
+    Site:
+      example:
+        excludes: 192.168.0.5
+        updated_at: 1576300370
+        permanent: true
+        scope: 192.168.0.0/24
+        name: Primary
+        created_at: 1576300370
+        description: Headquarters
+        id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+      properties:
+        id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        created_at:
+          example: 1576300370
+          format: int64
+          type: number
+        updated_at:
+          example: 1576300370
+          format: int64
+          type: number
+        permanent:
+          example: true
+          type: boolean
+        name:
+          example: Primary
+          type: string
+        description:
+          example: Headquarters
+          type: string
+        scope:
+          example: 192.168.0.0/24
+          type: string
+        excludes:
+          example: 192.168.0.5
+          type: string
+      required:
+      - id
+      - name
+      type: object
+    Wireless:
+      example:
+        last_seen: 1576300370
+        last_task_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        data:
+          key: data
+        agent_name: LAPTOP-F4P1R6
+        essid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        bssid: 11:22:33:44:55:66
+        created_at: 1576300370
+        type: infrastructure
+        interface: wlan0
+        last_agent_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        site_name: Primary
+        encryption: aes
+        channels: 11, 158+1
+        vendor: Ubiquiti Networks
+        organization_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        site_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        family: "223344"
+        org_name: Test Labs
+        signal: 99
+        authentication: wpa2-psk
+      properties:
+        id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        created_at:
+          example: 1576300370
+          format: int64
+          type: number
+        last_seen:
+          example: 1576300370
+          format: int64
+          type: number
+        organization_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        site_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        last_agent_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        last_task_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        essid:
+          format: uuid
+          type: string
+        bssid:
+          example: 11:22:33:44:55:66
+          format: mac
+          type: string
+        type:
+          example: infrastructure
+          type: string
+        authentication:
+          example: wpa2-psk
+          type: string
+        encryption:
+          example: aes
+          type: string
+        signal:
+          example: 99
+          maximum: 100
+          minimum: 0
+          type: integer
+        channels:
+          example: 11, 158+1
+          type: string
+        interface:
+          example: wlan0
+          type: string
+        vendor:
+          example: Ubiquiti Networks
+          type: string
+        family:
+          example: "223344"
+          type: string
+        data:
+          additionalProperties:
+            type: string
+          type: object
+        org_name:
+          example: Test Labs
+          type: string
+        site_name:
+          example: Primary
+          type: string
+        agent_name:
+          example: LAPTOP-F4P1R6
+          type: string
+      required:
+      - id
+      type: object
+    Organization:
+      example:
+        export_token_last_used_at: 0
+        download_token: DT11226D9EEEA2B035D42569585900
+        deactivated_at: 0
+        service_count: 10
+        download_token_created_at: 1576300370
+        export_token_created_at: 1576300370
+        created_at: 1576300370
+        description: All subdivisions of my company
+        service_count_tcp: 7
+        service_count_udp: 1
+        service_count_arp: 1
+        export_token: ET11226D9EEEA2B035D42569585900
+        client_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        export_token_counter: 0
+        asset_count: 100
+        inactive: false
+        service_count_icmp: 1
+        updated_at: 1576300370
+        permanent: true
+        name: My Company
+        export_token_last_used_by: 127.0.0.1
+        id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+      properties:
+        id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        created_at:
+          example: 1576300370
+          format: int64
+          type: number
+        updated_at:
+          example: 1576300370
+          format: int64
+          type: number
+        client_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        download_token:
+          example: DT11226D9EEEA2B035D42569585900
+          type: string
+        download_token_created_at:
+          example: 1576300370
+          format: int64
+          type: number
+        permanent:
+          example: true
+          type: boolean
+        name:
+          example: My Company
+          type: string
+        description:
+          example: All subdivisions of my company
+          type: string
+        inactive:
+          example: false
+          type: boolean
+        deactivated_at:
+          example: 0
+          format: int64
+          type: number
+        service_count:
+          example: 10
+          format: int64
+          type: number
+        service_count_tcp:
+          example: 7
+          format: int64
+          type: number
+        service_count_udp:
+          example: 1
+          format: int64
+          type: number
+        service_count_arp:
+          example: 1
+          format: int64
+          type: number
+        service_count_icmp:
+          example: 1
+          format: int64
+          type: number
+        asset_count:
+          example: 100
+          format: int64
+          type: number
+        export_token:
+          example: ET11226D9EEEA2B035D42569585900
+          type: string
+        export_token_created_at:
+          example: 1576300370
+          format: int64
+          type: number
+        export_token_last_used_at:
+          example: 0
+          format: int64
+          type: number
+        export_token_last_used_by:
+          example: 127.0.0.1
+          type: string
+        export_token_counter:
+          example: 0
+          format: int64
+          type: number
+      required:
+      - id
+      - name
+      type: object
+    APIKey:
+      example:
+        usage_limit: 10000
+        created_at: 1576300370
+        counter: 1
+        created_by: user@example.com
+        client_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        token: token
+        usage_today: 100
+        last_used_at: 0
+        inactive: false
+        organization_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        last_used_ua: curl/7.44.1
+        comment: API key used for Splunk integration
+        id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        last_used_ip: 127.0.0.1
+      properties:
+        id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        client_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        organization_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        created_at:
+          example: 1576300370
+          format: int64
+          type: number
+        created_by:
+          example: user@example.com
+          format: email
+          type: string
+        comment:
+          example: API key used for Splunk integration
+          type: string
+        last_used_at:
+          example: 0
+          format: int64
+          type: number
+        last_used_ip:
+          example: 127.0.0.1
+          type: string
+        last_used_ua:
+          example: curl/7.44.1
+          type: string
+        counter:
+          example: 1
+          format: int64
+          type: number
+        usage_today:
+          example: 100
+          format: int64
+          type: number
+        usage_limit:
+          example: 10000
+          format: int64
+          type: number
+        token:
+          type: string
+        inactive:
+          example: false
+          type: boolean
+      required:
+      - id
+      type: object
+    Agent:
+      example:
+        os: Windows
+        system_info:
+          key: '{}'
+        deactivated_at: 0
+        created_at: 1576300370
+        last_checkin: 1576300370
+        version: 1.2.3 (build 20191219224016) [fc50c5eefdc3ff5c60533c3c345d14d336396272]
+        client_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        host_id: 6f9e6fe52271da70962e007183c5c9c9
+        internal_ip: 192.168.0.1
+        connected: true
+        hub_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        inactive: false
+        updated_at: 1576300370
+        organization_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        name: RUMBLE-AGENT
+        site_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        arch: amd64
+        external_ip: 1.1.1.1
+      properties:
+        id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        client_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        organization_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        created_at:
+          example: 1576300370
+          format: int64
+          type: number
+        updated_at:
+          example: 1576300370
+          format: int64
+          type: number
+        host_id:
+          example: 6f9e6fe52271da70962e007183c5c9c9
+          type: string
+        hub_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        name:
+          example: RUMBLE-AGENT
+          format: hostname
+          type: string
+        site_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        last_checkin:
+          example: 1576300370
+          format: int64
+          type: number
+        os:
+          example: Windows
+          type: string
+        arch:
+          example: amd64
+          type: string
+        version:
+          example: 1.2.3 (build 20191219224016) [fc50c5eefdc3ff5c60533c3c345d14d336396272]
+          type: string
+        external_ip:
+          example: 1.1.1.1
+          type: string
+        internal_ip:
+          example: 192.168.0.1
+          type: string
+        system_info:
+          additionalProperties: true
+          type: object
+        connected:
+          example: true
+          type: boolean
+        inactive:
+          example: false
+          type: boolean
+        deactivated_at:
+          example: 0
+          format: int64
+          type: number
+      required:
+      - id
+      type: object
+    Task:
+      example:
+        agent_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        hidden: false
+        description: Scan the headquarters hourly
+        created_at: 1576300370
+        type: scan
+        error: agent unavailable
+        client_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        cruncher_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        updated_at: 1576300370
+        stats:
+          key: '{}'
+        recur: false
+        id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        recur_last: 1576300370
+        recur_last_task_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        params:
+          key: params
+        created_by: user@example.com
+        created_by_user_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        start_time: 1576300370
+        recur_frequency: hour
+        parent_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        organization_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        name: Hourly Scan
+        site_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        recur_next: 1576300370
+        status: processed
+      properties:
+        id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        name:
+          example: Hourly Scan
+          type: string
+        description:
+          example: Scan the headquarters hourly
+          type: string
+        client_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        organization_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        agent_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        site_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        cruncher_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        created_at:
+          example: 1576300370
+          format: int64
+          type: number
+        created_by:
+          example: user@example.com
+          format: email
+          type: string
+        created_by_user_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        updated_at:
+          example: 1576300370
+          format: int64
+          type: number
+        type:
+          example: scan
+          type: string
+        status:
+          example: processed
+          type: string
+        error:
+          example: agent unavailable
+          type: string
+        params:
+          additionalProperties:
+            type: string
+          type: object
+        stats:
+          additionalProperties: true
+          type: object
+        hidden:
+          example: false
+          type: boolean
+        parent_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+        recur:
+          example: false
+          type: boolean
+        recur_frequency:
+          example: hour
+          type: string
+        start_time:
+          example: 1576300370
+          format: int64
+          type: integer
+        recur_last:
+          example: 1576300370
+          format: int64
+          type: integer
+        recur_next:
+          example: 1576300370
+          format: int64
+          type: integer
+        recur_last_task_id:
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          format: uuid
+          type: string
+      required:
+      - id
+      type: object
+  securitySchemes:
+    bearerAuth:
+      scheme: bearer
+      type: http
