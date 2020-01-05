@@ -1,2 +1,3 @@
-# rumble-api
+# Rumble API
+
 Rumble Network Discovery API
