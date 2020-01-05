@@ -1,4 +1,4 @@
-module github.com/hdm/rumble-api-test
+module github.com/hdm/rumble-api-test/go
 
 go 1.13
 
