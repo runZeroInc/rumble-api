@@ -1,0 +1,2171 @@
+openapi: 3.0.0
+servers:
+  - description: Rumble Console
+    url: https://console.rumble.run/api/v1.0
+info:
+  description: Rumble Network Discovery API
+  version: "1.0.0"
+  title: Rumble API
+  contact:
+    email: support@rumble.run
+  license:
+    name: Commercial
+    url: 'https://rumble.run/terms'
+tags:
+  - name: Organization
+    description: Requires Organization Key
+  - name: Export
+    description: Requires Export Token or Organization Key
+  - name: Public
+    description: Unauthenticated
+
+paths:
+  /releases/agent/version:
+    get:
+      tags:
+        - Public
+      operationId: getLatestAgentVersion
+      summary: Returns latest agent version.
+      responses:
+        '200':
+          description: component version
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComponentVersion'
+
+  /releases/scanner/version:
+    get:
+      tags:
+        - Public
+      operationId: getLatestScannerVersion
+      summary: Returns latest scanner version.
+      responses:
+        '200':
+          description: component version
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComponentVersion'
+
+  /releases/platform/version:
+    get:
+      tags:
+        - Public
+      operationId: getLatestPlatformVersion
+      summary: Returns latest platform version.
+      responses:
+        '200':
+          description: component version
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComponentVersion'
+
+  /export/org/assets.json:
+    get:
+      tags:
+        - Export
+      operationId: exportAssetsJSON
+      summary: Exports the asset inventory.
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: filtered asset results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Asset'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /export/org/assets.jsonl:
+    get:
+      tags:
+        - Export
+      operationId: exportAssetsJSONL
+      summary: Asset inventory as JSON line-delimited.
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          # This is a streaming response of one Asset object per line in JSON format
+          description: filtered asset results
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /export/org/assets.csv:
+    get:
+      tags:
+        - Export
+      operationId: exportAssetsCSV
+      summary: Asset inventory as CSV.
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: filtered asset results
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /export/org/assets.nmap.xml:
+    get:
+      tags:
+        - Export
+      operationId: exportAssetsNmapXML
+      summary: Asset inventory as Nmap-style XML.
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: filtered asset results
+          content:
+            text/xml:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /export/org/services.json:
+    get:
+      tags:
+        - Export
+      operationId: exportServicesJSON
+      summary: Service inventory as JSON.
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: filtered service results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Service'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /export/org/services.jsonl:
+    get:
+      tags:
+        - Export
+      operationId: exportServicesJSONL
+      summary: Service inventory as JSON line-delimited.
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: filtered service results
+          content:
+          # This is a streaming response of one Service object per line in JSON format
+            application/json:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /export/org/services.csv:
+    get:
+      tags:
+        - Export
+      operationId: exportServicesCSV
+      summary: Service inventory as CSV.
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: filtered service results
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+
+  /export/org/sites.json:
+    get:
+      tags:
+        - Export
+      operationId: exportSitesJSON
+      summary: Export all sites.
+      responses:
+        '200':
+          description: all sites
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Site'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /export/org/sites.jsonl:
+    get:
+      tags:
+        - Export
+      operationId:  exportSitesJSONL
+      summary: Site list as JSON line-delimited.
+      responses:
+        '200':
+          description: all sites
+          content:
+          # This is a streaming response of one Site object per line in JSON format
+            application/json:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /export/org/sites.csv:
+    get:
+      tags:
+        - Export
+      operationId:  exportSitesCSV
+      summary: Site list as CSV.
+      responses:
+        '200':
+          description: all sites
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+
+  /export/org/wireless.json:
+    get:
+      tags:
+        - Export
+      operationId: exportWirelessJSON
+      summary: Wireless inventory as JSON.
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: filtered wireless results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Wireless'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /export/org/wireless.jsonl:
+    get:
+      tags:
+        - Export
+      operationId: exportWirelessJSONL
+      summary: Wireless inventory as JSON line-delimited.
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: filtered wireless results
+          content:
+          # This is a streaming response of one Wireless object per line in JSON format
+            application/json:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /export/org/wireless.csv:
+    get:
+      tags:
+        - Export
+      operationId: exportWirelessCSV
+      summary: Wireless inventory as CSV.
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: filtered wireless results
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /org:
+    get:
+      tags:
+        - Organization
+      operationId: getOrganization
+      summary: Get organization details.
+      responses:
+        '200':
+          description: organization details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    patch:
+      tags:
+        - Organization
+      operationId: updateOrganization
+      summary: Update organization details.
+      requestBody:
+        description: organization options
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrgOptions'
+      responses:
+        '200':
+          description: organization details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /org/key:
+    get:
+      tags:
+        - Organization
+      operationId: getKey
+      summary: Get API key details.
+      responses:
+        '200':
+          description: api key details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIKey'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /org/agents:
+    get:
+      tags:
+        - Organization
+      operationId: getAgents
+      summary: Get all agents.
+      responses:
+        '200':
+          description: array of agents
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Agent'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /org/agents/{agent_id}:
+    get:
+      tags:
+        - Organization
+      operationId: getAgent
+      summary: Get details for a single agent.
+      parameters:
+        - in: path
+          name: agent_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the agent
+      responses:
+        '200':
+          description: agent details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+    delete:
+      tags:
+        - Organization
+      operationId: removeAgent
+      summary: Remove and uninstall an agent.
+      parameters:
+        - in: path
+          name: agent_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the agent to remove
+      responses:
+        '204':
+          description: empty response
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+    patch:
+      tags:
+        - Organization
+      operationId: updateAgentSite
+      summary: Update the site associated with agent.
+      parameters:
+        - in: path
+          name: agent_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the agent to update
+      requestBody:
+        description: site_id to associate with the agent
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AgentSiteID"
+      responses:
+        '200':
+          description: agent details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /org/agents/{agent_id}/update:
+    post:
+      tags:
+        - Organization
+      operationId: upgradeAgent
+      summary: Force an agent to update and restart.
+      parameters:
+        - in: path
+          name: agent_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the agent to update
+      responses:
+        '204':
+          description: empty response
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /org/sites:
+    get:
+      tags:
+        - Organization
+      operationId: getSites
+      summary: Get all sites.
+      responses:
+        '200':
+          description: array of sites
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Site'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    put:
+      tags:
+        - Organization
+      operationId: createSite
+      summary: Create a new site.
+      requestBody:
+        description: site definition
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SiteOptions"
+      responses:
+        '200':
+          description: site details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /org/sites/{site_id}:
+    get:
+      tags:
+        - Organization
+      operationId: getSite
+      summary: Get site details.
+      parameters:
+        - in: path
+          name: site_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID or name of the site
+      responses:
+        '200':
+          description: site details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+    delete:
+      tags:
+        - Organization
+      operationId: removeSite
+      summary: Remove a site and associated assets.
+      parameters:
+        - in: path
+          name: site_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID or name of the site to remove
+      responses:
+        '204':
+          description: empty response
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+    patch:
+      tags:
+        - Organization
+      operationId: updateSite
+      summary: Update a site definition.
+      parameters:
+        - in: path
+          name: site_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID or name of the site to update
+      requestBody:
+        description: site object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SiteOptions'
+      responses:
+        '200':
+          description: site details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /org/sites/{site_id}/import:
+    put:
+      tags:
+        - Organization
+      operationId: importScanData
+      summary: Import a scan data file into a site.
+      parameters:
+        - in: path
+          name: site_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID or name of the site to import scan data into
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: import task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/LicenseExpiredError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/ProcessingError'
+
+  /org/sites/{site_id}/scan:
+    put:
+      tags:
+        - Organization
+      operationId: createScan
+      summary: Create a scan task for a given site.
+      parameters:
+        - in: path
+          name: site_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID or name of the site to scan
+      requestBody:
+        content:
+          text/json:
+            schema:
+               $ref: '#/components/schemas/ScanOptions'
+      responses:
+        '200':
+          description: a created scan task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/LicenseExpiredError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/ProcessingError'
+
+  /org/assets:
+    get:
+      tags:
+        - Organization
+      operationId: getAssets
+      summary: Get all assets.
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: array of assets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Asset'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /org/assets/{asset_id}:
+    get:
+      tags:
+        - Organization
+      operationId: getAsset
+      summary: Get asset details.
+      parameters:
+        - in: path
+          name: asset_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the asset to retrieve
+      responses:
+        '200':
+          description: asset details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+    delete:
+      tags:
+        - Organization
+      operationId: removeAsset
+      summary: Remove an asset.
+      parameters:
+        - in: path
+          name: asset_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the asset to remove
+      responses:
+        '204':
+          description: empty response
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /org/assets/{asset_id}/comments:
+    patch:
+      tags:
+        - Organization
+      operationId: updateAssetComments
+      summary: Update asset comments.
+      parameters:
+        - in: path
+          name: asset_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the asset to update
+      requestBody:
+        description: comments to apply to the asset
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetComments'
+      responses:
+        '200':
+          description: asset details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /org/assets/{asset_id}/tags:
+    patch:
+      tags:
+        - Organization
+      operationId: updateAssetTags
+      summary: Update asset tags.
+      parameters:
+        - in: path
+          name: asset_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the agent to update
+      requestBody:
+        description: tags to apply to the asset
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetTags'
+      responses:
+        '200':
+          description: asset details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /org/services:
+    get:
+      tags:
+        - Organization
+      operationId: getServices
+      summary: Get all services.
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: array of services
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Service'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /org/services/{service_id}:
+    get:
+      tags:
+        - Organization
+      operationId: getService
+      summary: Get service details.
+      parameters:
+        - in: path
+          name: service_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the service to retrieve
+      responses:
+        '200':
+          description: service details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+    delete:
+      tags:
+        - Organization
+      operationId: removeService
+      summary: Remove a service.
+      parameters:
+        - in: path
+          name: service_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the service to remove
+      responses:
+        '204':
+          description: empty response
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /org/wireless:
+    get:
+      tags:
+        - Organization
+      operationId: getWirelessLANs
+      summary: Get all wireless LANs.
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: array of wireless LANs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Wireless'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /org/wirelesss/{wireless_id}:
+    get:
+      tags:
+        - Organization
+      operationId: getWirelessLAN
+      summary: Get wireless LAN details.
+      parameters:
+        - in: path
+          name: wireless_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the wireless LAN to retrieve
+      responses:
+        '200':
+          description: wireless details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wireless'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    delete:
+      tags:
+        - Organization
+      operationId: removeWirelessLAN
+      summary: Remove a wireless LAN.
+      parameters:
+        - in: path
+          name: wireless_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the wireless LAN to remove
+      responses:
+        '204':
+          description: empty response
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+
+  /org/tasks:
+    get:
+      tags:
+        - Organization
+      operationId: getTasks
+      summary: Get all tasks (last 1000).
+      parameters:
+        - in: query
+          name: status
+          description: an optional status string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: array of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /org/tasks/{task_id}:
+    get:
+      tags:
+        - Organization
+      operationId: getTask
+      summary: Get task details.
+      parameters:
+        - in: path
+          name: task_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the task to retrieve
+      responses:
+        '200':
+          description: task details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    patch:
+      tags:
+        - Organization
+      operationId: updateTask
+      summary: Update task parameters.
+      parameters:
+        - in: path
+          name: task_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the task to update
+      requestBody:
+        description: task object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '200':
+          description: task details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /org/tasks/{task_id}/data:
+    get:
+      tags:
+        - Organization
+      operationId: getTaskScanData
+      summary: Returns a temporary task scan data url.
+      parameters:
+        - in: path
+          name: task_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the task
+      responses:
+        '200':
+          $ref: '#/components/schemas/URL'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /org/tasks/{task_id}/changes:
+    get:
+      tags:
+        - Organization
+      operationId: getTaskChangeReport
+      summary: Returns a temporary task change report data url.
+      parameters:
+        - in: path
+          name: task_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the task
+      responses:
+        '200':
+          $ref: '#/components/schemas/URL'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /org/tasks/{task_id}/stop:
+    post:
+      tags:
+        - Organization
+      operationId: stopTask
+      summary: Signal that a task should be stopped or canceled.
+      parameters:
+        - in: path
+          name: task_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the task to stop
+      responses:
+        '200':
+          $ref: '#/components/schemas/Task'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /org/tasks/{task_id}/hide:
+    post:
+      tags:
+        - Organization
+      operationId: hideTask
+      summary: Signal that a completed task should be hidden.
+      parameters:
+        - in: path
+          name: task_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the task to hide
+      responses:
+        '200':
+          $ref: '#/components/schemas/Task'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+    LicenseExpiredError:
+      description: License has expired
+    ProcessingError:
+      description: Request could not be processed
+    NotFoundError:
+      description: Resource not found
+  schemas:
+    ComponentVersion:
+      type: object
+      description: A component ID and version
+      required:
+        - id
+        - version
+      properties:
+        id:
+          type: string
+          format: string
+          example: agent
+        version:
+          type: string
+          format: string
+          example: '1.0.0'
+    URL:
+      description: A URL to a resource
+      type: object
+      required:
+        - url
+      properties:
+        id:
+          type: string
+          format: url
+          example: http://rumble.run/docs/
+    ScanOptions:
+      type: object
+      required:
+        - targets
+      properties:
+        targets:
+          type: string
+          example: "192.168.0.0/24"
+        excludes:
+          type: string
+          example: 192.168.0.3
+        scan-name:
+          type: string
+          example: My Scan
+        scan-description:
+          type: string
+          example: Scan of Wireless
+        scan-frequency:
+          type: string
+          enum: [once, hourly, daily, weekly, monthly]
+        scan-start:
+          type: integer
+          format: unixtime
+          example: 1578155820
+        agent:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        rate:
+          type: integer
+          example: 10000
+        max-host-rate:
+          type: integer
+          example: 100
+        passes:
+          type: integer
+          example: 3
+        max-sockets:
+          type: integer
+          example: 500
+        max-group-size:
+          type: integer
+          example: 4096
+        tcp-ports:
+          type: string
+          example: 1-1000,5000-6000
+        screenshots:
+          type: boolean
+          example: true
+        nameservers:
+          type: string
+          example: 8.8.8.8
+        probes:
+          type: string
+          description: Optional probe list, otherwise all probes are used
+          example: arp,bacnet,connect,dns,echo,ike,ipmi,mdns,memcache,mssql,natpmp,netbios,pca,rdns,rpcbind,sip,snmp,ssdp,syn,ubnt,wlan-list,wsd
+        # Probe options are also supported with values like: dns-port: "53"
+    AgentSiteID:
+      type: object
+      required:
+        - site_id
+      properties:
+        site_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+    OrgOptions:
+      type: object
+      properties:
+        name:
+          type: string
+          example: My Organization
+        description:
+          type: string
+          example: Wobbly Widgets, Inc.
+    SiteOptions:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: New Site
+        description:
+          type: string
+          example: County Office
+        scope:
+          type: string
+          example: 192.168.10.0/24
+        excludes:
+          type: string
+          example: 192.168.10.1
+    AssetComments:
+      type: object
+      required:
+        - comments
+      properties:
+        comments:
+          type: string
+          example: Sales Laptop
+    AssetTags:
+      type: object
+      required:
+        - tags
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+            example: TagValue
+    Asset:
+      type: object
+      required:
+        - id
+        - version
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        created_at:
+          type: number
+          format: int64
+          example: 1576300370
+        updated_at:
+          type: number
+          format: int64
+          example: 1576300370
+        organization_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        site_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        alive:
+          type: boolean
+          format: boolean
+          example: true
+        first_seen:
+          type: number
+          format: int64
+          example: 1576300370
+        last_seen:
+          type: number
+          format: int64
+          example: 1576300370
+        detected_by:
+          type: string
+          example: icmp
+        type:
+          type: string
+          example: Server
+        os:
+          type: string
+          example: Ubuntu Linux
+        os_version:
+          type: string
+          example: 18.04
+        hw:
+          type: string
+          example: Dell PowerEdge 2500
+        addresses:
+          type: array
+          items:
+            type: string
+            example: 192.168.0.1
+        addresses_extra:
+          type: array
+          items:
+            type: string
+            example: 192.168.100.1
+        macs:
+          type: array
+          items:
+            type: string
+            format: mac
+            example: 11:22:33:44:55:66
+        mac_vendors:
+          type: array
+          items:
+            type: string
+            example: Dell
+        names:
+          type: array
+          items:
+            type: string
+            example: www
+        domains:
+          type: array
+          items:
+            type: string
+            example: www
+        service_count:
+          type: number
+          format: int64
+          example: 10
+        service_count_tcp:
+          type: number
+          format: int64
+          example: 7
+        service_count_udp:
+          type: number
+          format: int64
+          example: 1
+        service_count_arp:
+          type: number
+          format: int64
+          example: 1
+        service_count_icmp:
+          type: number
+          format: int64
+          example: 1
+        lowest_ttl:
+          type: number
+          format: int64
+          example: 0
+        lowest_rtt:
+          type: number
+          format: int64
+          example: 1
+        last_agent_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        last_task_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        newest_mac:
+          type: string
+          format: mac
+          example: 11:22:33:44:55:66
+        newest_mac_vendor:
+          type: string
+          example: Intel Corporate
+        newest_mac_age:
+          type: number
+          format: int64
+          example: 1304035200000000000
+        comments:
+          type: string
+          example: File Server
+        service_ports_tcp:
+          type: array
+          items:
+            type: string
+            format: port
+            example: 22
+        service_ports_udp:
+          type: array
+          items:
+            type: string
+            format: port
+            example: 53
+        service_ports_protocols:
+          type: array
+          items:
+            type: string
+            example: ssh
+        service_ports_products:
+          type: array
+          items:
+            type: string
+            example: bind
+        org_name:
+          type: string
+          example: Test Labs
+        site_name:
+          type: string
+          example: Primary
+        agent_name:
+          type: string
+          example: LAPTOP-F4P1R6
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        services:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+        rtts:
+          type: object
+          additionalProperties: true
+        credentials:
+          type: object
+          additionalProperties:
+            type: string
+            additionalProperties:
+              type: boolean
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+    Service:
+      type: object
+      required:
+        - id
+        - service_id
+      properties:
+        service_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        service_asset_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        service_created_at:
+          type: number
+          format: int64
+          example: 1576300370
+        service_updated_at:
+          type: number
+          format: int64
+          example: 1576300370
+        service_address:
+          type: string
+          example: 192.168.0.1
+        service_transport:
+          type: string
+          example: tcp
+        service_vhost:
+          type: string
+          example: www
+        service_port:
+          type: number
+          format: port
+          example: 80
+        service_data:
+          type: object
+          additionalProperties:
+            type: string
+        service_protocol:
+          type: string
+          example: http tls
+        service_summary:
+          type: string
+          example: Login Page
+        service_screenshot_link:
+          type: string
+        service_link:
+          type: string
+          example: "http://192.168.0.1:80/"
+        # Services also return the associated Asset properties:
+        id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        created_at:
+          type: number
+          format: int64
+          example: 1576300370
+        updated_at:
+          type: number
+          format: int64
+          example: 1576300370
+        organization_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        site_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        alive:
+          type: boolean
+          format: boolean
+          example: true
+        first_seen:
+          type: number
+          format: int64
+          example: 1576300370
+        last_seen:
+          type: number
+          format: int64
+          example: 1576300370
+        detected_by:
+          type: string
+          example: icmp
+        type:
+          type: string
+          example: Server
+        os:
+          type: string
+          example: Ubuntu Linux
+        os_version:
+          type: string
+          example: 18.04
+        hw:
+          type: string
+          example: Dell PowerEdge 2500
+        addresses:
+          type: array
+          items:
+            type: string
+            example: 192.168.0.1
+        addresses_extra:
+          type: array
+          items:
+            type: string
+            example: 192.168.100.1
+        macs:
+          type: array
+          items:
+            type: string
+            format: mac
+            example: 11:22:33:44:55:66
+        mac_vendors:
+          type: array
+          items:
+            type: string
+            example: Dell
+        names:
+          type: array
+          items:
+            type: string
+            example: www
+        domains:
+          type: array
+          items:
+            type: string
+            example: CORPNET
+        service_count:
+          type: number
+          format: int64
+          example: 10
+        service_count_tcp:
+          type: number
+          format: int64
+          example: 7
+        service_count_udp:
+          type: number
+          format: int64
+          example: 1
+        service_count_arp:
+          type: number
+          format: int64
+          example: 1
+        service_count_icmp:
+          type: number
+          format: int64
+          example: 1
+        lowest_ttl:
+          type: number
+          format: int64
+          example: 0
+        lowest_rtt:
+          type: number
+          format: int64
+          example: 1
+        last_agent_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        last_task_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        newest_mac:
+          type: string
+          format: mac
+          example: 11:22:33:44:55:66
+        newest_mac_vendor:
+          type: string
+          example: Intel Corporate
+        newest_mac_age:
+          type: number
+          format: int64
+          example: 1304035200000000000
+        comments:
+          type: string
+          example: File Server
+        service_ports_tcp:
+          type: array
+          items:
+            type: string
+            format: port
+            example: 22
+        service_ports_udp:
+          type: array
+          items:
+            type: string
+            format: port
+            example: 53
+        service_ports_protocols:
+          type: array
+          items:
+            type: string
+            example: ssh
+        service_ports_products:
+          type: array
+          items:
+            type: string
+            example: bind
+        org_name:
+          type: string
+          example: Test Labs
+        site_name:
+          type: string
+          example: Primary
+        agent_name:
+          type: string
+          example: LAPTOP-F4P1R6
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        services:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+        rtts:
+          type: object
+          additionalProperties: true
+        credentials:
+          type: object
+          additionalProperties:
+            type: string
+            additionalProperties:
+              type: boolean
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+    Site:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        created_at:
+          type: number
+          format: int64
+          example: 1576300370
+        updated_at:
+          type: number
+          format: int64
+          example: 1576300370
+        permanent:
+          type: boolean
+          example: true
+        name:
+          type: string
+          example: Primary
+        description:
+          type: string
+          example: Headquarters
+        scope:
+          type: string
+          example: "192.168.0.0/24"
+        excludes:
+          type: string
+          example: "192.168.0.5"
+
+    Wireless:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        created_at:
+          type: number
+          format: int64
+          example: 1576300370
+        last_seen:
+          type: number
+          format: int64
+          example: 1576300370
+        organization_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        site_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        last_agent_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        last_task_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        essid:
+          type: string
+          format: uuid
+          example: Free WiFi
+        bssid:
+          type: string
+          format: mac
+          example: 11:22:33:44:55:66
+        type:
+          type: string
+          example: infrastructure
+        authentication:
+          type: string
+          example: "wpa2-psk"
+        encryption:
+          type: string
+          example: aes
+        signal:
+          type: integer
+          minimum: 0
+          maximum: 100
+          example: 99
+        channels:
+          type: string
+          example: "11, 158+1"
+        interface:
+          type: string
+          example: "wlan0"
+        vendor:
+          type: string
+          example: "Ubiquiti Networks"
+        family:
+          type: string
+          example: 223344
+        data:
+          type: object
+          additionalProperties:
+            type: string
+        org_name:
+          type: string
+          example: Test Labs
+        site_name:
+          type: string
+          example: Primary
+        agent_name:
+          type: string
+          example: LAPTOP-F4P1R6
+
+    Organization:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        created_at:
+          type: number
+          format: int64
+          example: 1576300370
+        updated_at:
+          type: number
+          format: int64
+          example: 1576300370
+        client_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        download_token:
+          type: string
+          example: DT11226D9EEEA2B035D42569585900
+        download_token_created_at:
+          type: number
+          format: int64
+          example: 1576300370
+        permanent:
+          type: boolean
+          example: true
+        name:
+          type: string
+          example: My Company
+        description:
+          type: string
+          example: All subdivisions of my company
+        inactive:
+          type: boolean
+          example: false
+        deactivated_at:
+          type: number
+          format: int64
+          example: 0
+        service_count:
+          type: number
+          format: int64
+          example: 10
+        service_count_tcp:
+          type: number
+          format: int64
+          example: 7
+        service_count_udp:
+          type: number
+          format: int64
+          example: 1
+        service_count_arp:
+          type: number
+          format: int64
+          example: 1
+        service_count_icmp:
+          type: number
+          format: int64
+          example: 1
+        asset_count:
+          type: number
+          format: int64
+          example: 100
+        export_token:
+          type: string
+          example: ET11226D9EEEA2B035D42569585900
+        export_token_created_at:
+          type: number
+          format: int64
+          example: 1576300370
+        export_token_last_used_at:
+          type: number
+          format: int64
+          example: 0
+        export_token_last_used_by:
+          type: string
+          example: 127.0.0.1
+        export_token_counter:
+          type: number
+          format: int64
+          example: 0
+
+    APIKey:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        client_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        organization_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        created_at:
+          type: number
+          format: int64
+          example: 1576300370
+        created_by:
+          type: string
+          format: email
+          example: user@example.com
+        comment:
+          type: string
+          example: API key used for Splunk integration
+        last_used_at:
+          type: number
+          format: int64
+          example: 0
+        last_used_ip:
+          type: string
+          example: 127.0.0.1
+        last_used_ua:
+          type: string
+          example: "curl/7.44.1"
+        counter:
+          type: number
+          format: int64
+          example: 1
+        usage_today:
+          type: number
+          format: int64
+          example: 100
+        usage_limit:
+          type: number
+          format: int64
+          example: 10000
+        token:
+          type: string
+          example:
+        inactive:
+          type: boolean
+          example: tue
+
+    Agent:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        client_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        organization_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        created_at:
+          type: number
+          format: int64
+          example: 1576300370
+        updated_at:
+          type: number
+          format: int64
+          example: 1576300370
+        host_id:
+          type: string
+          example: 6f9e6fe52271da70962e007183c5c9c9
+        hub_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        name:
+          type: string
+          format: hostname
+          example: RUMBLE-AGENT
+        site_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        last_checkin:
+          type: number
+          format: int64
+          example: 1576300370
+        os:
+          type: string
+          example: Windows
+        arch:
+          type: string
+          example: amd64
+        version:
+          type: string
+          example: "1.2.3 (build 20191219224016) [fc50c5eefdc3ff5c60533c3c345d14d336396272]"
+        external_ip:
+          type: string
+          example: 1.1.1.1
+        internal_ip:
+          type: string
+          example: 192.168.0.1
+        system_info:
+          type: object
+          additionalProperties: true
+        connected:
+          type: boolean
+          example: true
+        inactive:
+          type: boolean
+          example: false
+        deactivated_at:
+          type: number
+          format: int64
+          example: 0
+
+    Task:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        name:
+          type: string
+          example: Hourly Scan
+        description:
+          type: string
+          example: Scan the headquarters hourly
+        client_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        organization_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        agent_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        site_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        cruncher_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        created_at:
+          type: number
+          format: int64
+          example: 1576300370
+        created_by:
+          type: string
+          format: email
+          example: user@example.com
+        created_by_user_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        updated_at:
+          type: number
+          format: int64
+          example: 1576300370
+        type:
+          type: string
+          example: scan
+        status:
+          type: string
+          example: processed
+        error:
+          type: string
+          example: agent unavailable
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        stats:
+          type: object
+          additionalProperties: true
+        hidden:
+          type: boolean
+          example: false
+        parent_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        recur:
+          type: boolean
+          example: false
+        recur_frequency:
+          type: string
+          example: hour
+        start_time:
+          type: integer
+          format: int64
+          example: 1576300370
+        recur_last:
+          type: integer
+          format: int64
+          example: 1576300370
+        recur_next:
+          type: integer
+          format: int64
+          example: 1576300370
+        recur_last_task_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
