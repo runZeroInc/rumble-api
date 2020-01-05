@@ -33,8 +33,8 @@ func main() {
 
 	ctx := context.Background()
 	client := rc.NewClient(&rc.Config{
-        Key: "[Your--Organization-API-Key]",
-    })
+        	Key: "[Your--Organization-API-Key]",
+    	})
 
 	log.Printf("Rumble Components")
 	log.Printf("=================")
