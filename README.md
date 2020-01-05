@@ -6,3 +6,5 @@ Interactive documentation can be found at https://app.swaggerhub.com/apis-docs/R
 
 The OpenAPI generator can be used to create client stubs for most languages:
  - https://openapi-generator.tech/
+
+Please see the [offical documentation](https://www.rumble.run/docs/organization-api/) for additional information.
