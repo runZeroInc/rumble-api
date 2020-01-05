@@ -26,8 +26,8 @@ var (
 	_ _context.Context
 )
 
-// OrganizationApiService OrganizationApi service
-type OrganizationApiService service
+// OrganizationAPIService OrganizationAPI service
+type OrganizationAPIService service
 
 // CreateScanOpts Optional parameters for the method 'CreateScan'
 type CreateScanOpts struct {
@@ -42,7 +42,7 @@ CreateScan Create a scan task for a given site.
  * @param "ScanOptions" (optional.Interface of ScanOptions) -
 @return Task
 */
-func (a *OrganizationApiService) CreateScan(ctx _context.Context, siteId string, localVarOptionals *CreateScanOpts) (Task, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) CreateScan(ctx _context.Context, siteId string, localVarOptionals *CreateScanOpts) (Task, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
@@ -116,7 +116,6 @@ func (a *OrganizationApiService) CreateScan(ctx _context.Context, siteId string,
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -139,7 +138,7 @@ CreateSite Create a new site.
  * @param siteOptions site definition
 @return Site
 */
-func (a *OrganizationApiService) CreateSite(ctx _context.Context, siteOptions SiteOptions) (Site, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) CreateSite(ctx _context.Context, siteOptions SiteOptions) (Site, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
@@ -205,7 +204,6 @@ func (a *OrganizationApiService) CreateSite(ctx _context.Context, siteOptions Si
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -228,7 +226,7 @@ GetAgent Get details for a single agent.
  * @param agentId UUID of the agent
 @return Agent
 */
-func (a *OrganizationApiService) GetAgent(ctx _context.Context, agentId string) (Agent, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetAgent(ctx _context.Context, agentId string) (Agent, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -293,7 +291,6 @@ func (a *OrganizationApiService) GetAgent(ctx _context.Context, agentId string) 
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -315,7 +312,7 @@ GetAgents Get all agents.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return []Agent
 */
-func (a *OrganizationApiService) GetAgents(ctx _context.Context) ([]Agent, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetAgents(ctx _context.Context) ([]Agent, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -379,7 +376,6 @@ func (a *OrganizationApiService) GetAgents(ctx _context.Context) ([]Agent, *_net
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -402,7 +398,7 @@ GetAsset Get asset details.
  * @param assetId UUID of the asset to retrieve
 @return Asset
 */
-func (a *OrganizationApiService) GetAsset(ctx _context.Context, assetId string) (Asset, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetAsset(ctx _context.Context, assetId string) (Asset, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -467,7 +463,6 @@ func (a *OrganizationApiService) GetAsset(ctx _context.Context, assetId string) 
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -496,7 +491,7 @@ GetAssets Get all assets.
  * @param "Search" (optional.String) -  an optional search string for filtering results
 @return []Asset
 */
-func (a *OrganizationApiService) GetAssets(ctx _context.Context, localVarOptionals *GetAssetsOpts) ([]Asset, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetAssets(ctx _context.Context, localVarOptionals *GetAssetsOpts) ([]Asset, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -563,7 +558,6 @@ func (a *OrganizationApiService) GetAssets(ctx _context.Context, localVarOptiona
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -585,7 +579,7 @@ GetKey Get API key details.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return ApiKey
 */
-func (a *OrganizationApiService) GetKey(ctx _context.Context) (ApiKey, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetKey(ctx _context.Context) (ApiKey, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -649,7 +643,6 @@ func (a *OrganizationApiService) GetKey(ctx _context.Context) (ApiKey, *_nethttp
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -671,7 +664,7 @@ GetOrganization Get organization details.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return Organization
 */
-func (a *OrganizationApiService) GetOrganization(ctx _context.Context) (Organization, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetOrganization(ctx _context.Context) (Organization, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -735,7 +728,6 @@ func (a *OrganizationApiService) GetOrganization(ctx _context.Context) (Organiza
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -758,7 +750,7 @@ GetService Get service details.
  * @param serviceId UUID of the service to retrieve
 @return Service
 */
-func (a *OrganizationApiService) GetService(ctx _context.Context, serviceId string) (Service, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetService(ctx _context.Context, serviceId string) (Service, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -823,7 +815,6 @@ func (a *OrganizationApiService) GetService(ctx _context.Context, serviceId stri
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -852,7 +843,7 @@ GetServices Get all services.
  * @param "Search" (optional.String) -  an optional search string for filtering results
 @return []Service
 */
-func (a *OrganizationApiService) GetServices(ctx _context.Context, localVarOptionals *GetServicesOpts) ([]Service, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetServices(ctx _context.Context, localVarOptionals *GetServicesOpts) ([]Service, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -919,7 +910,6 @@ func (a *OrganizationApiService) GetServices(ctx _context.Context, localVarOptio
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -942,7 +932,7 @@ GetSite Get site details.
  * @param siteId UUID or name of the site
 @return Site
 */
-func (a *OrganizationApiService) GetSite(ctx _context.Context, siteId string) (Site, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetSite(ctx _context.Context, siteId string) (Site, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1007,7 +997,6 @@ func (a *OrganizationApiService) GetSite(ctx _context.Context, siteId string) (S
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1029,7 +1018,7 @@ GetSites Get all sites.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return []Site
 */
-func (a *OrganizationApiService) GetSites(ctx _context.Context) ([]Site, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetSites(ctx _context.Context) ([]Site, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1093,7 +1082,6 @@ func (a *OrganizationApiService) GetSites(ctx _context.Context) ([]Site, *_netht
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1116,7 +1104,7 @@ GetTask Get task details.
  * @param taskId UUID of the task to retrieve
 @return Task
 */
-func (a *OrganizationApiService) GetTask(ctx _context.Context, taskId string) (Task, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetTask(ctx _context.Context, taskId string) (Task, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1181,7 +1169,6 @@ func (a *OrganizationApiService) GetTask(ctx _context.Context, taskId string) (T
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1203,7 +1190,7 @@ GetTaskChangeReport Returns a temporary task change report data url.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param taskId UUID of the task
 */
-func (a *OrganizationApiService) GetTaskChangeReport(ctx _context.Context, taskId string) (*_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetTaskChangeReport(ctx _context.Context, taskId string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1269,7 +1256,7 @@ GetTaskScanData Returns a temporary task scan data url.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param taskId UUID of the task
 */
-func (a *OrganizationApiService) GetTaskScanData(ctx _context.Context, taskId string) (*_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetTaskScanData(ctx _context.Context, taskId string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1342,7 +1329,7 @@ GetTasks Get all tasks (last 1000).
  * @param "Status" (optional.String) -  an optional status string for filtering results
 @return []Task
 */
-func (a *OrganizationApiService) GetTasks(ctx _context.Context, localVarOptionals *GetTasksOpts) ([]Task, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetTasks(ctx _context.Context, localVarOptionals *GetTasksOpts) ([]Task, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1409,7 +1396,6 @@ func (a *OrganizationApiService) GetTasks(ctx _context.Context, localVarOptional
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1432,7 +1418,7 @@ GetWirelessLAN Get wireless LAN details.
  * @param wirelessId UUID of the wireless LAN to retrieve
 @return Wireless
 */
-func (a *OrganizationApiService) GetWirelessLAN(ctx _context.Context, wirelessId string) (Wireless, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetWirelessLAN(ctx _context.Context, wirelessId string) (Wireless, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1497,7 +1483,6 @@ func (a *OrganizationApiService) GetWirelessLAN(ctx _context.Context, wirelessId
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1526,7 +1511,7 @@ GetWirelessLANs Get all wireless LANs.
  * @param "Search" (optional.String) -  an optional search string for filtering results
 @return []Wireless
 */
-func (a *OrganizationApiService) GetWirelessLANs(ctx _context.Context, localVarOptionals *GetWirelessLANsOpts) ([]Wireless, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) GetWirelessLANs(ctx _context.Context, localVarOptionals *GetWirelessLANsOpts) ([]Wireless, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1593,7 +1578,6 @@ func (a *OrganizationApiService) GetWirelessLANs(ctx _context.Context, localVarO
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1615,7 +1599,7 @@ HideTask Signal that a completed task should be hidden.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param taskId UUID of the task to hide
 */
-func (a *OrganizationApiService) HideTask(ctx _context.Context, taskId string) (*_nethttp.Response, error) {
+func (a *OrganizationAPIService) HideTask(ctx _context.Context, taskId string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -1689,7 +1673,7 @@ ImportScanData Import a scan data file into a site.
  * @param "Body" (optional.Interface of *os.File) -
 @return Task
 */
-func (a *OrganizationApiService) ImportScanData(ctx _context.Context, siteId string, localVarOptionals *ImportScanDataOpts) (Task, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) ImportScanData(ctx _context.Context, siteId string, localVarOptionals *ImportScanDataOpts) (Task, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
@@ -1759,7 +1743,6 @@ func (a *OrganizationApiService) ImportScanData(ctx _context.Context, siteId str
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1781,7 +1764,7 @@ RemoveAgent Remove and uninstall an agent.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param agentId UUID of the agent to remove
 */
-func (a *OrganizationApiService) RemoveAgent(ctx _context.Context, agentId string) (*_nethttp.Response, error) {
+func (a *OrganizationAPIService) RemoveAgent(ctx _context.Context, agentId string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -1847,7 +1830,7 @@ RemoveAsset Remove an asset.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param assetId UUID of the asset to remove
 */
-func (a *OrganizationApiService) RemoveAsset(ctx _context.Context, assetId string) (*_nethttp.Response, error) {
+func (a *OrganizationAPIService) RemoveAsset(ctx _context.Context, assetId string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -1913,7 +1896,7 @@ RemoveService Remove a service.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param serviceId UUID of the service to remove
 */
-func (a *OrganizationApiService) RemoveService(ctx _context.Context, serviceId string) (*_nethttp.Response, error) {
+func (a *OrganizationAPIService) RemoveService(ctx _context.Context, serviceId string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -1979,7 +1962,7 @@ RemoveSite Remove a site and associated assets.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param siteId UUID or name of the site to remove
 */
-func (a *OrganizationApiService) RemoveSite(ctx _context.Context, siteId string) (*_nethttp.Response, error) {
+func (a *OrganizationAPIService) RemoveSite(ctx _context.Context, siteId string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -2045,7 +2028,7 @@ RemoveWirelessLAN Remove a wireless LAN.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param wirelessId UUID of the wireless LAN to remove
 */
-func (a *OrganizationApiService) RemoveWirelessLAN(ctx _context.Context, wirelessId string) (*_nethttp.Response, error) {
+func (a *OrganizationAPIService) RemoveWirelessLAN(ctx _context.Context, wirelessId string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -2111,7 +2094,7 @@ StopTask Signal that a task should be stopped or canceled.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param taskId UUID of the task to stop
 */
-func (a *OrganizationApiService) StopTask(ctx _context.Context, taskId string) (*_nethttp.Response, error) {
+func (a *OrganizationAPIService) StopTask(ctx _context.Context, taskId string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -2179,7 +2162,7 @@ UpdateAgentSite Update the site associated with agent.
  * @param agentSiteId site_id to associate with the agent
 @return Agent
 */
-func (a *OrganizationApiService) UpdateAgentSite(ctx _context.Context, agentId string, agentSiteId AgentSiteId) (Agent, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) UpdateAgentSite(ctx _context.Context, agentId string, agentSiteId AgentSiteId) (Agent, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
@@ -2246,7 +2229,6 @@ func (a *OrganizationApiService) UpdateAgentSite(ctx _context.Context, agentId s
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2270,7 +2252,7 @@ UpdateAssetComments Update asset comments.
  * @param assetComments comments to apply to the asset
 @return Asset
 */
-func (a *OrganizationApiService) UpdateAssetComments(ctx _context.Context, assetId string, assetComments AssetComments) (Asset, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) UpdateAssetComments(ctx _context.Context, assetId string, assetComments AssetComments) (Asset, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
@@ -2337,7 +2319,6 @@ func (a *OrganizationApiService) UpdateAssetComments(ctx _context.Context, asset
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2361,7 +2342,7 @@ UpdateAssetTags Update asset tags.
  * @param assetTags tags to apply to the asset
 @return Asset
 */
-func (a *OrganizationApiService) UpdateAssetTags(ctx _context.Context, assetId string, assetTags AssetTags) (Asset, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) UpdateAssetTags(ctx _context.Context, assetId string, assetTags AssetTags) (Asset, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
@@ -2428,7 +2409,6 @@ func (a *OrganizationApiService) UpdateAssetTags(ctx _context.Context, assetId s
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2451,7 +2431,7 @@ UpdateOrganization Update organization details.
  * @param orgOptions organization options
 @return Organization
 */
-func (a *OrganizationApiService) UpdateOrganization(ctx _context.Context, orgOptions OrgOptions) (Organization, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) UpdateOrganization(ctx _context.Context, orgOptions OrgOptions) (Organization, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
@@ -2517,7 +2497,6 @@ func (a *OrganizationApiService) UpdateOrganization(ctx _context.Context, orgOpt
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2541,7 +2520,7 @@ UpdateSite Update a site definition.
  * @param siteOptions site object
 @return Site
 */
-func (a *OrganizationApiService) UpdateSite(ctx _context.Context, siteId string, siteOptions SiteOptions) (Site, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) UpdateSite(ctx _context.Context, siteId string, siteOptions SiteOptions) (Site, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
@@ -2608,7 +2587,6 @@ func (a *OrganizationApiService) UpdateSite(ctx _context.Context, siteId string,
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2632,7 +2610,7 @@ UpdateTask Update task parameters.
  * @param task task object
 @return Task
 */
-func (a *OrganizationApiService) UpdateTask(ctx _context.Context, taskId string, task Task) (Task, *_nethttp.Response, error) {
+func (a *OrganizationAPIService) UpdateTask(ctx _context.Context, taskId string, task Task) (Task, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
@@ -2699,7 +2677,6 @@ func (a *OrganizationApiService) UpdateTask(ctx _context.Context, taskId string,
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2721,7 +2698,7 @@ UpgradeAgent Force an agent to update and restart.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param agentId UUID of the agent to update
 */
-func (a *OrganizationApiService) UpgradeAgent(ctx _context.Context, agentId string) (*_nethttp.Response, error) {
+func (a *OrganizationAPIService) UpgradeAgent(ctx _context.Context, agentId string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}

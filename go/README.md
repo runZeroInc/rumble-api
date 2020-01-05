@@ -32,55 +32,55 @@ All URIs are relative to *https://console.rumble.run/api/v1.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ExportApi* | [**ExportAssetsCSV**](docs/ExportApi.md#exportassetscsv) | **Get** /export/org/assets.csv | Asset inventory as CSV.
-*ExportApi* | [**ExportAssetsJSON**](docs/ExportApi.md#exportassetsjson) | **Get** /export/org/assets.json | Exports the asset inventory.
-*ExportApi* | [**ExportAssetsJSONL**](docs/ExportApi.md#exportassetsjsonl) | **Get** /export/org/assets.jsonl | Asset inventory as JSON line-delimited.
-*ExportApi* | [**ExportAssetsNmapXML**](docs/ExportApi.md#exportassetsnmapxml) | **Get** /export/org/assets.nmap.xml | Asset inventory as Nmap-style XML.
-*ExportApi* | [**ExportServicesCSV**](docs/ExportApi.md#exportservicescsv) | **Get** /export/org/services.csv | Service inventory as CSV.
-*ExportApi* | [**ExportServicesJSON**](docs/ExportApi.md#exportservicesjson) | **Get** /export/org/services.json | Service inventory as JSON.
-*ExportApi* | [**ExportServicesJSONL**](docs/ExportApi.md#exportservicesjsonl) | **Get** /export/org/services.jsonl | Service inventory as JSON line-delimited.
-*ExportApi* | [**ExportSitesCSV**](docs/ExportApi.md#exportsitescsv) | **Get** /export/org/sites.csv | Site list as CSV.
-*ExportApi* | [**ExportSitesJSON**](docs/ExportApi.md#exportsitesjson) | **Get** /export/org/sites.json | Export all sites.
-*ExportApi* | [**ExportSitesJSONL**](docs/ExportApi.md#exportsitesjsonl) | **Get** /export/org/sites.jsonl | Site list as JSON line-delimited.
-*ExportApi* | [**ExportWirelessCSV**](docs/ExportApi.md#exportwirelesscsv) | **Get** /export/org/wireless.csv | Wireless inventory as CSV.
-*ExportApi* | [**ExportWirelessJSON**](docs/ExportApi.md#exportwirelessjson) | **Get** /export/org/wireless.json | Wireless inventory as JSON.
-*ExportApi* | [**ExportWirelessJSONL**](docs/ExportApi.md#exportwirelessjsonl) | **Get** /export/org/wireless.jsonl | Wireless inventory as JSON line-delimited.
-*OrganizationApi* | [**CreateScan**](docs/OrganizationApi.md#createscan) | **Put** /org/sites/{site_id}/scan | Create a scan task for a given site.
-*OrganizationApi* | [**CreateSite**](docs/OrganizationApi.md#createsite) | **Put** /org/sites | Create a new site.
-*OrganizationApi* | [**GetAgent**](docs/OrganizationApi.md#getagent) | **Get** /org/agents/{agent_id} | Get details for a single agent.
-*OrganizationApi* | [**GetAgents**](docs/OrganizationApi.md#getagents) | **Get** /org/agents | Get all agents.
-*OrganizationApi* | [**GetAsset**](docs/OrganizationApi.md#getasset) | **Get** /org/assets/{asset_id} | Get asset details.
-*OrganizationApi* | [**GetAssets**](docs/OrganizationApi.md#getassets) | **Get** /org/assets | Get all assets.
-*OrganizationApi* | [**GetKey**](docs/OrganizationApi.md#getkey) | **Get** /org/key | Get API key details.
-*OrganizationApi* | [**GetOrganization**](docs/OrganizationApi.md#getorganization) | **Get** /org | Get organization details.
-*OrganizationApi* | [**GetService**](docs/OrganizationApi.md#getservice) | **Get** /org/services/{service_id} | Get service details.
-*OrganizationApi* | [**GetServices**](docs/OrganizationApi.md#getservices) | **Get** /org/services | Get all services.
-*OrganizationApi* | [**GetSite**](docs/OrganizationApi.md#getsite) | **Get** /org/sites/{site_id} | Get site details.
-*OrganizationApi* | [**GetSites**](docs/OrganizationApi.md#getsites) | **Get** /org/sites | Get all sites.
-*OrganizationApi* | [**GetTask**](docs/OrganizationApi.md#gettask) | **Get** /org/tasks/{task_id} | Get task details.
-*OrganizationApi* | [**GetTaskChangeReport**](docs/OrganizationApi.md#gettaskchangereport) | **Get** /org/tasks/{task_id}/changes | Returns a temporary task change report data url.
-*OrganizationApi* | [**GetTaskScanData**](docs/OrganizationApi.md#gettaskscandata) | **Get** /org/tasks/{task_id}/data | Returns a temporary task scan data url.
-*OrganizationApi* | [**GetTasks**](docs/OrganizationApi.md#gettasks) | **Get** /org/tasks | Get all tasks (last 1000).
-*OrganizationApi* | [**GetWirelessLAN**](docs/OrganizationApi.md#getwirelesslan) | **Get** /org/wirelesss/{wireless_id} | Get wireless LAN details.
-*OrganizationApi* | [**GetWirelessLANs**](docs/OrganizationApi.md#getwirelesslans) | **Get** /org/wireless | Get all wireless LANs.
-*OrganizationApi* | [**HideTask**](docs/OrganizationApi.md#hidetask) | **Post** /org/tasks/{task_id}/hide | Signal that a completed task should be hidden.
-*OrganizationApi* | [**ImportScanData**](docs/OrganizationApi.md#importscandata) | **Put** /org/sites/{site_id}/import | Import a scan data file into a site.
-*OrganizationApi* | [**RemoveAgent**](docs/OrganizationApi.md#removeagent) | **Delete** /org/agents/{agent_id} | Remove and uninstall an agent.
-*OrganizationApi* | [**RemoveAsset**](docs/OrganizationApi.md#removeasset) | **Delete** /org/assets/{asset_id} | Remove an asset.
-*OrganizationApi* | [**RemoveService**](docs/OrganizationApi.md#removeservice) | **Delete** /org/services/{service_id} | Remove a service.
-*OrganizationApi* | [**RemoveSite**](docs/OrganizationApi.md#removesite) | **Delete** /org/sites/{site_id} | Remove a site and associated assets.
-*OrganizationApi* | [**RemoveWirelessLAN**](docs/OrganizationApi.md#removewirelesslan) | **Delete** /org/wirelesss/{wireless_id} | Remove a wireless LAN.
-*OrganizationApi* | [**StopTask**](docs/OrganizationApi.md#stoptask) | **Post** /org/tasks/{task_id}/stop | Signal that a task should be stopped or canceled.
-*OrganizationApi* | [**UpdateAgentSite**](docs/OrganizationApi.md#updateagentsite) | **Patch** /org/agents/{agent_id} | Update the site associated with agent.
-*OrganizationApi* | [**UpdateAssetComments**](docs/OrganizationApi.md#updateassetcomments) | **Patch** /org/assets/{asset_id}/comments | Update asset comments.
-*OrganizationApi* | [**UpdateAssetTags**](docs/OrganizationApi.md#updateassettags) | **Patch** /org/assets/{asset_id}/tags | Update asset tags.
-*OrganizationApi* | [**UpdateOrganization**](docs/OrganizationApi.md#updateorganization) | **Patch** /org | Update organization details.
-*OrganizationApi* | [**UpdateSite**](docs/OrganizationApi.md#updatesite) | **Patch** /org/sites/{site_id} | Update a site definition.
-*OrganizationApi* | [**UpdateTask**](docs/OrganizationApi.md#updatetask) | **Patch** /org/tasks/{task_id} | Update task parameters.
-*OrganizationApi* | [**UpgradeAgent**](docs/OrganizationApi.md#upgradeagent) | **Post** /org/agents/{agent_id}/update | Force an agent to update and restart.
-*PublicApi* | [**GetLatestAgentVersion**](docs/PublicApi.md#getlatestagentversion) | **Get** /releases/agent/version | Returns latest agent version.
-*PublicApi* | [**GetLatestPlatformVersion**](docs/PublicApi.md#getlatestplatformversion) | **Get** /releases/platform/version | Returns latest platform version.
-*PublicApi* | [**GetLatestScannerVersion**](docs/PublicApi.md#getlatestscannerversion) | **Get** /releases/scanner/version | Returns latest scanner version.
+*ExportAPI* | [**ExportAssetsCSV**](docs/ExportAPI.md#exportassetscsv) | **Get** /export/org/assets.csv | Asset inventory as CSV.
+*ExportAPI* | [**ExportAssetsJSON**](docs/ExportAPI.md#exportassetsjson) | **Get** /export/org/assets.json | Exports the asset inventory.
+*ExportAPI* | [**ExportAssetsJSONL**](docs/ExportAPI.md#exportassetsjsonl) | **Get** /export/org/assets.jsonl | Asset inventory as JSON line-delimited.
+*ExportAPI* | [**ExportAssetsNmapXML**](docs/ExportAPI.md#exportassetsnmapxml) | **Get** /export/org/assets.nmap.xml | Asset inventory as Nmap-style XML.
+*ExportAPI* | [**ExportServicesCSV**](docs/ExportAPI.md#exportservicescsv) | **Get** /export/org/services.csv | Service inventory as CSV.
+*ExportAPI* | [**ExportServicesJSON**](docs/ExportAPI.md#exportservicesjson) | **Get** /export/org/services.json | Service inventory as JSON.
+*ExportAPI* | [**ExportServicesJSONL**](docs/ExportAPI.md#exportservicesjsonl) | **Get** /export/org/services.jsonl | Service inventory as JSON line-delimited.
+*ExportAPI* | [**ExportSitesCSV**](docs/ExportAPI.md#exportsitescsv) | **Get** /export/org/sites.csv | Site list as CSV.
+*ExportAPI* | [**ExportSitesJSON**](docs/ExportAPI.md#exportsitesjson) | **Get** /export/org/sites.json | Export all sites.
+*ExportAPI* | [**ExportSitesJSONL**](docs/ExportAPI.md#exportsitesjsonl) | **Get** /export/org/sites.jsonl | Site list as JSON line-delimited.
+*ExportAPI* | [**ExportWirelessCSV**](docs/ExportAPI.md#exportwirelesscsv) | **Get** /export/org/wireless.csv | Wireless inventory as CSV.
+*ExportAPI* | [**ExportWirelessJSON**](docs/ExportAPI.md#exportwirelessjson) | **Get** /export/org/wireless.json | Wireless inventory as JSON.
+*ExportAPI* | [**ExportWirelessJSONL**](docs/ExportAPI.md#exportwirelessjsonl) | **Get** /export/org/wireless.jsonl | Wireless inventory as JSON line-delimited.
+*OrganizationAPI* | [**CreateScan**](docs/OrganizationAPI.md#createscan) | **Put** /org/sites/{site_id}/scan | Create a scan task for a given site.
+*OrganizationAPI* | [**CreateSite**](docs/OrganizationAPI.md#createsite) | **Put** /org/sites | Create a new site.
+*OrganizationAPI* | [**GetAgent**](docs/OrganizationAPI.md#getagent) | **Get** /org/agents/{agent_id} | Get details for a single agent.
+*OrganizationAPI* | [**GetAgents**](docs/OrganizationAPI.md#getagents) | **Get** /org/agents | Get all agents.
+*OrganizationAPI* | [**GetAsset**](docs/OrganizationAPI.md#getasset) | **Get** /org/assets/{asset_id} | Get asset details.
+*OrganizationAPI* | [**GetAssets**](docs/OrganizationAPI.md#getassets) | **Get** /org/assets | Get all assets.
+*OrganizationAPI* | [**GetKey**](docs/OrganizationAPI.md#getkey) | **Get** /org/key | Get API key details.
+*OrganizationAPI* | [**GetOrganization**](docs/OrganizationAPI.md#getorganization) | **Get** /org | Get organization details.
+*OrganizationAPI* | [**GetService**](docs/OrganizationAPI.md#getservice) | **Get** /org/services/{service_id} | Get service details.
+*OrganizationAPI* | [**GetServices**](docs/OrganizationAPI.md#getservices) | **Get** /org/services | Get all services.
+*OrganizationAPI* | [**GetSite**](docs/OrganizationAPI.md#getsite) | **Get** /org/sites/{site_id} | Get site details.
+*OrganizationAPI* | [**GetSites**](docs/OrganizationAPI.md#getsites) | **Get** /org/sites | Get all sites.
+*OrganizationAPI* | [**GetTask**](docs/OrganizationAPI.md#gettask) | **Get** /org/tasks/{task_id} | Get task details.
+*OrganizationAPI* | [**GetTaskChangeReport**](docs/OrganizationAPI.md#gettaskchangereport) | **Get** /org/tasks/{task_id}/changes | Returns a temporary task change report data url.
+*OrganizationAPI* | [**GetTaskScanData**](docs/OrganizationAPI.md#gettaskscandata) | **Get** /org/tasks/{task_id}/data | Returns a temporary task scan data url.
+*OrganizationAPI* | [**GetTasks**](docs/OrganizationAPI.md#gettasks) | **Get** /org/tasks | Get all tasks (last 1000).
+*OrganizationAPI* | [**GetWirelessLAN**](docs/OrganizationAPI.md#getwirelesslan) | **Get** /org/wirelesss/{wireless_id} | Get wireless LAN details.
+*OrganizationAPI* | [**GetWirelessLANs**](docs/OrganizationAPI.md#getwirelesslans) | **Get** /org/wireless | Get all wireless LANs.
+*OrganizationAPI* | [**HideTask**](docs/OrganizationAPI.md#hidetask) | **Post** /org/tasks/{task_id}/hide | Signal that a completed task should be hidden.
+*OrganizationAPI* | [**ImportScanData**](docs/OrganizationAPI.md#importscandata) | **Put** /org/sites/{site_id}/import | Import a scan data file into a site.
+*OrganizationAPI* | [**RemoveAgent**](docs/OrganizationAPI.md#removeagent) | **Delete** /org/agents/{agent_id} | Remove and uninstall an agent.
+*OrganizationAPI* | [**RemoveAsset**](docs/OrganizationAPI.md#removeasset) | **Delete** /org/assets/{asset_id} | Remove an asset.
+*OrganizationAPI* | [**RemoveService**](docs/OrganizationAPI.md#removeservice) | **Delete** /org/services/{service_id} | Remove a service.
+*OrganizationAPI* | [**RemoveSite**](docs/OrganizationAPI.md#removesite) | **Delete** /org/sites/{site_id} | Remove a site and associated assets.
+*OrganizationAPI* | [**RemoveWirelessLAN**](docs/OrganizationAPI.md#removewirelesslan) | **Delete** /org/wirelesss/{wireless_id} | Remove a wireless LAN.
+*OrganizationAPI* | [**StopTask**](docs/OrganizationAPI.md#stoptask) | **Post** /org/tasks/{task_id}/stop | Signal that a task should be stopped or canceled.
+*OrganizationAPI* | [**UpdateAgentSite**](docs/OrganizationAPI.md#updateagentsite) | **Patch** /org/agents/{agent_id} | Update the site associated with agent.
+*OrganizationAPI* | [**UpdateAssetComments**](docs/OrganizationAPI.md#updateassetcomments) | **Patch** /org/assets/{asset_id}/comments | Update asset comments.
+*OrganizationAPI* | [**UpdateAssetTags**](docs/OrganizationAPI.md#updateassettags) | **Patch** /org/assets/{asset_id}/tags | Update asset tags.
+*OrganizationAPI* | [**UpdateOrganization**](docs/OrganizationAPI.md#updateorganization) | **Patch** /org | Update organization details.
+*OrganizationAPI* | [**UpdateSite**](docs/OrganizationAPI.md#updatesite) | **Patch** /org/sites/{site_id} | Update a site definition.
+*OrganizationAPI* | [**UpdateTask**](docs/OrganizationAPI.md#updatetask) | **Patch** /org/tasks/{task_id} | Update task parameters.
+*OrganizationAPI* | [**UpgradeAgent**](docs/OrganizationAPI.md#upgradeagent) | **Post** /org/agents/{agent_id}/update | Force an agent to update and restart.
+*PublicAPI* | [**GetLatestAgentVersion**](docs/PublicAPI.md#getlatestagentversion) | **Get** /releases/agent/version | Returns latest agent version.
+*PublicAPI* | [**GetLatestPlatformVersion**](docs/PublicAPI.md#getlatestplatformversion) | **Get** /releases/platform/version | Returns latest platform version.
+*PublicAPI* | [**GetLatestScannerVersion**](docs/PublicAPI.md#getlatestscannerversion) | **Get** /releases/scanner/version | Returns latest scanner version.
 
 
 ## Documentation For Models

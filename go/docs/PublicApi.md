@@ -1,12 +1,12 @@
-# \PublicApi
+# \PublicAPI
 
 All URIs are relative to *https://console.rumble.run/api/v1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetLatestAgentVersion**](PublicApi.md#GetLatestAgentVersion) | **Get** /releases/agent/version | Returns latest agent version.
-[**GetLatestPlatformVersion**](PublicApi.md#GetLatestPlatformVersion) | **Get** /releases/platform/version | Returns latest platform version.
-[**GetLatestScannerVersion**](PublicApi.md#GetLatestScannerVersion) | **Get** /releases/scanner/version | Returns latest scanner version.
+[**GetLatestAgentVersion**](PublicAPI.md#GetLatestAgentVersion) | **Get** /releases/agent/version | Returns latest agent version.
+[**GetLatestPlatformVersion**](PublicAPI.md#GetLatestPlatformVersion) | **Get** /releases/platform/version | Returns latest platform version.
+[**GetLatestScannerVersion**](PublicAPI.md#GetLatestScannerVersion) | **Get** /releases/scanner/version | Returns latest scanner version.
 
 
 

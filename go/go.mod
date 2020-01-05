@@ -1,11 +1,10 @@
-module github.com/hdm/rumble-api-test/go
+module github.com/RumbleDiscovery/rumble-api/go
 
 go 1.13
 
 require (
 	github.com/antihax/optional v1.0.0
-	github.com/golang/protobuf v1.3.2 // indirect
-	golang.org/x/net v0.0.0-20191209160850-c0dbc17a3553 // indirect
+	github.com/aws/aws-sdk-go v1.27.0
+	github.com/hdm/rumble-api-test/go v0.0.0-20200105202635-5c207b954d95
 	golang.org/x/oauth2 v0.0.0-20191202225959-858c2ad4c8b6
-	google.golang.org/appengine v1.6.5 // indirect
 )

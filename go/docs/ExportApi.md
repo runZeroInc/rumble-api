@@ -1,22 +1,22 @@
-# \ExportApi
+# \ExportAPI
 
 All URIs are relative to *https://console.rumble.run/api/v1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ExportAssetsCSV**](ExportApi.md#ExportAssetsCSV) | **Get** /export/org/assets.csv | Asset inventory as CSV.
-[**ExportAssetsJSON**](ExportApi.md#ExportAssetsJSON) | **Get** /export/org/assets.json | Exports the asset inventory.
-[**ExportAssetsJSONL**](ExportApi.md#ExportAssetsJSONL) | **Get** /export/org/assets.jsonl | Asset inventory as JSON line-delimited.
-[**ExportAssetsNmapXML**](ExportApi.md#ExportAssetsNmapXML) | **Get** /export/org/assets.nmap.xml | Asset inventory as Nmap-style XML.
-[**ExportServicesCSV**](ExportApi.md#ExportServicesCSV) | **Get** /export/org/services.csv | Service inventory as CSV.
-[**ExportServicesJSON**](ExportApi.md#ExportServicesJSON) | **Get** /export/org/services.json | Service inventory as JSON.
-[**ExportServicesJSONL**](ExportApi.md#ExportServicesJSONL) | **Get** /export/org/services.jsonl | Service inventory as JSON line-delimited.
-[**ExportSitesCSV**](ExportApi.md#ExportSitesCSV) | **Get** /export/org/sites.csv | Site list as CSV.
-[**ExportSitesJSON**](ExportApi.md#ExportSitesJSON) | **Get** /export/org/sites.json | Export all sites.
-[**ExportSitesJSONL**](ExportApi.md#ExportSitesJSONL) | **Get** /export/org/sites.jsonl | Site list as JSON line-delimited.
-[**ExportWirelessCSV**](ExportApi.md#ExportWirelessCSV) | **Get** /export/org/wireless.csv | Wireless inventory as CSV.
-[**ExportWirelessJSON**](ExportApi.md#ExportWirelessJSON) | **Get** /export/org/wireless.json | Wireless inventory as JSON.
-[**ExportWirelessJSONL**](ExportApi.md#ExportWirelessJSONL) | **Get** /export/org/wireless.jsonl | Wireless inventory as JSON line-delimited.
+[**ExportAssetsCSV**](ExportAPI.md#ExportAssetsCSV) | **Get** /export/org/assets.csv | Asset inventory as CSV.
+[**ExportAssetsJSON**](ExportAPI.md#ExportAssetsJSON) | **Get** /export/org/assets.json | Exports the asset inventory.
+[**ExportAssetsJSONL**](ExportAPI.md#ExportAssetsJSONL) | **Get** /export/org/assets.jsonl | Asset inventory as JSON line-delimited.
+[**ExportAssetsNmapXML**](ExportAPI.md#ExportAssetsNmapXML) | **Get** /export/org/assets.nmap.xml | Asset inventory as Nmap-style XML.
+[**ExportServicesCSV**](ExportAPI.md#ExportServicesCSV) | **Get** /export/org/services.csv | Service inventory as CSV.
+[**ExportServicesJSON**](ExportAPI.md#ExportServicesJSON) | **Get** /export/org/services.json | Service inventory as JSON.
+[**ExportServicesJSONL**](ExportAPI.md#ExportServicesJSONL) | **Get** /export/org/services.jsonl | Service inventory as JSON line-delimited.
+[**ExportSitesCSV**](ExportAPI.md#ExportSitesCSV) | **Get** /export/org/sites.csv | Site list as CSV.
+[**ExportSitesJSON**](ExportAPI.md#ExportSitesJSON) | **Get** /export/org/sites.json | Export all sites.
+[**ExportSitesJSONL**](ExportAPI.md#ExportSitesJSONL) | **Get** /export/org/sites.jsonl | Site list as JSON line-delimited.
+[**ExportWirelessCSV**](ExportAPI.md#ExportWirelessCSV) | **Get** /export/org/wireless.csv | Wireless inventory as CSV.
+[**ExportWirelessJSON**](ExportAPI.md#ExportWirelessJSON) | **Get** /export/org/wireless.json | Wireless inventory as JSON.
+[**ExportWirelessJSONL**](ExportAPI.md#ExportWirelessJSONL) | **Get** /export/org/wireless.jsonl | Wireless inventory as JSON line-delimited.
 
 
 

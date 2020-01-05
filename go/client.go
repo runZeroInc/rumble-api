@@ -48,11 +48,11 @@ type APIClient struct {
 
 	// API Services
 
-	ExportApi *ExportApiService
+	ExportAPI *ExportAPIService
 
-	OrganizationApi *OrganizationApiService
+	OrganizationAPI *OrganizationAPIService
 
-	PublicApi *PublicApiService
+	PublicAPI *PublicAPIService
 }
 
 type service struct {
@@ -71,9 +71,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.ExportApi = (*ExportApiService)(&c.common)
-	c.OrganizationApi = (*OrganizationApiService)(&c.common)
-	c.PublicApi = (*PublicApiService)(&c.common)
+	c.ExportAPI = (*ExportAPIService)(&c.common)
+	c.OrganizationAPI = (*OrganizationAPIService)(&c.common)
+	c.PublicAPI = (*PublicAPIService)(&c.common)
 
 	return c
 }

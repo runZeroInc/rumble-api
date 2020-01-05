@@ -1,42 +1,42 @@
-# \OrganizationApi
+# \OrganizationAPI
 
 All URIs are relative to *https://console.rumble.run/api/v1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateScan**](OrganizationApi.md#CreateScan) | **Put** /org/sites/{site_id}/scan | Create a scan task for a given site.
-[**CreateSite**](OrganizationApi.md#CreateSite) | **Put** /org/sites | Create a new site.
-[**GetAgent**](OrganizationApi.md#GetAgent) | **Get** /org/agents/{agent_id} | Get details for a single agent.
-[**GetAgents**](OrganizationApi.md#GetAgents) | **Get** /org/agents | Get all agents.
-[**GetAsset**](OrganizationApi.md#GetAsset) | **Get** /org/assets/{asset_id} | Get asset details.
-[**GetAssets**](OrganizationApi.md#GetAssets) | **Get** /org/assets | Get all assets.
-[**GetKey**](OrganizationApi.md#GetKey) | **Get** /org/key | Get API key details.
-[**GetOrganization**](OrganizationApi.md#GetOrganization) | **Get** /org | Get organization details.
-[**GetService**](OrganizationApi.md#GetService) | **Get** /org/services/{service_id} | Get service details.
-[**GetServices**](OrganizationApi.md#GetServices) | **Get** /org/services | Get all services.
-[**GetSite**](OrganizationApi.md#GetSite) | **Get** /org/sites/{site_id} | Get site details.
-[**GetSites**](OrganizationApi.md#GetSites) | **Get** /org/sites | Get all sites.
-[**GetTask**](OrganizationApi.md#GetTask) | **Get** /org/tasks/{task_id} | Get task details.
-[**GetTaskChangeReport**](OrganizationApi.md#GetTaskChangeReport) | **Get** /org/tasks/{task_id}/changes | Returns a temporary task change report data url.
-[**GetTaskScanData**](OrganizationApi.md#GetTaskScanData) | **Get** /org/tasks/{task_id}/data | Returns a temporary task scan data url.
-[**GetTasks**](OrganizationApi.md#GetTasks) | **Get** /org/tasks | Get all tasks (last 1000).
-[**GetWirelessLAN**](OrganizationApi.md#GetWirelessLAN) | **Get** /org/wirelesss/{wireless_id} | Get wireless LAN details.
-[**GetWirelessLANs**](OrganizationApi.md#GetWirelessLANs) | **Get** /org/wireless | Get all wireless LANs.
-[**HideTask**](OrganizationApi.md#HideTask) | **Post** /org/tasks/{task_id}/hide | Signal that a completed task should be hidden.
-[**ImportScanData**](OrganizationApi.md#ImportScanData) | **Put** /org/sites/{site_id}/import | Import a scan data file into a site.
-[**RemoveAgent**](OrganizationApi.md#RemoveAgent) | **Delete** /org/agents/{agent_id} | Remove and uninstall an agent.
-[**RemoveAsset**](OrganizationApi.md#RemoveAsset) | **Delete** /org/assets/{asset_id} | Remove an asset.
-[**RemoveService**](OrganizationApi.md#RemoveService) | **Delete** /org/services/{service_id} | Remove a service.
-[**RemoveSite**](OrganizationApi.md#RemoveSite) | **Delete** /org/sites/{site_id} | Remove a site and associated assets.
-[**RemoveWirelessLAN**](OrganizationApi.md#RemoveWirelessLAN) | **Delete** /org/wirelesss/{wireless_id} | Remove a wireless LAN.
-[**StopTask**](OrganizationApi.md#StopTask) | **Post** /org/tasks/{task_id}/stop | Signal that a task should be stopped or canceled.
-[**UpdateAgentSite**](OrganizationApi.md#UpdateAgentSite) | **Patch** /org/agents/{agent_id} | Update the site associated with agent.
-[**UpdateAssetComments**](OrganizationApi.md#UpdateAssetComments) | **Patch** /org/assets/{asset_id}/comments | Update asset comments.
-[**UpdateAssetTags**](OrganizationApi.md#UpdateAssetTags) | **Patch** /org/assets/{asset_id}/tags | Update asset tags.
-[**UpdateOrganization**](OrganizationApi.md#UpdateOrganization) | **Patch** /org | Update organization details.
-[**UpdateSite**](OrganizationApi.md#UpdateSite) | **Patch** /org/sites/{site_id} | Update a site definition.
-[**UpdateTask**](OrganizationApi.md#UpdateTask) | **Patch** /org/tasks/{task_id} | Update task parameters.
-[**UpgradeAgent**](OrganizationApi.md#UpgradeAgent) | **Post** /org/agents/{agent_id}/update | Force an agent to update and restart.
+[**CreateScan**](OrganizationAPI.md#CreateScan) | **Put** /org/sites/{site_id}/scan | Create a scan task for a given site.
+[**CreateSite**](OrganizationAPI.md#CreateSite) | **Put** /org/sites | Create a new site.
+[**GetAgent**](OrganizationAPI.md#GetAgent) | **Get** /org/agents/{agent_id} | Get details for a single agent.
+[**GetAgents**](OrganizationAPI.md#GetAgents) | **Get** /org/agents | Get all agents.
+[**GetAsset**](OrganizationAPI.md#GetAsset) | **Get** /org/assets/{asset_id} | Get asset details.
+[**GetAssets**](OrganizationAPI.md#GetAssets) | **Get** /org/assets | Get all assets.
+[**GetKey**](OrganizationAPI.md#GetKey) | **Get** /org/key | Get API key details.
+[**GetOrganization**](OrganizationAPI.md#GetOrganization) | **Get** /org | Get organization details.
+[**GetService**](OrganizationAPI.md#GetService) | **Get** /org/services/{service_id} | Get service details.
+[**GetServices**](OrganizationAPI.md#GetServices) | **Get** /org/services | Get all services.
+[**GetSite**](OrganizationAPI.md#GetSite) | **Get** /org/sites/{site_id} | Get site details.
+[**GetSites**](OrganizationAPI.md#GetSites) | **Get** /org/sites | Get all sites.
+[**GetTask**](OrganizationAPI.md#GetTask) | **Get** /org/tasks/{task_id} | Get task details.
+[**GetTaskChangeReport**](OrganizationAPI.md#GetTaskChangeReport) | **Get** /org/tasks/{task_id}/changes | Returns a temporary task change report data url.
+[**GetTaskScanData**](OrganizationAPI.md#GetTaskScanData) | **Get** /org/tasks/{task_id}/data | Returns a temporary task scan data url.
+[**GetTasks**](OrganizationAPI.md#GetTasks) | **Get** /org/tasks | Get all tasks (last 1000).
+[**GetWirelessLAN**](OrganizationAPI.md#GetWirelessLAN) | **Get** /org/wirelesss/{wireless_id} | Get wireless LAN details.
+[**GetWirelessLANs**](OrganizationAPI.md#GetWirelessLANs) | **Get** /org/wireless | Get all wireless LANs.
+[**HideTask**](OrganizationAPI.md#HideTask) | **Post** /org/tasks/{task_id}/hide | Signal that a completed task should be hidden.
+[**ImportScanData**](OrganizationAPI.md#ImportScanData) | **Put** /org/sites/{site_id}/import | Import a scan data file into a site.
+[**RemoveAgent**](OrganizationAPI.md#RemoveAgent) | **Delete** /org/agents/{agent_id} | Remove and uninstall an agent.
+[**RemoveAsset**](OrganizationAPI.md#RemoveAsset) | **Delete** /org/assets/{asset_id} | Remove an asset.
+[**RemoveService**](OrganizationAPI.md#RemoveService) | **Delete** /org/services/{service_id} | Remove a service.
+[**RemoveSite**](OrganizationAPI.md#RemoveSite) | **Delete** /org/sites/{site_id} | Remove a site and associated assets.
+[**RemoveWirelessLAN**](OrganizationAPI.md#RemoveWirelessLAN) | **Delete** /org/wirelesss/{wireless_id} | Remove a wireless LAN.
+[**StopTask**](OrganizationAPI.md#StopTask) | **Post** /org/tasks/{task_id}/stop | Signal that a task should be stopped or canceled.
+[**UpdateAgentSite**](OrganizationAPI.md#UpdateAgentSite) | **Patch** /org/agents/{agent_id} | Update the site associated with agent.
+[**UpdateAssetComments**](OrganizationAPI.md#UpdateAssetComments) | **Patch** /org/assets/{asset_id}/comments | Update asset comments.
+[**UpdateAssetTags**](OrganizationAPI.md#UpdateAssetTags) | **Patch** /org/assets/{asset_id}/tags | Update asset tags.
+[**UpdateOrganization**](OrganizationAPI.md#UpdateOrganization) | **Patch** /org | Update organization details.
+[**UpdateSite**](OrganizationAPI.md#UpdateSite) | **Patch** /org/sites/{site_id} | Update a site definition.
+[**UpdateTask**](OrganizationAPI.md#UpdateTask) | **Patch** /org/tasks/{task_id} | Update task parameters.
+[**UpgradeAgent**](OrganizationAPI.md#UpgradeAgent) | **Post** /org/agents/{agent_id}/update | Force an agent to update and restart.
 
 
 

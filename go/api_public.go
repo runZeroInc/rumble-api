@@ -22,15 +22,15 @@ var (
 	_ _context.Context
 )
 
-// PublicApiService PublicApi service
-type PublicApiService service
+// PublicAPIService PublicAPI service
+type PublicAPIService service
 
 /*
 GetLatestAgentVersion Returns latest agent version.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return ComponentVersion
 */
-func (a *PublicApiService) GetLatestAgentVersion(ctx _context.Context) (ComponentVersion, *_nethttp.Response, error) {
+func (a *PublicAPIService) GetLatestAgentVersion(ctx _context.Context) (ComponentVersion, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -114,7 +114,7 @@ GetLatestPlatformVersion Returns latest platform version.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return ComponentVersion
 */
-func (a *PublicApiService) GetLatestPlatformVersion(ctx _context.Context) (ComponentVersion, *_nethttp.Response, error) {
+func (a *PublicAPIService) GetLatestPlatformVersion(ctx _context.Context) (ComponentVersion, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -198,7 +198,7 @@ GetLatestScannerVersion Returns latest scanner version.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return ComponentVersion
 */
-func (a *PublicApiService) GetLatestScannerVersion(ctx _context.Context) (ComponentVersion, *_nethttp.Response, error) {
+func (a *PublicAPIService) GetLatestScannerVersion(ctx _context.Context) (ComponentVersion, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}

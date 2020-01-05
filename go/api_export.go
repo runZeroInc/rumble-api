@@ -25,8 +25,8 @@ var (
 	_ _context.Context
 )
 
-// ExportApiService ExportApi service
-type ExportApiService service
+// ExportAPIService ExportAPI service
+type ExportAPIService service
 
 // ExportAssetsCSVOpts Optional parameters for the method 'ExportAssetsCSV'
 type ExportAssetsCSVOpts struct {
@@ -40,7 +40,7 @@ ExportAssetsCSV Asset inventory as CSV.
  * @param "Search" (optional.String) -  an optional search string for filtering results
 @return *os.File
 */
-func (a *ExportApiService) ExportAssetsCSV(ctx _context.Context, localVarOptionals *ExportAssetsCSVOpts) (*os.File, *_nethttp.Response, error) {
+func (a *ExportAPIService) ExportAssetsCSV(ctx _context.Context, localVarOptionals *ExportAssetsCSVOpts) (*os.File, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -107,7 +107,6 @@ func (a *ExportApiService) ExportAssetsCSV(ctx _context.Context, localVarOptiona
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -136,7 +135,7 @@ ExportAssetsJSON Exports the asset inventory.
  * @param "Search" (optional.String) -  an optional search string for filtering results
 @return []Asset
 */
-func (a *ExportApiService) ExportAssetsJSON(ctx _context.Context, localVarOptionals *ExportAssetsJSONOpts) ([]Asset, *_nethttp.Response, error) {
+func (a *ExportAPIService) ExportAssetsJSON(ctx _context.Context, localVarOptionals *ExportAssetsJSONOpts) ([]Asset, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -203,7 +202,6 @@ func (a *ExportApiService) ExportAssetsJSON(ctx _context.Context, localVarOption
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -232,7 +230,7 @@ ExportAssetsJSONL Asset inventory as JSON line-delimited.
  * @param "Search" (optional.String) -  an optional search string for filtering results
 @return *os.File
 */
-func (a *ExportApiService) ExportAssetsJSONL(ctx _context.Context, localVarOptionals *ExportAssetsJSONLOpts) (*os.File, *_nethttp.Response, error) {
+func (a *ExportAPIService) ExportAssetsJSONL(ctx _context.Context, localVarOptionals *ExportAssetsJSONLOpts) (*os.File, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -299,7 +297,6 @@ func (a *ExportApiService) ExportAssetsJSONL(ctx _context.Context, localVarOptio
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -328,7 +325,7 @@ ExportAssetsNmapXML Asset inventory as Nmap-style XML.
  * @param "Search" (optional.String) -  an optional search string for filtering results
 @return *os.File
 */
-func (a *ExportApiService) ExportAssetsNmapXML(ctx _context.Context, localVarOptionals *ExportAssetsNmapXMLOpts) (*os.File, *_nethttp.Response, error) {
+func (a *ExportAPIService) ExportAssetsNmapXML(ctx _context.Context, localVarOptionals *ExportAssetsNmapXMLOpts) (*os.File, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -395,7 +392,6 @@ func (a *ExportApiService) ExportAssetsNmapXML(ctx _context.Context, localVarOpt
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -424,7 +420,7 @@ ExportServicesCSV Service inventory as CSV.
  * @param "Search" (optional.String) -  an optional search string for filtering results
 @return *os.File
 */
-func (a *ExportApiService) ExportServicesCSV(ctx _context.Context, localVarOptionals *ExportServicesCSVOpts) (*os.File, *_nethttp.Response, error) {
+func (a *ExportAPIService) ExportServicesCSV(ctx _context.Context, localVarOptionals *ExportServicesCSVOpts) (*os.File, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -491,7 +487,6 @@ func (a *ExportApiService) ExportServicesCSV(ctx _context.Context, localVarOptio
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -520,7 +515,7 @@ ExportServicesJSON Service inventory as JSON.
  * @param "Search" (optional.String) -  an optional search string for filtering results
 @return []Service
 */
-func (a *ExportApiService) ExportServicesJSON(ctx _context.Context, localVarOptionals *ExportServicesJSONOpts) ([]Service, *_nethttp.Response, error) {
+func (a *ExportAPIService) ExportServicesJSON(ctx _context.Context, localVarOptionals *ExportServicesJSONOpts) ([]Service, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -587,7 +582,6 @@ func (a *ExportApiService) ExportServicesJSON(ctx _context.Context, localVarOpti
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -616,7 +610,7 @@ ExportServicesJSONL Service inventory as JSON line-delimited.
  * @param "Search" (optional.String) -  an optional search string for filtering results
 @return *os.File
 */
-func (a *ExportApiService) ExportServicesJSONL(ctx _context.Context, localVarOptionals *ExportServicesJSONLOpts) (*os.File, *_nethttp.Response, error) {
+func (a *ExportAPIService) ExportServicesJSONL(ctx _context.Context, localVarOptionals *ExportServicesJSONLOpts) (*os.File, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -683,7 +677,6 @@ func (a *ExportApiService) ExportServicesJSONL(ctx _context.Context, localVarOpt
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -705,7 +698,7 @@ ExportSitesCSV Site list as CSV.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return *os.File
 */
-func (a *ExportApiService) ExportSitesCSV(ctx _context.Context) (*os.File, *_nethttp.Response, error) {
+func (a *ExportAPIService) ExportSitesCSV(ctx _context.Context) (*os.File, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -769,7 +762,6 @@ func (a *ExportApiService) ExportSitesCSV(ctx _context.Context) (*os.File, *_net
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -791,7 +783,7 @@ ExportSitesJSON Export all sites.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return []Site
 */
-func (a *ExportApiService) ExportSitesJSON(ctx _context.Context) ([]Site, *_nethttp.Response, error) {
+func (a *ExportAPIService) ExportSitesJSON(ctx _context.Context) ([]Site, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -855,7 +847,6 @@ func (a *ExportApiService) ExportSitesJSON(ctx _context.Context) ([]Site, *_neth
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -877,7 +868,7 @@ ExportSitesJSONL Site list as JSON line-delimited.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return *os.File
 */
-func (a *ExportApiService) ExportSitesJSONL(ctx _context.Context) (*os.File, *_nethttp.Response, error) {
+func (a *ExportAPIService) ExportSitesJSONL(ctx _context.Context) (*os.File, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -941,7 +932,6 @@ func (a *ExportApiService) ExportSitesJSONL(ctx _context.Context) (*os.File, *_n
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -970,7 +960,7 @@ ExportWirelessCSV Wireless inventory as CSV.
  * @param "Search" (optional.String) -  an optional search string for filtering results
 @return *os.File
 */
-func (a *ExportApiService) ExportWirelessCSV(ctx _context.Context, localVarOptionals *ExportWirelessCSVOpts) (*os.File, *_nethttp.Response, error) {
+func (a *ExportAPIService) ExportWirelessCSV(ctx _context.Context, localVarOptionals *ExportWirelessCSVOpts) (*os.File, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1037,7 +1027,6 @@ func (a *ExportApiService) ExportWirelessCSV(ctx _context.Context, localVarOptio
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1066,7 +1055,7 @@ ExportWirelessJSON Wireless inventory as JSON.
  * @param "Search" (optional.String) -  an optional search string for filtering results
 @return []Wireless
 */
-func (a *ExportApiService) ExportWirelessJSON(ctx _context.Context, localVarOptionals *ExportWirelessJSONOpts) ([]Wireless, *_nethttp.Response, error) {
+func (a *ExportAPIService) ExportWirelessJSON(ctx _context.Context, localVarOptionals *ExportWirelessJSONOpts) ([]Wireless, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1133,7 +1122,6 @@ func (a *ExportApiService) ExportWirelessJSON(ctx _context.Context, localVarOpti
 			}
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1162,7 +1150,7 @@ ExportWirelessJSONL Wireless inventory as JSON line-delimited.
  * @param "Search" (optional.String) -  an optional search string for filtering results
 @return *os.File
 */
-func (a *ExportApiService) ExportWirelessJSONL(ctx _context.Context, localVarOptionals *ExportWirelessJSONLOpts) (*os.File, *_nethttp.Response, error) {
+func (a *ExportAPIService) ExportWirelessJSONL(ctx _context.Context, localVarOptionals *ExportWirelessJSONLOpts) (*os.File, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1228,7 +1216,6 @@ func (a *ExportApiService) ExportWirelessJSONL(ctx _context.Context, localVarOpt
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
