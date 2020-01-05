@@ -1,4 +1,4 @@
-module github.com/RumbleDiscovery/rumble-api
+module github.com/hdm/rumble-api-test
 
 go 1.13
 
