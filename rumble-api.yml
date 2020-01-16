@@ -160,7 +160,7 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
-  /api/v1.0/export/org/assets/sync/created/assets.json:
+  /export/org/assets/sync/created/assets.json:
     get:
       tags:
         - Export
@@ -191,7 +191,7 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
-  /api/v1.0/export/org/assets/sync/updated/assets.json:
+  /export/org/assets/sync/updated/assets.json:
     get:
       tags:
         - Export
