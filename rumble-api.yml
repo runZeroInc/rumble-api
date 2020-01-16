@@ -4,7 +4,7 @@ servers:
     url: https://console.rumble.run/api/v1.0
 info:
   description: Rumble Network Discovery API
-  version: "1.0.0"
+  version: "1.0.1"
   title: Rumble API
   contact:
     email: support@rumble.run
@@ -157,6 +157,68 @@ paths:
               schema:
                 type: string
                 format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /api/v1.0/export/org/assets/sync/created/assets.json:
+    get:
+      tags:
+        - Export
+      operationId: exportAssetSyncCreatedJSON
+      summary: Exports the asset inventory in a sync-friendly manner using created_at as a checkpoint.
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: since
+          description: an optional unix timestamp to use as a checkpoint
+          required: false
+          schema:
+            type: number
+            format: int64
+            example: 1576300370
+      responses:
+        '200':
+          description: filtered asset results with a checkpoint wrapper
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetsWithCheckpoint'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /api/v1.0/export/org/assets/sync/updated/assets.json:
+    get:
+      tags:
+        - Export
+      operationId: exportAssetSyncUpdatedJSON
+      summary: Exports the asset inventory in a sync-friendly manner using updated_at as a checkpoint.
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: since
+          description: an optional unix timestamp to use as a checkpoint
+          required: false
+          schema:
+            type: number
+            format: int64
+            example: 1576300370
+      responses:
+        '200':
+          description: filtered asset results with a checkpoint wrapper
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetsWithCheckpoint'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
@@ -1301,6 +1363,20 @@ components:
         excludes:
           type: string
           example: 192.168.10.1
+    AssetsWithCheckpoint:
+      type: object
+      required:
+        - since
+        - assets
+      properties:
+        since:
+          type: number
+          format: int64
+          example: 1576300370
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
     AssetComments:
       type: object
       required:
