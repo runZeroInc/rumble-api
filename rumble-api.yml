@@ -1406,11 +1406,11 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         updated_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         organization_id:
@@ -1426,11 +1426,11 @@ components:
           format: boolean
           example: true
         first_seen:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         last_seen:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         detected_by:
@@ -1480,31 +1480,31 @@ components:
             type: string
             example: www
         service_count:
-          type: number
+          type: integer
           format: int64
           example: 10
         service_count_tcp:
-          type: number
+          type: integer
           format: int64
           example: 7
         service_count_udp:
-          type: number
+          type: integer
           format: int64
           example: 1
         service_count_arp:
-          type: number
+          type: integer
           format: int64
           example: 1
         service_count_icmp:
-          type: number
+          type: integer
           format: int64
           example: 1
         lowest_ttl:
-          type: number
+          type: integer
           format: int64
           example: 0
         lowest_rtt:
-          type: number
+          type: integer
           format: int64
           example: 1
         last_agent_id:
@@ -1523,7 +1523,7 @@ components:
           type: string
           example: Intel Corporate
         newest_mac_age:
-          type: number
+          type: integer
           format: int64
           example: 1304035200000000000
         comments:
@@ -1598,11 +1598,11 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         service_created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         service_updated_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         service_address:
@@ -1615,7 +1615,7 @@ components:
           type: string
           example: www
         service_port:
-          type: number
+          type: string
           format: port
           example: 80
         service_data:
@@ -1639,11 +1639,11 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         updated_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         organization_id:
@@ -1659,11 +1659,11 @@ components:
           format: boolean
           example: true
         first_seen:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         last_seen:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         detected_by:
@@ -1713,31 +1713,31 @@ components:
             type: string
             example: CORPNET
         service_count:
-          type: number
+          type: integer
           format: int64
           example: 10
         service_count_tcp:
-          type: number
+          type: integer
           format: int64
           example: 7
         service_count_udp:
-          type: number
+          type: integer
           format: int64
           example: 1
         service_count_arp:
-          type: number
+          type: integer
           format: int64
           example: 1
         service_count_icmp:
-          type: number
+          type: integer
           format: int64
           example: 1
         lowest_ttl:
-          type: number
+          type: integer
           format: int64
           example: 0
         lowest_rtt:
-          type: number
+          type: integer
           format: int64
           example: 1
         last_agent_id:
@@ -1756,7 +1756,7 @@ components:
           type: string
           example: Intel Corporate
         newest_mac_age:
-          type: number
+          type: integer
           format: int64
           example: 1304035200000000000
         comments:
@@ -1827,11 +1827,11 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         updated_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         permanent:
@@ -1860,11 +1860,11 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         last_seen:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         organization_id:
@@ -1942,11 +1942,11 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         updated_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         client_id:
@@ -1957,7 +1957,7 @@ components:
           type: string
           example: DT11226D9EEEA2B035D42569585900
         download_token_created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         permanent:
@@ -1973,49 +1973,49 @@ components:
           type: boolean
           example: false
         deactivated_at:
-          type: number
+          type: integer
           format: int64
           example: 0
         service_count:
-          type: number
+          type: integer
           format: int64
           example: 10
         service_count_tcp:
-          type: number
+          type: integer
           format: int64
           example: 7
         service_count_udp:
-          type: number
+          type: integer
           format: int64
           example: 1
         service_count_arp:
-          type: number
+          type: integer
           format: int64
           example: 1
         service_count_icmp:
-          type: number
+          type: integer
           format: int64
           example: 1
         asset_count:
-          type: number
+          type: integer
           format: int64
           example: 100
         export_token:
           type: string
           example: ET11226D9EEEA2B035D42569585900
         export_token_created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         export_token_last_used_at:
-          type: number
+          type: integer
           format: int64
           example: 0
         export_token_last_used_by:
           type: string
           example: 127.0.0.1
         export_token_counter:
-          type: number
+          type: integer
           format: int64
           example: 0
 
@@ -2037,7 +2037,7 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         created_by:
@@ -2048,7 +2048,7 @@ components:
           type: string
           example: API key used for Splunk integration
         last_used_at:
-          type: number
+          type: integer
           format: int64
           example: 0
         last_used_ip:
@@ -2058,15 +2058,15 @@ components:
           type: string
           example: "curl/7.44.1"
         counter:
-          type: number
+          type: integer
           format: int64
           example: 1
         usage_today:
-          type: number
+          type: integer
           format: int64
           example: 100
         usage_limit:
-          type: number
+          type: integer
           format: int64
           example: 10000
         token:
@@ -2094,11 +2094,11 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         updated_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         host_id:
@@ -2117,7 +2117,7 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         last_checkin:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         os:
@@ -2145,7 +2145,7 @@ components:
           type: boolean
           example: false
         deactivated_at:
-          type: number
+          type: integer
           format: int64
           example: 0
 
@@ -2185,7 +2185,7 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         created_by:
@@ -2197,7 +2197,7 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         updated_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         type:
