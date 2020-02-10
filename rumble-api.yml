@@ -64,6 +64,8 @@ paths:
 
   /export/org/assets.json:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Export
       operationId: exportAssetsJSON
@@ -89,6 +91,8 @@ paths:
 
   /export/org/assets.jsonl:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Export
       operationId: exportAssetsJSONL
@@ -114,6 +118,8 @@ paths:
 
   /export/org/assets.csv:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Export
       operationId: exportAssetsCSV
@@ -138,6 +144,8 @@ paths:
 
   /export/org/assets.nmap.xml:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Export
       operationId: exportAssetsNmapXML
@@ -162,6 +170,8 @@ paths:
 
   /export/org/assets/sync/created/assets.json:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Export
       operationId: exportAssetSyncCreatedJSON
@@ -178,7 +188,7 @@ paths:
           description: an optional unix timestamp to use as a checkpoint
           required: false
           schema:
-            type: number
+            type: integer
             format: int64
             example: 1576300370
       responses:
@@ -193,6 +203,8 @@ paths:
 
   /export/org/assets/sync/updated/assets.json:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Export
       operationId: exportAssetSyncUpdatedJSON
@@ -209,7 +221,7 @@ paths:
           description: an optional unix timestamp to use as a checkpoint
           required: false
           schema:
-            type: number
+            type: integer
             format: int64
             example: 1576300370
       responses:
@@ -224,6 +236,8 @@ paths:
 
   /export/org/services.json:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Export
       operationId: exportServicesJSON
@@ -249,6 +263,8 @@ paths:
 
   /export/org/services.jsonl:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Export
       operationId: exportServicesJSONL
@@ -274,6 +290,8 @@ paths:
 
   /export/org/services.csv:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Export
       operationId: exportServicesCSV
@@ -299,6 +317,8 @@ paths:
 
   /export/org/sites.json:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Export
       operationId: exportSitesJSON
@@ -317,6 +337,8 @@ paths:
 
   /export/org/sites.jsonl:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Export
       operationId:  exportSitesJSONL
@@ -335,6 +357,8 @@ paths:
 
   /export/org/sites.csv:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Export
       operationId:  exportSitesCSV
@@ -353,6 +377,8 @@ paths:
 
   /export/org/wireless.json:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Export
       operationId: exportWirelessJSON
@@ -378,6 +404,8 @@ paths:
 
   /export/org/wireless.jsonl:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Export
       operationId: exportWirelessJSONL
@@ -403,6 +431,8 @@ paths:
 
   /export/org/wireless.csv:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Export
       operationId: exportWirelessCSV
@@ -427,6 +457,8 @@ paths:
 
   /org:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getOrganization
@@ -441,6 +473,8 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
     patch:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: updateOrganization
@@ -465,6 +499,8 @@ paths:
 
   /org/key:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getKey
@@ -481,6 +517,8 @@ paths:
 
   /org/agents:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getAgents
@@ -499,6 +537,8 @@ paths:
 
   /org/agents/{agent_id}:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getAgent
@@ -523,6 +563,8 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
     delete:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: removeAgent
@@ -543,6 +585,8 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
     patch:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: updateAgentSite
@@ -576,6 +620,8 @@ paths:
 
   /org/agents/{agent_id}/update:
     post:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: upgradeAgent
@@ -598,6 +644,8 @@ paths:
 
   /org/sites:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getSites
@@ -614,6 +662,8 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
     put:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: createSite
@@ -639,6 +689,8 @@ paths:
 
   /org/sites/{site_id}:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getSite
@@ -663,6 +715,8 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
     delete:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: removeSite
@@ -683,6 +737,8 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
     patch:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: updateSite
@@ -716,6 +772,8 @@ paths:
 
   /org/sites/{site_id}/import:
     put:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: importScanData
@@ -752,6 +810,8 @@ paths:
 
   /org/sites/{site_id}/scan:
     put:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: createScan
@@ -787,6 +847,8 @@ paths:
 
   /org/assets:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getAssets
@@ -812,6 +874,8 @@ paths:
 
   /org/assets/{asset_id}:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getAsset
@@ -836,6 +900,8 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
     delete:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: removeAsset
@@ -858,6 +924,8 @@ paths:
 
   /org/assets/{asset_id}/comments:
     patch:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: updateAssetComments
@@ -891,6 +959,8 @@ paths:
 
   /org/assets/{asset_id}/tags:
     patch:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: updateAssetTags
@@ -924,6 +994,8 @@ paths:
 
   /org/services:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getServices
@@ -949,6 +1021,8 @@ paths:
 
   /org/services/{service_id}:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getService
@@ -973,6 +1047,8 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
     delete:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: removeService
@@ -995,6 +1071,8 @@ paths:
 
   /org/wireless:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getWirelessLANs
@@ -1020,6 +1098,8 @@ paths:
 
   /org/wirelesss/{wireless_id}:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getWirelessLAN
@@ -1042,6 +1122,8 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
     delete:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: removeWirelessLAN
@@ -1065,6 +1147,8 @@ paths:
 
   /org/tasks:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getTasks
@@ -1090,6 +1174,8 @@ paths:
 
   /org/tasks/{task_id}:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getTask
@@ -1112,6 +1198,8 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
     patch:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: updateTask
@@ -1145,6 +1233,8 @@ paths:
 
   /org/tasks/{task_id}/data:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getTaskScanData
@@ -1167,6 +1257,8 @@ paths:
 
   /org/tasks/{task_id}/changes:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: getTaskChangeReport
@@ -1189,6 +1281,8 @@ paths:
 
   /org/tasks/{task_id}/stop:
     post:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: stopTask
@@ -1211,6 +1305,8 @@ paths:
 
   /org/tasks/{task_id}/hide:
     post:
+      security:
+        - bearerAuth: []
       tags:
         - Organization
       operationId: hideTask
@@ -1370,7 +1466,7 @@ components:
         - assets
       properties:
         since:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         assets:
