@@ -64,12 +64,12 @@ paths:
 
   /export/org/assets.json:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Export
       operationId: exportAssetsJSON
       summary: Exports the asset inventory.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -91,12 +91,12 @@ paths:
 
   /export/org/assets.jsonl:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Export
       operationId: exportAssetsJSONL
       summary: Asset inventory as JSON line-delimited.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -118,12 +118,12 @@ paths:
 
   /export/org/assets.csv:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Export
       operationId: exportAssetsCSV
       summary: Asset inventory as CSV.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -144,12 +144,12 @@ paths:
 
   /export/org/assets.nmap.xml:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Export
       operationId: exportAssetsNmapXML
       summary: Asset inventory as Nmap-style XML.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -170,12 +170,12 @@ paths:
 
   /export/org/assets/sync/created/assets.json:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Export
       operationId: exportAssetSyncCreatedJSON
       summary: Exports the asset inventory in a sync-friendly manner using created_at as a checkpoint.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -203,12 +203,12 @@ paths:
 
   /export/org/assets/sync/updated/assets.json:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Export
       operationId: exportAssetSyncUpdatedJSON
       summary: Exports the asset inventory in a sync-friendly manner using updated_at as a checkpoint.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -236,12 +236,12 @@ paths:
 
   /export/org/services.json:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Export
       operationId: exportServicesJSON
       summary: Service inventory as JSON.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -263,12 +263,12 @@ paths:
 
   /export/org/services.jsonl:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Export
       operationId: exportServicesJSONL
       summary: Service inventory as JSON line-delimited.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -290,12 +290,12 @@ paths:
 
   /export/org/services.csv:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Export
       operationId: exportServicesCSV
       summary: Service inventory as CSV.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -317,12 +317,12 @@ paths:
 
   /export/org/sites.json:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Export
       operationId: exportSitesJSON
       summary: Export all sites.
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: all sites
@@ -337,12 +337,12 @@ paths:
 
   /export/org/sites.jsonl:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Export
       operationId:  exportSitesJSONL
       summary: Site list as JSON line-delimited.
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: all sites
@@ -357,12 +357,12 @@ paths:
 
   /export/org/sites.csv:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Export
       operationId:  exportSitesCSV
       summary: Site list as CSV.
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: all sites
@@ -377,12 +377,12 @@ paths:
 
   /export/org/wireless.json:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Export
       operationId: exportWirelessJSON
       summary: Wireless inventory as JSON.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -404,12 +404,12 @@ paths:
 
   /export/org/wireless.jsonl:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Export
       operationId: exportWirelessJSONL
       summary: Wireless inventory as JSON line-delimited.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -431,12 +431,12 @@ paths:
 
   /export/org/wireless.csv:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Export
       operationId: exportWirelessCSV
       summary: Wireless inventory as CSV.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -457,12 +457,12 @@ paths:
 
   /org:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getOrganization
       summary: Get organization details.
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: organization details
@@ -473,12 +473,12 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
     patch:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: updateOrganization
       summary: Update organization details.
+      security:
+        - bearerAuth: []
       requestBody:
         description: organization options
         required: true
@@ -499,12 +499,12 @@ paths:
 
   /org/key:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getKey
       summary: Get API key details.
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: api key details
@@ -517,12 +517,12 @@ paths:
 
   /org/agents:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getAgents
       summary: Get all agents.
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: array of agents
@@ -537,12 +537,12 @@ paths:
 
   /org/agents/{agent_id}:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getAgent
       summary: Get details for a single agent.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: agent_id
@@ -563,12 +563,12 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
     delete:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: removeAgent
       summary: Remove and uninstall an agent.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: agent_id
@@ -585,12 +585,12 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
     patch:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: updateAgentSite
       summary: Update the site associated with agent.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: agent_id
@@ -620,12 +620,12 @@ paths:
 
   /org/agents/{agent_id}/update:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: upgradeAgent
       summary: Force an agent to update and restart.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: agent_id
@@ -644,12 +644,12 @@ paths:
 
   /org/sites:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getSites
       summary: Get all sites.
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: array of sites
@@ -662,12 +662,12 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
     put:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: createSite
       summary: Create a new site.
+      security:
+        - bearerAuth: []
       requestBody:
         description: site definition
         required: true
@@ -689,12 +689,12 @@ paths:
 
   /org/sites/{site_id}:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getSite
       summary: Get site details.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: site_id
@@ -715,12 +715,12 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
     delete:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: removeSite
       summary: Remove a site and associated assets.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: site_id
@@ -737,12 +737,12 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
     patch:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: updateSite
       summary: Update a site definition.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: site_id
@@ -772,12 +772,12 @@ paths:
 
   /org/sites/{site_id}/import:
     put:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: importScanData
       summary: Import a scan data file into a site.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: site_id
@@ -810,12 +810,12 @@ paths:
 
   /org/sites/{site_id}/scan:
     put:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: createScan
       summary: Create a scan task for a given site.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: site_id
@@ -847,12 +847,12 @@ paths:
 
   /org/assets:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getAssets
       summary: Get all assets.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -874,12 +874,12 @@ paths:
 
   /org/assets/{asset_id}:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getAsset
       summary: Get asset details.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: asset_id
@@ -900,12 +900,12 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
     delete:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: removeAsset
       summary: Remove an asset.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: asset_id
@@ -924,12 +924,12 @@ paths:
 
   /org/assets/{asset_id}/comments:
     patch:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: updateAssetComments
       summary: Update asset comments.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: asset_id
@@ -959,12 +959,12 @@ paths:
 
   /org/assets/{asset_id}/tags:
     patch:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: updateAssetTags
       summary: Update asset tags.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: asset_id
@@ -994,12 +994,12 @@ paths:
 
   /org/services:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getServices
       summary: Get all services.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -1021,12 +1021,12 @@ paths:
 
   /org/services/{service_id}:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getService
       summary: Get service details.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: service_id
@@ -1047,12 +1047,12 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
     delete:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: removeService
       summary: Remove a service.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: service_id
@@ -1071,12 +1071,12 @@ paths:
 
   /org/wireless:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getWirelessLANs
       summary: Get all wireless LANs.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -1098,12 +1098,12 @@ paths:
 
   /org/wirelesss/{wireless_id}:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getWirelessLAN
       summary: Get wireless LAN details.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: wireless_id
@@ -1122,12 +1122,12 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
     delete:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: removeWirelessLAN
       summary: Remove a wireless LAN.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: wireless_id
@@ -1147,12 +1147,12 @@ paths:
 
   /org/tasks:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getTasks
       summary: Get all tasks (last 1000).
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: status
@@ -1174,12 +1174,12 @@ paths:
 
   /org/tasks/{task_id}:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getTask
       summary: Get task details.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: task_id
@@ -1198,12 +1198,12 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
     patch:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: updateTask
       summary: Update task parameters.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: task_id
@@ -1233,12 +1233,12 @@ paths:
 
   /org/tasks/{task_id}/data:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getTaskScanData
       summary: Returns a temporary task scan data url.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: task_id
@@ -1257,12 +1257,12 @@ paths:
 
   /org/tasks/{task_id}/changes:
     get:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: getTaskChangeReport
       summary: Returns a temporary task change report data url.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: task_id
@@ -1281,12 +1281,12 @@ paths:
 
   /org/tasks/{task_id}/stop:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: stopTask
       summary: Signal that a task should be stopped or canceled.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: task_id
@@ -1305,12 +1305,12 @@ paths:
 
   /org/tasks/{task_id}/hide:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Organization
       operationId: hideTask
       summary: Signal that a completed task should be hidden.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: task_id
