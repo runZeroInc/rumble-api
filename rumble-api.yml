@@ -4,7 +4,7 @@ servers:
     url: https://console.rumble.run/api/v1.0
 info:
   description: Rumble Network Discovery API
-  version: "1.0.1"
+  version: "1.0.2"
   title: Rumble API
   contact:
     email: support@rumble.run
@@ -68,6 +68,8 @@ paths:
         - Export
       operationId: exportAssetsJSON
       summary: Exports the asset inventory.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -93,6 +95,8 @@ paths:
         - Export
       operationId: exportAssetsJSONL
       summary: Asset inventory as JSON line-delimited.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -118,6 +122,8 @@ paths:
         - Export
       operationId: exportAssetsCSV
       summary: Asset inventory as CSV.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -142,6 +148,8 @@ paths:
         - Export
       operationId: exportAssetsNmapXML
       summary: Asset inventory as Nmap-style XML.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -166,6 +174,8 @@ paths:
         - Export
       operationId: exportAssetSyncCreatedJSON
       summary: Exports the asset inventory in a sync-friendly manner using created_at as a checkpoint.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -178,7 +188,7 @@ paths:
           description: an optional unix timestamp to use as a checkpoint
           required: false
           schema:
-            type: number
+            type: integer
             format: int64
             example: 1576300370
       responses:
@@ -197,6 +207,8 @@ paths:
         - Export
       operationId: exportAssetSyncUpdatedJSON
       summary: Exports the asset inventory in a sync-friendly manner using updated_at as a checkpoint.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -209,7 +221,7 @@ paths:
           description: an optional unix timestamp to use as a checkpoint
           required: false
           schema:
-            type: number
+            type: integer
             format: int64
             example: 1576300370
       responses:
@@ -228,6 +240,8 @@ paths:
         - Export
       operationId: exportServicesJSON
       summary: Service inventory as JSON.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -253,6 +267,8 @@ paths:
         - Export
       operationId: exportServicesJSONL
       summary: Service inventory as JSON line-delimited.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -278,6 +294,8 @@ paths:
         - Export
       operationId: exportServicesCSV
       summary: Service inventory as CSV.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -303,6 +321,8 @@ paths:
         - Export
       operationId: exportSitesJSON
       summary: Export all sites.
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: all sites
@@ -321,6 +341,8 @@ paths:
         - Export
       operationId:  exportSitesJSONL
       summary: Site list as JSON line-delimited.
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: all sites
@@ -339,6 +361,8 @@ paths:
         - Export
       operationId:  exportSitesCSV
       summary: Site list as CSV.
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: all sites
@@ -357,6 +381,8 @@ paths:
         - Export
       operationId: exportWirelessJSON
       summary: Wireless inventory as JSON.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -382,6 +408,8 @@ paths:
         - Export
       operationId: exportWirelessJSONL
       summary: Wireless inventory as JSON line-delimited.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -407,6 +435,8 @@ paths:
         - Export
       operationId: exportWirelessCSV
       summary: Wireless inventory as CSV.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -431,6 +461,8 @@ paths:
         - Organization
       operationId: getOrganization
       summary: Get organization details.
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: organization details
@@ -445,6 +477,8 @@ paths:
         - Organization
       operationId: updateOrganization
       summary: Update organization details.
+      security:
+        - bearerAuth: []
       requestBody:
         description: organization options
         required: true
@@ -469,6 +503,8 @@ paths:
         - Organization
       operationId: getKey
       summary: Get API key details.
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: api key details
@@ -485,6 +521,8 @@ paths:
         - Organization
       operationId: getAgents
       summary: Get all agents.
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: array of agents
@@ -503,6 +541,8 @@ paths:
         - Organization
       operationId: getAgent
       summary: Get details for a single agent.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: agent_id
@@ -527,6 +567,8 @@ paths:
         - Organization
       operationId: removeAgent
       summary: Remove and uninstall an agent.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: agent_id
@@ -547,6 +589,8 @@ paths:
         - Organization
       operationId: updateAgentSite
       summary: Update the site associated with agent.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: agent_id
@@ -580,6 +624,8 @@ paths:
         - Organization
       operationId: upgradeAgent
       summary: Force an agent to update and restart.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: agent_id
@@ -602,6 +648,8 @@ paths:
         - Organization
       operationId: getSites
       summary: Get all sites.
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: array of sites
@@ -618,6 +666,8 @@ paths:
         - Organization
       operationId: createSite
       summary: Create a new site.
+      security:
+        - bearerAuth: []
       requestBody:
         description: site definition
         required: true
@@ -643,6 +693,8 @@ paths:
         - Organization
       operationId: getSite
       summary: Get site details.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: site_id
@@ -667,6 +719,8 @@ paths:
         - Organization
       operationId: removeSite
       summary: Remove a site and associated assets.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: site_id
@@ -687,6 +741,8 @@ paths:
         - Organization
       operationId: updateSite
       summary: Update a site definition.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: site_id
@@ -720,6 +776,8 @@ paths:
         - Organization
       operationId: importScanData
       summary: Import a scan data file into a site.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: site_id
@@ -756,6 +814,8 @@ paths:
         - Organization
       operationId: createScan
       summary: Create a scan task for a given site.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: site_id
@@ -791,6 +851,8 @@ paths:
         - Organization
       operationId: getAssets
       summary: Get all assets.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -816,6 +878,8 @@ paths:
         - Organization
       operationId: getAsset
       summary: Get asset details.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: asset_id
@@ -840,6 +904,8 @@ paths:
         - Organization
       operationId: removeAsset
       summary: Remove an asset.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: asset_id
@@ -862,6 +928,8 @@ paths:
         - Organization
       operationId: updateAssetComments
       summary: Update asset comments.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: asset_id
@@ -895,6 +963,8 @@ paths:
         - Organization
       operationId: updateAssetTags
       summary: Update asset tags.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: asset_id
@@ -928,6 +998,8 @@ paths:
         - Organization
       operationId: getServices
       summary: Get all services.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -953,6 +1025,8 @@ paths:
         - Organization
       operationId: getService
       summary: Get service details.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: service_id
@@ -977,6 +1051,8 @@ paths:
         - Organization
       operationId: removeService
       summary: Remove a service.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: service_id
@@ -999,6 +1075,8 @@ paths:
         - Organization
       operationId: getWirelessLANs
       summary: Get all wireless LANs.
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: search
@@ -1024,6 +1102,8 @@ paths:
         - Organization
       operationId: getWirelessLAN
       summary: Get wireless LAN details.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: wireless_id
@@ -1046,6 +1126,8 @@ paths:
         - Organization
       operationId: removeWirelessLAN
       summary: Remove a wireless LAN.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: wireless_id
@@ -1069,6 +1151,8 @@ paths:
         - Organization
       operationId: getTasks
       summary: Get all tasks (last 1000).
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: status
@@ -1094,6 +1178,8 @@ paths:
         - Organization
       operationId: getTask
       summary: Get task details.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: task_id
@@ -1116,6 +1202,8 @@ paths:
         - Organization
       operationId: updateTask
       summary: Update task parameters.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: task_id
@@ -1149,6 +1237,8 @@ paths:
         - Organization
       operationId: getTaskScanData
       summary: Returns a temporary task scan data url.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: task_id
@@ -1171,6 +1261,8 @@ paths:
         - Organization
       operationId: getTaskChangeReport
       summary: Returns a temporary task change report data url.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: task_id
@@ -1193,6 +1285,8 @@ paths:
         - Organization
       operationId: stopTask
       summary: Signal that a task should be stopped or canceled.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: task_id
@@ -1215,6 +1309,8 @@ paths:
         - Organization
       operationId: hideTask
       summary: Signal that a completed task should be hidden.
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: task_id
@@ -1370,7 +1466,7 @@ components:
         - assets
       properties:
         since:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         assets:
@@ -1406,11 +1502,11 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         updated_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         organization_id:
@@ -1426,11 +1522,11 @@ components:
           format: boolean
           example: true
         first_seen:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         last_seen:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         detected_by:
@@ -1480,31 +1576,31 @@ components:
             type: string
             example: www
         service_count:
-          type: number
+          type: integer
           format: int64
           example: 10
         service_count_tcp:
-          type: number
+          type: integer
           format: int64
           example: 7
         service_count_udp:
-          type: number
+          type: integer
           format: int64
           example: 1
         service_count_arp:
-          type: number
+          type: integer
           format: int64
           example: 1
         service_count_icmp:
-          type: number
+          type: integer
           format: int64
           example: 1
         lowest_ttl:
-          type: number
+          type: integer
           format: int64
           example: 0
         lowest_rtt:
-          type: number
+          type: integer
           format: int64
           example: 1
         last_agent_id:
@@ -1523,7 +1619,7 @@ components:
           type: string
           example: Intel Corporate
         newest_mac_age:
-          type: number
+          type: integer
           format: int64
           example: 1304035200000000000
         comments:
@@ -1598,11 +1694,11 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         service_created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         service_updated_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         service_address:
@@ -1615,7 +1711,7 @@ components:
           type: string
           example: www
         service_port:
-          type: number
+          type: string
           format: port
           example: 80
         service_data:
@@ -1639,11 +1735,11 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         updated_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         organization_id:
@@ -1659,11 +1755,11 @@ components:
           format: boolean
           example: true
         first_seen:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         last_seen:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         detected_by:
@@ -1713,31 +1809,31 @@ components:
             type: string
             example: CORPNET
         service_count:
-          type: number
+          type: integer
           format: int64
           example: 10
         service_count_tcp:
-          type: number
+          type: integer
           format: int64
           example: 7
         service_count_udp:
-          type: number
+          type: integer
           format: int64
           example: 1
         service_count_arp:
-          type: number
+          type: integer
           format: int64
           example: 1
         service_count_icmp:
-          type: number
+          type: integer
           format: int64
           example: 1
         lowest_ttl:
-          type: number
+          type: integer
           format: int64
           example: 0
         lowest_rtt:
-          type: number
+          type: integer
           format: int64
           example: 1
         last_agent_id:
@@ -1756,7 +1852,7 @@ components:
           type: string
           example: Intel Corporate
         newest_mac_age:
-          type: number
+          type: integer
           format: int64
           example: 1304035200000000000
         comments:
@@ -1827,11 +1923,11 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         updated_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         permanent:
@@ -1860,11 +1956,11 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         last_seen:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         organization_id:
@@ -1942,11 +2038,11 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         updated_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         client_id:
@@ -1957,7 +2053,7 @@ components:
           type: string
           example: DT11226D9EEEA2B035D42569585900
         download_token_created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         permanent:
@@ -1973,49 +2069,49 @@ components:
           type: boolean
           example: false
         deactivated_at:
-          type: number
+          type: integer
           format: int64
           example: 0
         service_count:
-          type: number
+          type: integer
           format: int64
           example: 10
         service_count_tcp:
-          type: number
+          type: integer
           format: int64
           example: 7
         service_count_udp:
-          type: number
+          type: integer
           format: int64
           example: 1
         service_count_arp:
-          type: number
+          type: integer
           format: int64
           example: 1
         service_count_icmp:
-          type: number
+          type: integer
           format: int64
           example: 1
         asset_count:
-          type: number
+          type: integer
           format: int64
           example: 100
         export_token:
           type: string
           example: ET11226D9EEEA2B035D42569585900
         export_token_created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         export_token_last_used_at:
-          type: number
+          type: integer
           format: int64
           example: 0
         export_token_last_used_by:
           type: string
           example: 127.0.0.1
         export_token_counter:
-          type: number
+          type: integer
           format: int64
           example: 0
 
@@ -2037,7 +2133,7 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         created_by:
@@ -2048,7 +2144,7 @@ components:
           type: string
           example: API key used for Splunk integration
         last_used_at:
-          type: number
+          type: integer
           format: int64
           example: 0
         last_used_ip:
@@ -2058,15 +2154,15 @@ components:
           type: string
           example: "curl/7.44.1"
         counter:
-          type: number
+          type: integer
           format: int64
           example: 1
         usage_today:
-          type: number
+          type: integer
           format: int64
           example: 100
         usage_limit:
-          type: number
+          type: integer
           format: int64
           example: 10000
         token:
@@ -2094,11 +2190,11 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         updated_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         host_id:
@@ -2117,7 +2213,7 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         last_checkin:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         os:
@@ -2145,7 +2241,7 @@ components:
           type: boolean
           example: false
         deactivated_at:
-          type: number
+          type: integer
           format: int64
           example: 0
 
@@ -2185,7 +2281,7 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         created_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         created_by:
@@ -2197,7 +2293,7 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         updated_at:
-          type: number
+          type: integer
           format: int64
           example: 1576300370
         type:
