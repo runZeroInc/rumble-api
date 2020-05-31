@@ -8,9 +8,6 @@ github.com/golang/protobuf v1.2.0/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5y
 github.com/golang/protobuf v1.3.1/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
 github.com/golang/protobuf v1.3.2 h1:6nsPYzhq5kReh6QImI3k5qWzO4PEbvbIW2cwSfR/6xs=
 github.com/golang/protobuf v1.3.2/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
-github.com/hdm/rumble-api-test v0.0.0-20200105202635-5c207b954d95 h1:ouOzK80kWN5gMCsVpYFcR3eTH0W4abUHpgBobsv+2Jk=
-github.com/hdm/rumble-api-test/go v0.0.0-20200105202635-5c207b954d95 h1:3lM8JMOqQK6GUQx+bCd7nFw1YgQpOgY8G8HmNO/y85s=
-github.com/hdm/rumble-api-test/go v0.0.0-20200105202635-5c207b954d95/go.mod h1:6bVI42yAQ/7QD279HFdMzJ3DOh3vBh7H6ltl709VFDc=
 github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af h1:pmfjZENx5imkbgOkpRUYLnmbU7UEFbjtDA2hxJ1ichM=
 github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af/go.mod h1:Nht3zPeWKUH0NzdCt2Blrr5ys8VGpn0CEB0cQHVjt7k=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
