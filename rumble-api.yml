@@ -4,7 +4,7 @@ servers:
     url: https://console.rumble.run/api/v1.0
 info:
   description: Rumble Network Discovery API
-  version: "1.0.2"
+  version: "1.0.4"
   title: Rumble API
   contact:
     email: support@rumble.run
@@ -77,6 +77,12 @@ paths:
           required: false
           schema:
             type: string
+        - in: query
+          name: fields
+          description: an optional list of fields to export, comma-separated
+          required: false
+          schema:
+            type: string            
       responses:
         '200':
           description: filtered asset results
@@ -104,6 +110,12 @@ paths:
           required: false
           schema:
             type: string
+        - in: query
+          name: fields
+          description: an optional list of fields to export, comma-separated
+          required: false
+          schema:
+            type: string               
       responses:
         '200':
           # This is a streaming response of one Asset object per line in JSON format
@@ -184,6 +196,12 @@ paths:
           schema:
             type: string
         - in: query
+          name: fields
+          description: an optional list of fields to export, comma-separated
+          required: false
+          schema:
+            type: string               
+        - in: query
           name: since
           description: an optional unix timestamp to use as a checkpoint
           required: false
@@ -217,6 +235,12 @@ paths:
           schema:
             type: string
         - in: query
+          name: fields
+          description: an optional list of fields to export, comma-separated
+          required: false
+          schema:
+            type: string               
+        - in: query
           name: since
           description: an optional unix timestamp to use as a checkpoint
           required: false
@@ -249,6 +273,12 @@ paths:
           required: false
           schema:
             type: string
+        - in: query
+          name: fields
+          description: an optional list of fields to export, comma-separated
+          required: false
+          schema:
+            type: string               
       responses:
         '200':
           description: filtered service results
@@ -276,6 +306,12 @@ paths:
           required: false
           schema:
             type: string
+        - in: query
+          name: fields
+          description: an optional list of fields to export, comma-separated
+          required: false
+          schema:
+            type: string               
       responses:
         '200':
           description: filtered service results
@@ -323,6 +359,19 @@ paths:
       summary: Export all sites.
       security:
         - bearerAuth: []
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: fields
+          description: an optional list of fields to export, comma-separated
+          required: false
+          schema:
+            type: string         
       responses:
         '200':
           description: all sites
@@ -343,6 +392,19 @@ paths:
       summary: Site list as JSON line-delimited.
       security:
         - bearerAuth: []
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: fields
+          description: an optional list of fields to export, comma-separated
+          required: false
+          schema:
+            type: string         
       responses:
         '200':
           description: all sites
@@ -390,6 +452,12 @@ paths:
           required: false
           schema:
             type: string
+        - in: query
+          name: fields
+          description: an optional list of fields to export, comma-separated
+          required: false
+          schema:
+            type: string               
       responses:
         '200':
           description: filtered wireless results
@@ -417,6 +485,12 @@ paths:
           required: false
           schema:
             type: string
+        - in: query
+          name: fields
+          description: an optional list of fields to export, comma-separated
+          required: false
+          schema:
+            type: string               
       responses:
         '200':
           description: filtered wireless results
