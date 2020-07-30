@@ -7,7 +7,7 @@ info:
     name: Commercial
     url: https://rumble.run/terms
   title: Rumble API
-  version: 1.0.0
+  version: 1.0.4
 servers:
 - description: Rumble Console
   url: https://console.rumble.run/api/v1.0
@@ -23,7 +23,7 @@ paths:
     get:
       operationId: getLatestAgentVersion
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
@@ -36,7 +36,7 @@ paths:
     get:
       operationId: getLatestScannerVersion
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
@@ -49,7 +49,7 @@ paths:
     get:
       operationId: getLatestPlatformVersion
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
@@ -70,8 +70,16 @@ paths:
         schema:
           type: string
         style: form
+      - description: an optional list of fields to export, comma-separated
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
@@ -79,8 +87,10 @@ paths:
                   $ref: '#/components/schemas/Asset'
                 type: array
           description: filtered asset results
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Exports the asset inventory.
       tags:
       - Export
@@ -96,16 +106,26 @@ paths:
         schema:
           type: string
         style: form
+      - description: an optional list of fields to export, comma-separated
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 format: binary
                 type: string
           description: filtered asset results
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Asset inventory as JSON line-delimited.
       tags:
       - Export
@@ -122,15 +142,17 @@ paths:
           type: string
         style: form
       responses:
-        200:
+        "200":
           content:
             text/csv:
               schema:
                 format: binary
                 type: string
           description: filtered asset results
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Asset inventory as CSV.
       tags:
       - Export
@@ -147,16 +169,108 @@ paths:
           type: string
         style: form
       responses:
-        200:
+        "200":
           content:
             text/xml:
               schema:
                 format: binary
                 type: string
           description: filtered asset results
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Asset inventory as Nmap-style XML.
+      tags:
+      - Export
+  /export/org/assets/sync/created/assets.json:
+    get:
+      operationId: exportAssetSyncCreatedJSON
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: an optional list of fields to export, comma-separated
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: an optional unix timestamp to use as a checkpoint
+        explode: true
+        in: query
+        name: since
+        required: false
+        schema:
+          example: 1576300370
+          format: int64
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetsWithCheckpoint'
+          description: filtered asset results with a checkpoint wrapper
+        "401":
+          description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
+      summary: Exports the asset inventory in a sync-friendly manner using created_at
+        as a checkpoint.
+      tags:
+      - Export
+  /export/org/assets/sync/updated/assets.json:
+    get:
+      operationId: exportAssetSyncUpdatedJSON
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: an optional list of fields to export, comma-separated
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: an optional unix timestamp to use as a checkpoint
+        explode: true
+        in: query
+        name: since
+        required: false
+        schema:
+          example: 1576300370
+          format: int64
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetsWithCheckpoint'
+          description: filtered asset results with a checkpoint wrapper
+        "401":
+          description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
+      summary: Exports the asset inventory in a sync-friendly manner using updated_at
+        as a checkpoint.
       tags:
       - Export
   /export/org/services.json:
@@ -171,8 +285,16 @@ paths:
         schema:
           type: string
         style: form
+      - description: an optional list of fields to export, comma-separated
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
@@ -180,8 +302,10 @@ paths:
                   $ref: '#/components/schemas/Service'
                 type: array
           description: filtered service results
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Service inventory as JSON.
       tags:
       - Export
@@ -197,16 +321,26 @@ paths:
         schema:
           type: string
         style: form
+      - description: an optional list of fields to export, comma-separated
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 format: binary
                 type: string
           description: filtered service results
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Service inventory as JSON line-delimited.
       tags:
       - Export
@@ -223,23 +357,42 @@ paths:
           type: string
         style: form
       responses:
-        200:
+        "200":
           content:
             text/csv:
               schema:
                 format: binary
                 type: string
           description: filtered service results
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Service inventory as CSV.
       tags:
       - Export
   /export/org/sites.json:
     get:
       operationId: exportSitesJSON
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: an optional list of fields to export, comma-separated
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
@@ -247,24 +400,45 @@ paths:
                   $ref: '#/components/schemas/Site'
                 type: array
           description: all sites
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Export all sites.
       tags:
       - Export
   /export/org/sites.jsonl:
     get:
       operationId: exportSitesJSONL
+      parameters:
+      - description: an optional search string for filtering results
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: an optional list of fields to export, comma-separated
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 format: binary
                 type: string
           description: all sites
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Site list as JSON line-delimited.
       tags:
       - Export
@@ -272,15 +446,17 @@ paths:
     get:
       operationId: exportSitesCSV
       responses:
-        200:
+        "200":
           content:
             text/csv:
               schema:
                 format: binary
                 type: string
           description: all sites
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Site list as CSV.
       tags:
       - Export
@@ -296,8 +472,16 @@ paths:
         schema:
           type: string
         style: form
+      - description: an optional list of fields to export, comma-separated
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
@@ -305,8 +489,10 @@ paths:
                   $ref: '#/components/schemas/Wireless'
                 type: array
           description: filtered wireless results
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Wireless inventory as JSON.
       tags:
       - Export
@@ -322,16 +508,26 @@ paths:
         schema:
           type: string
         style: form
+      - description: an optional list of fields to export, comma-separated
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 format: binary
                 type: string
           description: filtered wireless results
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Wireless inventory as JSON line-delimited.
       tags:
       - Export
@@ -348,15 +544,17 @@ paths:
           type: string
         style: form
       responses:
-        200:
+        "200":
           content:
             text/csv:
               schema:
                 format: binary
                 type: string
           description: filtered wireless results
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Wireless inventory as CSV.
       tags:
       - Export
@@ -364,14 +562,16 @@ paths:
     get:
       operationId: getOrganization
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Organization'
           description: organization details
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Get organization details.
       tags:
       - Organization
@@ -385,14 +585,16 @@ paths:
         description: organization options
         required: true
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Organization'
           description: organization details
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Update organization details.
       tags:
       - Organization
@@ -400,14 +602,16 @@ paths:
     get:
       operationId: getKey
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIKey'
           description: api key details
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Get API key details.
       tags:
       - Organization
@@ -415,7 +619,7 @@ paths:
     get:
       operationId: getAgents
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
@@ -423,8 +627,10 @@ paths:
                   $ref: '#/components/schemas/Agent'
                 type: array
           description: array of agents
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Get all agents.
       tags:
       - Organization
@@ -442,12 +648,14 @@ paths:
           type: string
         style: simple
       responses:
-        204:
+        "204":
           description: empty response
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Remove and uninstall an agent.
       tags:
       - Organization
@@ -464,16 +672,18 @@ paths:
           type: string
         style: simple
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Agent'
           description: agent details
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Get details for a single agent.
       tags:
       - Organization
@@ -497,16 +707,18 @@ paths:
         description: site_id to associate with the agent
         required: true
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Agent'
           description: agent details
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Update the site associated with agent.
       tags:
       - Organization
@@ -524,12 +736,14 @@ paths:
           type: string
         style: simple
       responses:
-        204:
+        "204":
           description: empty response
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Force an agent to update and restart.
       tags:
       - Organization
@@ -537,7 +751,7 @@ paths:
     get:
       operationId: getSites
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
@@ -545,8 +759,10 @@ paths:
                   $ref: '#/components/schemas/Site'
                 type: array
           description: array of sites
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Get all sites.
       tags:
       - Organization
@@ -560,16 +776,18 @@ paths:
         description: site definition
         required: true
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Site'
           description: site details
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Create a new site.
       tags:
       - Organization
@@ -587,12 +805,14 @@ paths:
           type: string
         style: simple
       responses:
-        204:
+        "204":
           description: empty response
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Remove a site and associated assets.
       tags:
       - Organization
@@ -609,16 +829,18 @@ paths:
           type: string
         style: simple
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Site'
           description: site details
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Get site details.
       tags:
       - Organization
@@ -642,16 +864,18 @@ paths:
         description: site object
         required: true
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Site'
           description: site details
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Update a site definition.
       tags:
       - Organization
@@ -675,20 +899,22 @@ paths:
               format: binary
               type: string
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Task'
           description: import task
-        401:
+        "401":
           description: Access token is missing or invalid
-        403:
+        "403":
           description: License has expired
-        404:
+        "404":
           description: Resource not found
-        500:
+        "500":
           description: Request could not be processed
+      security:
+      - bearerAuth: []
       summary: Import a scan data file into a site.
       tags:
       - Organization
@@ -711,20 +937,22 @@ paths:
             schema:
               $ref: '#/components/schemas/ScanOptions'
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Task'
           description: a created scan task
-        401:
+        "401":
           description: Access token is missing or invalid
-        403:
+        "403":
           description: License has expired
-        404:
+        "404":
           description: Resource not found
-        500:
+        "500":
           description: Request could not be processed
+      security:
+      - bearerAuth: []
       summary: Create a scan task for a given site.
       tags:
       - Organization
@@ -741,7 +969,7 @@ paths:
           type: string
         style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
@@ -749,8 +977,10 @@ paths:
                   $ref: '#/components/schemas/Asset'
                 type: array
           description: array of assets
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Get all assets.
       tags:
       - Organization
@@ -768,12 +998,14 @@ paths:
           type: string
         style: simple
       responses:
-        204:
+        "204":
           description: empty response
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Remove an asset.
       tags:
       - Organization
@@ -790,16 +1022,18 @@ paths:
           type: string
         style: simple
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Asset'
           description: asset details
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Get asset details.
       tags:
       - Organization
@@ -824,16 +1058,18 @@ paths:
         description: comments to apply to the asset
         required: true
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Asset'
           description: asset details
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Update asset comments.
       tags:
       - Organization
@@ -858,16 +1094,18 @@ paths:
         description: tags to apply to the asset
         required: true
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Asset'
           description: asset details
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Update asset tags.
       tags:
       - Organization
@@ -884,7 +1122,7 @@ paths:
           type: string
         style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
@@ -892,8 +1130,10 @@ paths:
                   $ref: '#/components/schemas/Service'
                 type: array
           description: array of services
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Get all services.
       tags:
       - Organization
@@ -911,12 +1151,14 @@ paths:
           type: string
         style: simple
       responses:
-        204:
+        "204":
           description: empty response
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Remove a service.
       tags:
       - Organization
@@ -933,16 +1175,18 @@ paths:
           type: string
         style: simple
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Service'
           description: service details
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Get service details.
       tags:
       - Organization
@@ -959,7 +1203,7 @@ paths:
           type: string
         style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
@@ -967,8 +1211,10 @@ paths:
                   $ref: '#/components/schemas/Wireless'
                 type: array
           description: array of wireless LANs
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Get all wireless LANs.
       tags:
       - Organization
@@ -986,12 +1232,14 @@ paths:
           type: string
         style: simple
       responses:
-        204:
+        "204":
           description: empty response
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Remove a wireless LAN.
       tags:
       - Organization
@@ -1008,14 +1256,16 @@ paths:
           type: string
         style: simple
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Wireless'
           description: wireless details
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Get wireless LAN details.
       tags:
       - Organization
@@ -1032,7 +1282,7 @@ paths:
           type: string
         style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
@@ -1040,8 +1290,10 @@ paths:
                   $ref: '#/components/schemas/Task'
                 type: array
           description: array of tasks
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Get all tasks (last 1000).
       tags:
       - Organization
@@ -1059,14 +1311,16 @@ paths:
           type: string
         style: simple
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Task'
           description: task details
-        401:
+        "401":
           description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
       summary: Get task details.
       tags:
       - Organization
@@ -1090,16 +1344,18 @@ paths:
         description: task object
         required: true
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Task'
           description: task details
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Update task parameters.
       tags:
       - Organization
@@ -1117,12 +1373,14 @@ paths:
           type: string
         style: simple
       responses:
-        200:
+        "200":
           $ref: '#/components/schemas/URL'
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Returns a temporary task scan data url.
       tags:
       - Organization
@@ -1140,12 +1398,14 @@ paths:
           type: string
         style: simple
       responses:
-        200:
+        "200":
           $ref: '#/components/schemas/URL'
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Returns a temporary task change report data url.
       tags:
       - Organization
@@ -1163,12 +1423,14 @@ paths:
           type: string
         style: simple
       responses:
-        200:
+        "200":
           $ref: '#/components/schemas/Task'
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Signal that a task should be stopped or canceled.
       tags:
       - Organization
@@ -1186,12 +1448,14 @@ paths:
           type: string
         style: simple
       responses:
-        200:
+        "200":
           $ref: '#/components/schemas/Task'
-        401:
+        "401":
           description: Access token is missing or invalid
-        404:
+        "404":
           description: Resource not found
+      security:
+      - bearerAuth: []
       summary: Signal that a completed task should be hidden.
       tags:
       - Organization
@@ -1296,6 +1560,8 @@ components:
       - targets
       type: object
     AgentSiteID:
+      example:
+        site_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
       properties:
         site_id:
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
@@ -1337,6 +1603,165 @@ components:
           type: string
       required:
       - name
+      type: object
+    AssetsWithCheckpoint:
+      example:
+        assets:
+        - addresses:
+          - 192.168.0.1
+          - 192.168.0.1
+          first_seen: 1576300370
+          alive: true
+          last_seen: 1576300370
+          agent_name: LAPTOP-F4P1R6
+          credentials:
+            key:
+              key: true
+          created_at: 1576300370
+          service_count_udp: 1
+          mac_vendors:
+          - Dell
+          - Dell
+          type: Server
+          last_agent_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          service_ports_udp:
+          - "53"
+          - "53"
+          hw: Dell PowerEdge 2500
+          lowest_rtt: 1
+          service_ports_products:
+          - bind
+          - bind
+          updated_at: 1576300370
+          detected_by: icmp
+          id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          service_ports_protocols:
+          - ssh
+          - ssh
+          org_name: Test Labs
+          addresses_extra:
+          - 192.168.100.1
+          - 192.168.100.1
+          comments: File Server
+          os: Ubuntu Linux
+          last_task_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          os_version: "18.04"
+          service_count: 10
+          domains:
+          - www
+          - www
+          service_count_tcp: 7
+          newest_mac_vendor: Intel Corporate
+          lowest_ttl: 0
+          newest_mac: 11:22:33:44:55:66
+          service_count_arp: 1
+          services:
+            key:
+              key: services
+          service_ports_tcp:
+          - "22"
+          - "22"
+          tags:
+            key: tags
+          site_name: Primary
+          names:
+          - www
+          - www
+          service_count_icmp: 1
+          rtts:
+            key: '{}'
+          organization_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          macs:
+          - 11:22:33:44:55:66
+          - 11:22:33:44:55:66
+          site_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          attributes:
+            key: attributes
+          newest_mac_age: 1304035200000000000
+        - addresses:
+          - 192.168.0.1
+          - 192.168.0.1
+          first_seen: 1576300370
+          alive: true
+          last_seen: 1576300370
+          agent_name: LAPTOP-F4P1R6
+          credentials:
+            key:
+              key: true
+          created_at: 1576300370
+          service_count_udp: 1
+          mac_vendors:
+          - Dell
+          - Dell
+          type: Server
+          last_agent_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          service_ports_udp:
+          - "53"
+          - "53"
+          hw: Dell PowerEdge 2500
+          lowest_rtt: 1
+          service_ports_products:
+          - bind
+          - bind
+          updated_at: 1576300370
+          detected_by: icmp
+          id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          service_ports_protocols:
+          - ssh
+          - ssh
+          org_name: Test Labs
+          addresses_extra:
+          - 192.168.100.1
+          - 192.168.100.1
+          comments: File Server
+          os: Ubuntu Linux
+          last_task_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          os_version: "18.04"
+          service_count: 10
+          domains:
+          - www
+          - www
+          service_count_tcp: 7
+          newest_mac_vendor: Intel Corporate
+          lowest_ttl: 0
+          newest_mac: 11:22:33:44:55:66
+          service_count_arp: 1
+          services:
+            key:
+              key: services
+          service_ports_tcp:
+          - "22"
+          - "22"
+          tags:
+            key: tags
+          site_name: Primary
+          names:
+          - www
+          - www
+          service_count_icmp: 1
+          rtts:
+            key: '{}'
+          organization_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          macs:
+          - 11:22:33:44:55:66
+          - 11:22:33:44:55:66
+          site_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          attributes:
+            key: attributes
+          newest_mac_age: 1304035200000000000
+        since: 1576300370
+      properties:
+        since:
+          example: 1576300370
+          format: int64
+          type: integer
+        assets:
+          items:
+            $ref: '#/components/schemas/Asset'
+          type: array
+      required:
+      - assets
+      - since
       type: object
     AssetComments:
       example:
@@ -1442,11 +1867,11 @@ components:
         created_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         updated_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         organization_id:
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
           format: uuid
@@ -1462,11 +1887,11 @@ components:
         first_seen:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         last_seen:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         detected_by:
           example: icmp
           type: string
@@ -1516,31 +1941,31 @@ components:
         service_count:
           example: 10
           format: int64
-          type: number
+          type: integer
         service_count_tcp:
           example: 7
           format: int64
-          type: number
+          type: integer
         service_count_udp:
           example: 1
           format: int64
-          type: number
+          type: integer
         service_count_arp:
           example: 1
           format: int64
-          type: number
+          type: integer
         service_count_icmp:
           example: 1
           format: int64
-          type: number
+          type: integer
         lowest_ttl:
           example: 0
           format: int64
-          type: number
+          type: integer
         lowest_rtt:
           example: 1
           format: int64
-          type: number
+          type: integer
         last_agent_id:
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
           format: uuid
@@ -1559,7 +1984,7 @@ components:
         newest_mac_age:
           example: 1304035200000000000
           format: int64
-          type: number
+          type: integer
         comments:
           example: File Server
           type: string
@@ -1664,7 +2089,7 @@ components:
         - 11:22:33:44:55:66
         site_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         service_asset_id: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
-        service_port: 80
+        service_port: "80"
         newest_mac_age: 1304035200000000000
         first_seen: 1576300370
         alive: true
@@ -1720,11 +2145,11 @@ components:
         service_created_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         service_updated_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         service_address:
           example: 192.168.0.1
           type: string
@@ -1735,9 +2160,9 @@ components:
           example: www
           type: string
         service_port:
-          example: 80
+          example: "80"
           format: port
-          type: number
+          type: string
         service_data:
           additionalProperties:
             type: string
@@ -1760,11 +2185,11 @@ components:
         created_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         updated_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         organization_id:
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
           format: uuid
@@ -1780,11 +2205,11 @@ components:
         first_seen:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         last_seen:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         detected_by:
           example: icmp
           type: string
@@ -1834,31 +2259,31 @@ components:
         service_count:
           example: 10
           format: int64
-          type: number
+          type: integer
         service_count_tcp:
           example: 7
           format: int64
-          type: number
+          type: integer
         service_count_udp:
           example: 1
           format: int64
-          type: number
+          type: integer
         service_count_arp:
           example: 1
           format: int64
-          type: number
+          type: integer
         service_count_icmp:
           example: 1
           format: int64
-          type: number
+          type: integer
         lowest_ttl:
           example: 0
           format: int64
-          type: number
+          type: integer
         lowest_rtt:
           example: 1
           format: int64
-          type: number
+          type: integer
         last_agent_id:
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
           format: uuid
@@ -1877,7 +2302,7 @@ components:
         newest_mac_age:
           example: 1304035200000000000
           format: int64
-          type: number
+          type: integer
         comments:
           example: File Server
           type: string
@@ -1957,11 +2382,11 @@ components:
         created_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         updated_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         permanent:
           example: true
           type: boolean
@@ -2013,11 +2438,11 @@ components:
         created_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         last_seen:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         organization_id:
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
           format: uuid
@@ -2115,11 +2540,11 @@ components:
         created_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         updated_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         client_id:
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
           format: uuid
@@ -2130,7 +2555,7 @@ components:
         download_token_created_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         permanent:
           example: true
           type: boolean
@@ -2146,49 +2571,49 @@ components:
         deactivated_at:
           example: 0
           format: int64
-          type: number
+          type: integer
         service_count:
           example: 10
           format: int64
-          type: number
+          type: integer
         service_count_tcp:
           example: 7
           format: int64
-          type: number
+          type: integer
         service_count_udp:
           example: 1
           format: int64
-          type: number
+          type: integer
         service_count_arp:
           example: 1
           format: int64
-          type: number
+          type: integer
         service_count_icmp:
           example: 1
           format: int64
-          type: number
+          type: integer
         asset_count:
           example: 100
           format: int64
-          type: number
+          type: integer
         export_token:
           example: ET11226D9EEEA2B035D42569585900
           type: string
         export_token_created_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         export_token_last_used_at:
           example: 0
           format: int64
-          type: number
+          type: integer
         export_token_last_used_by:
           example: 127.0.0.1
           type: string
         export_token_counter:
           example: 0
           format: int64
-          type: number
+          type: integer
       required:
       - id
       - name
@@ -2225,7 +2650,7 @@ components:
         created_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         created_by:
           example: user@example.com
           format: email
@@ -2236,7 +2661,7 @@ components:
         last_used_at:
           example: 0
           format: int64
-          type: number
+          type: integer
         last_used_ip:
           example: 127.0.0.1
           type: string
@@ -2246,15 +2671,15 @@ components:
         counter:
           example: 1
           format: int64
-          type: number
+          type: integer
         usage_today:
           example: 100
           format: int64
-          type: number
+          type: integer
         usage_limit:
           example: 10000
           format: int64
-          type: number
+          type: integer
         token:
           type: string
         inactive:
@@ -2301,11 +2726,11 @@ components:
         created_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         updated_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         host_id:
           example: 6f9e6fe52271da70962e007183c5c9c9
           type: string
@@ -2324,7 +2749,7 @@ components:
         last_checkin:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         os:
           example: Windows
           type: string
@@ -2352,7 +2777,7 @@ components:
         deactivated_at:
           example: 0
           format: int64
-          type: number
+          type: integer
       required:
       - id
       type: object
@@ -2419,7 +2844,7 @@ components:
         created_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         created_by:
           example: user@example.com
           format: email
@@ -2431,7 +2856,7 @@ components:
         updated_at:
           example: 1576300370
           format: int64
-          type: number
+          type: integer
         type:
           example: scan
           type: string

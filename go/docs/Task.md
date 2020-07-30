@@ -12,15 +12,15 @@ Name | Type | Description | Notes
 **AgentId** | Pointer to **string** |  | [optional] 
 **SiteId** | Pointer to **string** |  | [optional] 
 **CruncherId** | Pointer to **string** |  | [optional] 
-**CreatedAt** | Pointer to **float32** |  | [optional] 
+**CreatedAt** | Pointer to **int64** |  | [optional] 
 **CreatedBy** | Pointer to **string** |  | [optional] 
 **CreatedByUserId** | Pointer to **string** |  | [optional] 
-**UpdatedAt** | Pointer to **float32** |  | [optional] 
+**UpdatedAt** | Pointer to **int64** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **Error** | Pointer to **string** |  | [optional] 
 **Params** | Pointer to **map[string]string** |  | [optional] 
-**Stats** | Pointer to [**map[string]map[string]interface{}**](map[string]interface{}.md) |  | [optional] 
+**Stats** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 **Hidden** | Pointer to **bool** |  | [optional] 
 **ParentId** | Pointer to **string** |  | [optional] 
 **Recur** | Pointer to **bool** |  | [optional] 
@@ -32,6 +32,23 @@ Name | Type | Description | Notes
 
 ## Methods
 
+### NewTask
+
+`func NewTask(id string, ) *Task`
+
+NewTask instantiates a new Task object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewTaskWithDefaults
+
+`func NewTaskWithDefaults() *Task`
+
+NewTaskWithDefaults instantiates a new Task object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
 ### GetId
 
 `func (o *Task) GetId() string`
@@ -40,22 +57,17 @@ GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *Task) GetIdOk() (string, bool)`
+`func (o *Task) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
-
-### HasId
-
-`func (o *Task) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### SetId
 
 `func (o *Task) SetId(v string)`
 
-SetId gets a reference to the given string and assigns it to the Id field.
+SetId sets Id field to given value.
+
 
 ### GetName
 
@@ -65,22 +77,22 @@ GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *Task) GetNameOk() (string, bool)`
+`func (o *Task) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *Task) SetName(v string)`
+
+SetName sets Name field to given value.
 
 ### HasName
 
 `func (o *Task) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
-### SetName
-
-`func (o *Task) SetName(v string)`
-
-SetName gets a reference to the given string and assigns it to the Name field.
 
 ### GetDescription
 
@@ -90,22 +102,22 @@ GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *Task) GetDescriptionOk() (string, bool)`
+`func (o *Task) GetDescriptionOk() (*string, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *Task) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
 
 ### HasDescription
 
 `func (o *Task) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### SetDescription
-
-`func (o *Task) SetDescription(v string)`
-
-SetDescription gets a reference to the given string and assigns it to the Description field.
 
 ### GetClientId
 
@@ -115,22 +127,22 @@ GetClientId returns the ClientId field if non-nil, zero value otherwise.
 
 ### GetClientIdOk
 
-`func (o *Task) GetClientIdOk() (string, bool)`
+`func (o *Task) GetClientIdOk() (*string, bool)`
 
 GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetClientId
+
+`func (o *Task) SetClientId(v string)`
+
+SetClientId sets ClientId field to given value.
 
 ### HasClientId
 
 `func (o *Task) HasClientId() bool`
 
 HasClientId returns a boolean if a field has been set.
-
-### SetClientId
-
-`func (o *Task) SetClientId(v string)`
-
-SetClientId gets a reference to the given string and assigns it to the ClientId field.
 
 ### GetOrganizationId
 
@@ -140,22 +152,22 @@ GetOrganizationId returns the OrganizationId field if non-nil, zero value otherw
 
 ### GetOrganizationIdOk
 
-`func (o *Task) GetOrganizationIdOk() (string, bool)`
+`func (o *Task) GetOrganizationIdOk() (*string, bool)`
 
 GetOrganizationIdOk returns a tuple with the OrganizationId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetOrganizationId
+
+`func (o *Task) SetOrganizationId(v string)`
+
+SetOrganizationId sets OrganizationId field to given value.
 
 ### HasOrganizationId
 
 `func (o *Task) HasOrganizationId() bool`
 
 HasOrganizationId returns a boolean if a field has been set.
-
-### SetOrganizationId
-
-`func (o *Task) SetOrganizationId(v string)`
-
-SetOrganizationId gets a reference to the given string and assigns it to the OrganizationId field.
 
 ### GetAgentId
 
@@ -165,22 +177,22 @@ GetAgentId returns the AgentId field if non-nil, zero value otherwise.
 
 ### GetAgentIdOk
 
-`func (o *Task) GetAgentIdOk() (string, bool)`
+`func (o *Task) GetAgentIdOk() (*string, bool)`
 
 GetAgentIdOk returns a tuple with the AgentId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetAgentId
+
+`func (o *Task) SetAgentId(v string)`
+
+SetAgentId sets AgentId field to given value.
 
 ### HasAgentId
 
 `func (o *Task) HasAgentId() bool`
 
 HasAgentId returns a boolean if a field has been set.
-
-### SetAgentId
-
-`func (o *Task) SetAgentId(v string)`
-
-SetAgentId gets a reference to the given string and assigns it to the AgentId field.
 
 ### GetSiteId
 
@@ -190,22 +202,22 @@ GetSiteId returns the SiteId field if non-nil, zero value otherwise.
 
 ### GetSiteIdOk
 
-`func (o *Task) GetSiteIdOk() (string, bool)`
+`func (o *Task) GetSiteIdOk() (*string, bool)`
 
 GetSiteIdOk returns a tuple with the SiteId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetSiteId
+
+`func (o *Task) SetSiteId(v string)`
+
+SetSiteId sets SiteId field to given value.
 
 ### HasSiteId
 
 `func (o *Task) HasSiteId() bool`
 
 HasSiteId returns a boolean if a field has been set.
-
-### SetSiteId
-
-`func (o *Task) SetSiteId(v string)`
-
-SetSiteId gets a reference to the given string and assigns it to the SiteId field.
 
 ### GetCruncherId
 
@@ -215,10 +227,16 @@ GetCruncherId returns the CruncherId field if non-nil, zero value otherwise.
 
 ### GetCruncherIdOk
 
-`func (o *Task) GetCruncherIdOk() (string, bool)`
+`func (o *Task) GetCruncherIdOk() (*string, bool)`
 
 GetCruncherIdOk returns a tuple with the CruncherId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetCruncherId
+
+`func (o *Task) SetCruncherId(v string)`
+
+SetCruncherId sets CruncherId field to given value.
 
 ### HasCruncherId
 
@@ -226,36 +244,30 @@ and a boolean to check if the value has been set.
 
 HasCruncherId returns a boolean if a field has been set.
 
-### SetCruncherId
-
-`func (o *Task) SetCruncherId(v string)`
-
-SetCruncherId gets a reference to the given string and assigns it to the CruncherId field.
-
 ### GetCreatedAt
 
-`func (o *Task) GetCreatedAt() float32`
+`func (o *Task) GetCreatedAt() int64`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Task) GetCreatedAtOk() (float32, bool)`
+`func (o *Task) GetCreatedAtOk() (*int64, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *Task) SetCreatedAt(v int64)`
+
+SetCreatedAt sets CreatedAt field to given value.
 
 ### HasCreatedAt
 
 `func (o *Task) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
-
-### SetCreatedAt
-
-`func (o *Task) SetCreatedAt(v float32)`
-
-SetCreatedAt gets a reference to the given float32 and assigns it to the CreatedAt field.
 
 ### GetCreatedBy
 
@@ -265,22 +277,22 @@ GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
 
 ### GetCreatedByOk
 
-`func (o *Task) GetCreatedByOk() (string, bool)`
+`func (o *Task) GetCreatedByOk() (*string, bool)`
 
 GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetCreatedBy
+
+`func (o *Task) SetCreatedBy(v string)`
+
+SetCreatedBy sets CreatedBy field to given value.
 
 ### HasCreatedBy
 
 `func (o *Task) HasCreatedBy() bool`
 
 HasCreatedBy returns a boolean if a field has been set.
-
-### SetCreatedBy
-
-`func (o *Task) SetCreatedBy(v string)`
-
-SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
 
 ### GetCreatedByUserId
 
@@ -290,10 +302,16 @@ GetCreatedByUserId returns the CreatedByUserId field if non-nil, zero value othe
 
 ### GetCreatedByUserIdOk
 
-`func (o *Task) GetCreatedByUserIdOk() (string, bool)`
+`func (o *Task) GetCreatedByUserIdOk() (*string, bool)`
 
 GetCreatedByUserIdOk returns a tuple with the CreatedByUserId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetCreatedByUserId
+
+`func (o *Task) SetCreatedByUserId(v string)`
+
+SetCreatedByUserId sets CreatedByUserId field to given value.
 
 ### HasCreatedByUserId
 
@@ -301,36 +319,30 @@ and a boolean to check if the value has been set.
 
 HasCreatedByUserId returns a boolean if a field has been set.
 
-### SetCreatedByUserId
-
-`func (o *Task) SetCreatedByUserId(v string)`
-
-SetCreatedByUserId gets a reference to the given string and assigns it to the CreatedByUserId field.
-
 ### GetUpdatedAt
 
-`func (o *Task) GetUpdatedAt() float32`
+`func (o *Task) GetUpdatedAt() int64`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *Task) GetUpdatedAtOk() (float32, bool)`
+`func (o *Task) GetUpdatedAtOk() (*int64, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *Task) SetUpdatedAt(v int64)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
 
 ### HasUpdatedAt
 
 `func (o *Task) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
-
-### SetUpdatedAt
-
-`func (o *Task) SetUpdatedAt(v float32)`
-
-SetUpdatedAt gets a reference to the given float32 and assigns it to the UpdatedAt field.
 
 ### GetType
 
@@ -340,22 +352,22 @@ GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Task) GetTypeOk() (string, bool)`
+`func (o *Task) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *Task) SetType(v string)`
+
+SetType sets Type field to given value.
 
 ### HasType
 
 `func (o *Task) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
-### SetType
-
-`func (o *Task) SetType(v string)`
-
-SetType gets a reference to the given string and assigns it to the Type field.
 
 ### GetStatus
 
@@ -365,22 +377,22 @@ GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *Task) GetStatusOk() (string, bool)`
+`func (o *Task) GetStatusOk() (*string, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *Task) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
 
 ### HasStatus
 
 `func (o *Task) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
-### SetStatus
-
-`func (o *Task) SetStatus(v string)`
-
-SetStatus gets a reference to the given string and assigns it to the Status field.
 
 ### GetError
 
@@ -390,22 +402,22 @@ GetError returns the Error field if non-nil, zero value otherwise.
 
 ### GetErrorOk
 
-`func (o *Task) GetErrorOk() (string, bool)`
+`func (o *Task) GetErrorOk() (*string, bool)`
 
 GetErrorOk returns a tuple with the Error field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetError
+
+`func (o *Task) SetError(v string)`
+
+SetError sets Error field to given value.
 
 ### HasError
 
 `func (o *Task) HasError() bool`
 
 HasError returns a boolean if a field has been set.
-
-### SetError
-
-`func (o *Task) SetError(v string)`
-
-SetError gets a reference to the given string and assigns it to the Error field.
 
 ### GetParams
 
@@ -415,22 +427,22 @@ GetParams returns the Params field if non-nil, zero value otherwise.
 
 ### GetParamsOk
 
-`func (o *Task) GetParamsOk() (map[string]string, bool)`
+`func (o *Task) GetParamsOk() (*map[string]string, bool)`
 
 GetParamsOk returns a tuple with the Params field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetParams
+
+`func (o *Task) SetParams(v map[string]string)`
+
+SetParams sets Params field to given value.
 
 ### HasParams
 
 `func (o *Task) HasParams() bool`
 
 HasParams returns a boolean if a field has been set.
-
-### SetParams
-
-`func (o *Task) SetParams(v map[string]string)`
-
-SetParams gets a reference to the given map[string]string and assigns it to the Params field.
 
 ### GetStats
 
@@ -440,22 +452,22 @@ GetStats returns the Stats field if non-nil, zero value otherwise.
 
 ### GetStatsOk
 
-`func (o *Task) GetStatsOk() (map[string]map[string]interface{}, bool)`
+`func (o *Task) GetStatsOk() (*map[string]map[string]interface{}, bool)`
 
 GetStatsOk returns a tuple with the Stats field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetStats
+
+`func (o *Task) SetStats(v map[string]map[string]interface{})`
+
+SetStats sets Stats field to given value.
 
 ### HasStats
 
 `func (o *Task) HasStats() bool`
 
 HasStats returns a boolean if a field has been set.
-
-### SetStats
-
-`func (o *Task) SetStats(v map[string]map[string]interface{})`
-
-SetStats gets a reference to the given map[string]map[string]interface{} and assigns it to the Stats field.
 
 ### GetHidden
 
@@ -465,22 +477,22 @@ GetHidden returns the Hidden field if non-nil, zero value otherwise.
 
 ### GetHiddenOk
 
-`func (o *Task) GetHiddenOk() (bool, bool)`
+`func (o *Task) GetHiddenOk() (*bool, bool)`
 
 GetHiddenOk returns a tuple with the Hidden field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetHidden
+
+`func (o *Task) SetHidden(v bool)`
+
+SetHidden sets Hidden field to given value.
 
 ### HasHidden
 
 `func (o *Task) HasHidden() bool`
 
 HasHidden returns a boolean if a field has been set.
-
-### SetHidden
-
-`func (o *Task) SetHidden(v bool)`
-
-SetHidden gets a reference to the given bool and assigns it to the Hidden field.
 
 ### GetParentId
 
@@ -490,22 +502,22 @@ GetParentId returns the ParentId field if non-nil, zero value otherwise.
 
 ### GetParentIdOk
 
-`func (o *Task) GetParentIdOk() (string, bool)`
+`func (o *Task) GetParentIdOk() (*string, bool)`
 
 GetParentIdOk returns a tuple with the ParentId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetParentId
+
+`func (o *Task) SetParentId(v string)`
+
+SetParentId sets ParentId field to given value.
 
 ### HasParentId
 
 `func (o *Task) HasParentId() bool`
 
 HasParentId returns a boolean if a field has been set.
-
-### SetParentId
-
-`func (o *Task) SetParentId(v string)`
-
-SetParentId gets a reference to the given string and assigns it to the ParentId field.
 
 ### GetRecur
 
@@ -515,22 +527,22 @@ GetRecur returns the Recur field if non-nil, zero value otherwise.
 
 ### GetRecurOk
 
-`func (o *Task) GetRecurOk() (bool, bool)`
+`func (o *Task) GetRecurOk() (*bool, bool)`
 
 GetRecurOk returns a tuple with the Recur field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetRecur
+
+`func (o *Task) SetRecur(v bool)`
+
+SetRecur sets Recur field to given value.
 
 ### HasRecur
 
 `func (o *Task) HasRecur() bool`
 
 HasRecur returns a boolean if a field has been set.
-
-### SetRecur
-
-`func (o *Task) SetRecur(v bool)`
-
-SetRecur gets a reference to the given bool and assigns it to the Recur field.
 
 ### GetRecurFrequency
 
@@ -540,22 +552,22 @@ GetRecurFrequency returns the RecurFrequency field if non-nil, zero value otherw
 
 ### GetRecurFrequencyOk
 
-`func (o *Task) GetRecurFrequencyOk() (string, bool)`
+`func (o *Task) GetRecurFrequencyOk() (*string, bool)`
 
 GetRecurFrequencyOk returns a tuple with the RecurFrequency field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetRecurFrequency
+
+`func (o *Task) SetRecurFrequency(v string)`
+
+SetRecurFrequency sets RecurFrequency field to given value.
 
 ### HasRecurFrequency
 
 `func (o *Task) HasRecurFrequency() bool`
 
 HasRecurFrequency returns a boolean if a field has been set.
-
-### SetRecurFrequency
-
-`func (o *Task) SetRecurFrequency(v string)`
-
-SetRecurFrequency gets a reference to the given string and assigns it to the RecurFrequency field.
 
 ### GetStartTime
 
@@ -565,22 +577,22 @@ GetStartTime returns the StartTime field if non-nil, zero value otherwise.
 
 ### GetStartTimeOk
 
-`func (o *Task) GetStartTimeOk() (int64, bool)`
+`func (o *Task) GetStartTimeOk() (*int64, bool)`
 
 GetStartTimeOk returns a tuple with the StartTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetStartTime
+
+`func (o *Task) SetStartTime(v int64)`
+
+SetStartTime sets StartTime field to given value.
 
 ### HasStartTime
 
 `func (o *Task) HasStartTime() bool`
 
 HasStartTime returns a boolean if a field has been set.
-
-### SetStartTime
-
-`func (o *Task) SetStartTime(v int64)`
-
-SetStartTime gets a reference to the given int64 and assigns it to the StartTime field.
 
 ### GetRecurLast
 
@@ -590,22 +602,22 @@ GetRecurLast returns the RecurLast field if non-nil, zero value otherwise.
 
 ### GetRecurLastOk
 
-`func (o *Task) GetRecurLastOk() (int64, bool)`
+`func (o *Task) GetRecurLastOk() (*int64, bool)`
 
 GetRecurLastOk returns a tuple with the RecurLast field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetRecurLast
+
+`func (o *Task) SetRecurLast(v int64)`
+
+SetRecurLast sets RecurLast field to given value.
 
 ### HasRecurLast
 
 `func (o *Task) HasRecurLast() bool`
 
 HasRecurLast returns a boolean if a field has been set.
-
-### SetRecurLast
-
-`func (o *Task) SetRecurLast(v int64)`
-
-SetRecurLast gets a reference to the given int64 and assigns it to the RecurLast field.
 
 ### GetRecurNext
 
@@ -615,22 +627,22 @@ GetRecurNext returns the RecurNext field if non-nil, zero value otherwise.
 
 ### GetRecurNextOk
 
-`func (o *Task) GetRecurNextOk() (int64, bool)`
+`func (o *Task) GetRecurNextOk() (*int64, bool)`
 
 GetRecurNextOk returns a tuple with the RecurNext field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetRecurNext
+
+`func (o *Task) SetRecurNext(v int64)`
+
+SetRecurNext sets RecurNext field to given value.
 
 ### HasRecurNext
 
 `func (o *Task) HasRecurNext() bool`
 
 HasRecurNext returns a boolean if a field has been set.
-
-### SetRecurNext
-
-`func (o *Task) SetRecurNext(v int64)`
-
-SetRecurNext gets a reference to the given int64 and assigns it to the RecurNext field.
 
 ### GetRecurLastTaskId
 
@@ -640,22 +652,22 @@ GetRecurLastTaskId returns the RecurLastTaskId field if non-nil, zero value othe
 
 ### GetRecurLastTaskIdOk
 
-`func (o *Task) GetRecurLastTaskIdOk() (string, bool)`
+`func (o *Task) GetRecurLastTaskIdOk() (*string, bool)`
 
 GetRecurLastTaskIdOk returns a tuple with the RecurLastTaskId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetRecurLastTaskId
+
+`func (o *Task) SetRecurLastTaskId(v string)`
+
+SetRecurLastTaskId sets RecurLastTaskId field to given value.
 
 ### HasRecurLastTaskId
 
 `func (o *Task) HasRecurLastTaskId() bool`
 
 HasRecurLastTaskId returns a boolean if a field has been set.
-
-### SetRecurLastTaskId
-
-`func (o *Task) SetRecurLastTaskId(v string)`
-
-SetRecurLastTaskId gets a reference to the given string and assigns it to the RecurLastTaskId field.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

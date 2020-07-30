@@ -18,31 +18,34 @@ func main() {
 
 	log.Printf("Rumble Components")
 	log.Printf("=================")
-	ver, res, err := client.PublicAPI.GetLatestAgentVersion(ctx)
+	areq := client.PublicApi.GetLatestAgentVersion(ctx)
+	aver, res, err := areq.Execute()
 	if err != nil {
 		log.Fatalf("failed to get agent version: %s", err)
 	}
-	log.Printf("     Agent: %s", ver.Version)
+	log.Printf("     Agent: %s", aver.Version)
 
-	ver, res, err = client.PublicAPI.GetLatestScannerVersion(ctx)
+	sreq := client.PublicApi.GetLatestScannerVersion(ctx)
+	sver, res, err := sreq.Execute()
 	if err != nil {
 		log.Fatalf("failed to get scanner version: %s", err)
 	}
-	log.Printf("   Scanner: %s", ver.Version)
+	log.Printf("   Scanner: %s", sver.Version)
 
-	ver, res, err = client.PublicAPI.GetLatestPlatformVersion(ctx)
+	preq := client.PublicApi.GetLatestPlatformVersion(ctx)
+	pver, res, err := preq.Execute()
 	if err != nil {
 		log.Fatalf("failed to get platform version: %s", err)
 	}
-	log.Printf("  Platform: %s", ver.Version)
+	log.Printf("  Platform: %s", pver.Version)
 
 	cnf := client.GetConfig()
 	if len(cnf.DefaultHeader) == 0 {
 		log.Printf("Set the RUMBLE_API_KEY environment variable to test authenticated APIs")
 		return
 	}
-
-	org, res, err := client.OrganizationAPI.GetOrganization(ctx)
+	oreq := client.OrganizationApi.GetOrganization(ctx)
+	org, res, err := oreq.Execute()
 	if err != nil {
 		log.Fatalf("failed to get organization %s", err)
 	}

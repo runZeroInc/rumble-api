@@ -9,6 +9,23 @@ Name | Type | Description | Notes
 
 ## Methods
 
+### NewComponentVersion
+
+`func NewComponentVersion(id string, version string, ) *ComponentVersion`
+
+NewComponentVersion instantiates a new ComponentVersion object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewComponentVersionWithDefaults
+
+`func NewComponentVersionWithDefaults() *ComponentVersion`
+
+NewComponentVersionWithDefaults instantiates a new ComponentVersion object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
 ### GetId
 
 `func (o *ComponentVersion) GetId() string`
@@ -17,22 +34,17 @@ GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ComponentVersion) GetIdOk() (string, bool)`
+`func (o *ComponentVersion) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
-
-### HasId
-
-`func (o *ComponentVersion) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### SetId
 
 `func (o *ComponentVersion) SetId(v string)`
 
-SetId gets a reference to the given string and assigns it to the Id field.
+SetId sets Id field to given value.
+
 
 ### GetVersion
 
@@ -42,22 +54,17 @@ GetVersion returns the Version field if non-nil, zero value otherwise.
 
 ### GetVersionOk
 
-`func (o *ComponentVersion) GetVersionOk() (string, bool)`
+`func (o *ComponentVersion) GetVersionOk() (*string, bool)`
 
 GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
-
-### HasVersion
-
-`func (o *ComponentVersion) HasVersion() bool`
-
-HasVersion returns a boolean if a field has been set.
 
 ### SetVersion
 
 `func (o *ComponentVersion) SetVersion(v string)`
 
-SetVersion gets a reference to the given string and assigns it to the Version field.
+SetVersion sets Version field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

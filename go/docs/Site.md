@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | 
-**CreatedAt** | Pointer to **float32** |  | [optional] 
-**UpdatedAt** | Pointer to **float32** |  | [optional] 
+**CreatedAt** | Pointer to **int64** |  | [optional] 
+**UpdatedAt** | Pointer to **int64** |  | [optional] 
 **Permanent** | Pointer to **bool** |  | [optional] 
 **Name** | Pointer to **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
@@ -14,6 +14,23 @@ Name | Type | Description | Notes
 **Excludes** | Pointer to **string** |  | [optional] 
 
 ## Methods
+
+### NewSite
+
+`func NewSite(id string, name string, ) *Site`
+
+NewSite instantiates a new Site object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewSiteWithDefaults
+
+`func NewSiteWithDefaults() *Site`
+
+NewSiteWithDefaults instantiates a new Site object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
@@ -23,35 +40,36 @@ GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *Site) GetIdOk() (string, bool)`
+`func (o *Site) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
-
-### HasId
-
-`func (o *Site) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### SetId
 
 `func (o *Site) SetId(v string)`
 
-SetId gets a reference to the given string and assigns it to the Id field.
+SetId sets Id field to given value.
+
 
 ### GetCreatedAt
 
-`func (o *Site) GetCreatedAt() float32`
+`func (o *Site) GetCreatedAt() int64`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Site) GetCreatedAtOk() (float32, bool)`
+`func (o *Site) GetCreatedAtOk() (*int64, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *Site) SetCreatedAt(v int64)`
+
+SetCreatedAt sets CreatedAt field to given value.
 
 ### HasCreatedAt
 
@@ -59,36 +77,30 @@ and a boolean to check if the value has been set.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-### SetCreatedAt
-
-`func (o *Site) SetCreatedAt(v float32)`
-
-SetCreatedAt gets a reference to the given float32 and assigns it to the CreatedAt field.
-
 ### GetUpdatedAt
 
-`func (o *Site) GetUpdatedAt() float32`
+`func (o *Site) GetUpdatedAt() int64`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *Site) GetUpdatedAtOk() (float32, bool)`
+`func (o *Site) GetUpdatedAtOk() (*int64, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *Site) SetUpdatedAt(v int64)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
 
 ### HasUpdatedAt
 
 `func (o *Site) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
-
-### SetUpdatedAt
-
-`func (o *Site) SetUpdatedAt(v float32)`
-
-SetUpdatedAt gets a reference to the given float32 and assigns it to the UpdatedAt field.
 
 ### GetPermanent
 
@@ -98,22 +110,22 @@ GetPermanent returns the Permanent field if non-nil, zero value otherwise.
 
 ### GetPermanentOk
 
-`func (o *Site) GetPermanentOk() (bool, bool)`
+`func (o *Site) GetPermanentOk() (*bool, bool)`
 
 GetPermanentOk returns a tuple with the Permanent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetPermanent
+
+`func (o *Site) SetPermanent(v bool)`
+
+SetPermanent sets Permanent field to given value.
 
 ### HasPermanent
 
 `func (o *Site) HasPermanent() bool`
 
 HasPermanent returns a boolean if a field has been set.
-
-### SetPermanent
-
-`func (o *Site) SetPermanent(v bool)`
-
-SetPermanent gets a reference to the given bool and assigns it to the Permanent field.
 
 ### GetName
 
@@ -123,22 +135,17 @@ GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *Site) GetNameOk() (string, bool)`
+`func (o *Site) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
-
-### HasName
-
-`func (o *Site) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### SetName
 
 `func (o *Site) SetName(v string)`
 
-SetName gets a reference to the given string and assigns it to the Name field.
+SetName sets Name field to given value.
+
 
 ### GetDescription
 
@@ -148,22 +155,22 @@ GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *Site) GetDescriptionOk() (string, bool)`
+`func (o *Site) GetDescriptionOk() (*string, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *Site) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
 
 ### HasDescription
 
 `func (o *Site) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### SetDescription
-
-`func (o *Site) SetDescription(v string)`
-
-SetDescription gets a reference to the given string and assigns it to the Description field.
 
 ### GetScope
 
@@ -173,22 +180,22 @@ GetScope returns the Scope field if non-nil, zero value otherwise.
 
 ### GetScopeOk
 
-`func (o *Site) GetScopeOk() (string, bool)`
+`func (o *Site) GetScopeOk() (*string, bool)`
 
 GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetScope
+
+`func (o *Site) SetScope(v string)`
+
+SetScope sets Scope field to given value.
 
 ### HasScope
 
 `func (o *Site) HasScope() bool`
 
 HasScope returns a boolean if a field has been set.
-
-### SetScope
-
-`func (o *Site) SetScope(v string)`
-
-SetScope gets a reference to the given string and assigns it to the Scope field.
 
 ### GetExcludes
 
@@ -198,22 +205,22 @@ GetExcludes returns the Excludes field if non-nil, zero value otherwise.
 
 ### GetExcludesOk
 
-`func (o *Site) GetExcludesOk() (string, bool)`
+`func (o *Site) GetExcludesOk() (*string, bool)`
 
 GetExcludesOk returns a tuple with the Excludes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
+
+### SetExcludes
+
+`func (o *Site) SetExcludes(v string)`
+
+SetExcludes sets Excludes field to given value.
 
 ### HasExcludes
 
 `func (o *Site) HasExcludes() bool`
 
 HasExcludes returns a boolean if a field has been set.
-
-### SetExcludes
-
-`func (o *Site) SetExcludes(v string)`
-
-SetExcludes gets a reference to the given string and assigns it to the Excludes field.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -1,26 +1,27 @@
 package client
 
 import (
-	rapi "github.com/RumbleDiscovery/rumble-api/go"
 	"os"
+
+	rapi "github.com/RumbleDiscovery/rumble-api/go"
 )
 
 // Config provides overrides the API host and key
 type Config struct {
-	Host string
-	Key  string
+	URL string
+	Key string
 }
 
 // NewClient retuns a ready to use Rumble API Client
 func NewClient(c *Config) *rapi.APIClient {
 
 	// Configure the endpoint host
-	apiHost := "console.rumble.run"
-	if envHost := os.Getenv("RUMBLE_API_HOST"); envHost != "" {
-		apiHost = envHost
+	apiURL := "https://console.rumble.run/api/v1.0"
+	if envHost := os.Getenv("RUMBLE_API_URL"); envHost != "" {
+		apiURL = envHost
 	}
-	if c.Host != "" {
-		apiHost = c.Host
+	if c.URL != "" {
+		apiURL = c.URL
 	}
 
 	// Configure the authorization header
@@ -34,10 +35,23 @@ func NewClient(c *Config) *rapi.APIClient {
 	}
 
 	// Create the client
-	return rapi.NewAPIClient(&rapi.Configuration{
-		Host:          apiHost,
-		BasePath:      "/api/v1.0",
-		Scheme:        "https",
-		DefaultHeader: headers,
-	})
+	config := rapi.NewConfiguration()
+	config.DefaultHeader = headers
+	config.Servers = rapi.ServerConfigurations{
+		{
+			URL:         apiURL,
+			Description: "Rumble Console",
+		},
+	}
+
+	return rapi.NewAPIClient(config)
+
+	/*
+		return rapi.NewAPIClient(&rapi.Configuration{
+			Host:          apiHost,
+			BasePath:      "/api/v1.0",
+			Scheme:        "https",
+			DefaultHeader: headers,
+		})
+	*/
 }

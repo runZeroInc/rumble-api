@@ -1,4 +1,4 @@
-# AgentSiteId
+# AgentSiteID
 
 ## Properties
 
@@ -8,30 +8,42 @@ Name | Type | Description | Notes
 
 ## Methods
 
+### NewAgentSiteID
+
+`func NewAgentSiteID(siteId string, ) *AgentSiteID`
+
+NewAgentSiteID instantiates a new AgentSiteID object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewAgentSiteIDWithDefaults
+
+`func NewAgentSiteIDWithDefaults() *AgentSiteID`
+
+NewAgentSiteIDWithDefaults instantiates a new AgentSiteID object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
 ### GetSiteId
 
-`func (o *AgentSiteId) GetSiteId() string`
+`func (o *AgentSiteID) GetSiteId() string`
 
 GetSiteId returns the SiteId field if non-nil, zero value otherwise.
 
 ### GetSiteIdOk
 
-`func (o *AgentSiteId) GetSiteIdOk() (string, bool)`
+`func (o *AgentSiteID) GetSiteIdOk() (*string, bool)`
 
 GetSiteIdOk returns a tuple with the SiteId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### HasSiteId
-
-`func (o *AgentSiteId) HasSiteId() bool`
-
-HasSiteId returns a boolean if a field has been set.
-
 ### SetSiteId
 
-`func (o *AgentSiteId) SetSiteId(v string)`
+`func (o *AgentSiteID) SetSiteId(v string)`
 
-SetSiteId gets a reference to the given string and assigns it to the SiteId field.
+SetSiteId sets SiteId field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
