@@ -1464,35 +1464,35 @@ components:
         scan-start:
           type: string
           format: unixtime
-          example: 1578155820
+          example: "1578155820"
         agent:
           type: string
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         rate:
           type: string
-          example: 10000
+          example: "10000"
         max-host-rate:
           type: string
-          example: 100
+          example: "100"
         passes:
           type: string
-          example: 3
+          example: "3"
         max-sockets:
           type: string
-          example: 500
+          example: "500"
         max-group-size:
           type: string
-          example: 4096
+          example: "4096"
         tcp-ports:
           type: string
-          example: 1-1000,5000-6000
+          example: "1-1000,5000-6000"
         screenshots:
           type: string
-          example: true
+          example: "true"
         nameservers:
           type: string
-          example: 8.8.8.8
+          example: "8.8.8.8"
         probes:
           type: string
           description: Optional probe list, otherwise all probes are used
