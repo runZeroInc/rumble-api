@@ -16,32 +16,32 @@ import (
 
 // Agent struct for Agent
 type Agent struct {
-	Id string `json:"id"`
-	ClientId *string `json:"client_id,omitempty"`
-	OrganizationId *string `json:"organization_id,omitempty"`
-	CreatedAt *int64 `json:"created_at,omitempty"`
-	UpdatedAt *int64 `json:"updated_at,omitempty"`
-	HostId *string `json:"host_id,omitempty"`
-	HubId *string `json:"hub_id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	SiteId *string `json:"site_id,omitempty"`
-	LastCheckin *int64 `json:"last_checkin,omitempty"`
-	Os *string `json:"os,omitempty"`
-	Arch *string `json:"arch,omitempty"`
-	Version *string `json:"version,omitempty"`
-	ExternalIp *string `json:"external_ip,omitempty"`
-	InternalIp *string `json:"internal_ip,omitempty"`
-	SystemInfo *map[string]map[string]interface{} `json:"system_info,omitempty"`
-	Connected *bool `json:"connected,omitempty"`
-	Inactive *bool `json:"inactive,omitempty"`
-	DeactivatedAt *int64 `json:"deactivated_at,omitempty"`
+	Id             string                  `json:"id"`
+	ClientId       *string                 `json:"client_id,omitempty"`
+	OrganizationId *string                 `json:"organization_id,omitempty"`
+	CreatedAt      *int64                  `json:"created_at,omitempty"`
+	UpdatedAt      *int64                  `json:"updated_at,omitempty"`
+	HostId         *string                 `json:"host_id,omitempty"`
+	HubId          *string                 `json:"hub_id,omitempty"`
+	Name           *string                 `json:"name,omitempty"`
+	SiteId         *string                 `json:"site_id,omitempty"`
+	LastCheckin    *int64                  `json:"last_checkin,omitempty"`
+	Os             *string                 `json:"os,omitempty"`
+	Arch           *string                 `json:"arch,omitempty"`
+	Version        *string                 `json:"version,omitempty"`
+	ExternalIp     *string                 `json:"external_ip,omitempty"`
+	InternalIp     *string                 `json:"internal_ip,omitempty"`
+	SystemInfo     *map[string]interface{} `json:"system_info,omitempty"`
+	Connected      *bool                   `json:"connected,omitempty"`
+	Inactive       *bool                   `json:"inactive,omitempty"`
+	DeactivatedAt  *int64                  `json:"deactivated_at,omitempty"`
 }
 
 // NewAgent instantiates a new Agent object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgent(id string, ) *Agent {
+func NewAgent(id string) *Agent {
 	this := Agent{}
 	this.Id = id
 	return &this
@@ -57,7 +57,7 @@ func NewAgentWithDefaults() *Agent {
 
 // GetId returns the Id field value
 func (o *Agent) GetId() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -68,7 +68,7 @@ func (o *Agent) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *Agent) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -528,9 +528,9 @@ func (o *Agent) SetInternalIp(v string) {
 }
 
 // GetSystemInfo returns the SystemInfo field value if set, zero value otherwise.
-func (o *Agent) GetSystemInfo() map[string]map[string]interface{} {
+func (o *Agent) GetSystemInfo() map[string]interface{} {
 	if o == nil || o.SystemInfo == nil {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return *o.SystemInfo
@@ -538,7 +538,7 @@ func (o *Agent) GetSystemInfo() map[string]map[string]interface{} {
 
 // GetSystemInfoOk returns a tuple with the SystemInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Agent) GetSystemInfoOk() (*map[string]map[string]interface{}, bool) {
+func (o *Agent) GetSystemInfoOk() (*map[string]interface{}, bool) {
 	if o == nil || o.SystemInfo == nil {
 		return nil, false
 	}
@@ -554,8 +554,8 @@ func (o *Agent) HasSystemInfo() bool {
 	return false
 }
 
-// SetSystemInfo gets a reference to the given map[string]map[string]interface{} and assigns it to the SystemInfo field.
-func (o *Agent) SetSystemInfo(v map[string]map[string]interface{}) {
+// SetSystemInfo gets a reference to the given map[string]interface{} and assigns it to the SystemInfo field.
+func (o *Agent) SetSystemInfo(v map[string]interface{}) {
 	o.SystemInfo = &v
 }
 
