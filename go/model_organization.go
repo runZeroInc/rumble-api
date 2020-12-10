@@ -16,35 +16,35 @@ import (
 
 // Organization struct for Organization
 type Organization struct {
-	Id string `json:"id"`
-	CreatedAt *int64 `json:"created_at,omitempty"`
-	UpdatedAt *int64 `json:"updated_at,omitempty"`
-	ClientId *string `json:"client_id,omitempty"`
-	DownloadToken *string `json:"download_token,omitempty"`
-	DownloadTokenCreatedAt *int64 `json:"download_token_created_at,omitempty"`
-	Permanent *bool `json:"permanent,omitempty"`
-	Name string `json:"name"`
-	Description *string `json:"description,omitempty"`
-	Inactive *bool `json:"inactive,omitempty"`
-	DeactivatedAt *int64 `json:"deactivated_at,omitempty"`
-	ServiceCount *int64 `json:"service_count,omitempty"`
-	ServiceCountTcp *int64 `json:"service_count_tcp,omitempty"`
-	ServiceCountUdp *int64 `json:"service_count_udp,omitempty"`
-	ServiceCountArp *int64 `json:"service_count_arp,omitempty"`
-	ServiceCountIcmp *int64 `json:"service_count_icmp,omitempty"`
-	AssetCount *int64 `json:"asset_count,omitempty"`
-	ExportToken *string `json:"export_token,omitempty"`
-	ExportTokenCreatedAt *int64 `json:"export_token_created_at,omitempty"`
-	ExportTokenLastUsedAt *int64 `json:"export_token_last_used_at,omitempty"`
-	ExportTokenLastUsedBy *string `json:"export_token_last_used_by,omitempty"`
-	ExportTokenCounter *int64 `json:"export_token_counter,omitempty"`
+	Id                     string  `json:"id"`
+	CreatedAt              *int64  `json:"created_at,omitempty"`
+	UpdatedAt              *int64  `json:"updated_at,omitempty"`
+	ClientId               *string `json:"client_id,omitempty"`
+	DownloadToken          *string `json:"download_token,omitempty"`
+	DownloadTokenCreatedAt *int64  `json:"download_token_created_at,omitempty"`
+	Permanent              *bool   `json:"permanent,omitempty"`
+	Name                   string  `json:"name"`
+	Description            *string `json:"description,omitempty"`
+	Inactive               *bool   `json:"inactive,omitempty"`
+	DeactivatedAt          *int64  `json:"deactivated_at,omitempty"`
+	ServiceCount           *int64  `json:"service_count,omitempty"`
+	ServiceCountTcp        *int64  `json:"service_count_tcp,omitempty"`
+	ServiceCountUdp        *int64  `json:"service_count_udp,omitempty"`
+	ServiceCountArp        *int64  `json:"service_count_arp,omitempty"`
+	ServiceCountIcmp       *int64  `json:"service_count_icmp,omitempty"`
+	AssetCount             *int64  `json:"asset_count,omitempty"`
+	ExportToken            *string `json:"export_token,omitempty"`
+	ExportTokenCreatedAt   *int64  `json:"export_token_created_at,omitempty"`
+	ExportTokenLastUsedAt  *int64  `json:"export_token_last_used_at,omitempty"`
+	ExportTokenLastUsedBy  *string `json:"export_token_last_used_by,omitempty"`
+	ExportTokenCounter     *int64  `json:"export_token_counter,omitempty"`
 }
 
 // NewOrganization instantiates a new Organization object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganization(id string, name string, ) *Organization {
+func NewOrganization(id string, name string) *Organization {
 	this := Organization{}
 	this.Id = id
 	this.Name = name
@@ -61,7 +61,7 @@ func NewOrganizationWithDefaults() *Organization {
 
 // GetId returns the Id field value
 func (o *Organization) GetId() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -72,7 +72,7 @@ func (o *Organization) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *Organization) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -277,7 +277,7 @@ func (o *Organization) SetPermanent(v bool) {
 
 // GetName returns the Name field value
 func (o *Organization) GetName() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -288,7 +288,7 @@ func (o *Organization) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Organization) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true

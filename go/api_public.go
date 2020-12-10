@@ -26,10 +26,9 @@ var (
 type PublicApiService service
 
 type apiGetLatestAgentVersionRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	apiService *PublicApiService
 }
-
 
 /*
 GetLatestAgentVersion Returns latest agent version.
@@ -39,7 +38,7 @@ GetLatestAgentVersion Returns latest agent version.
 func (a *PublicApiService) GetLatestAgentVersion(ctx _context.Context) apiGetLatestAgentVersionRequest {
 	return apiGetLatestAgentVersionRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -120,11 +119,11 @@ func (r apiGetLatestAgentVersionRequest) Execute() (ComponentVersion, *_nethttp.
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
 type apiGetLatestPlatformVersionRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	apiService *PublicApiService
 }
-
 
 /*
 GetLatestPlatformVersion Returns latest platform version.
@@ -134,7 +133,7 @@ GetLatestPlatformVersion Returns latest platform version.
 func (a *PublicApiService) GetLatestPlatformVersion(ctx _context.Context) apiGetLatestPlatformVersionRequest {
 	return apiGetLatestPlatformVersionRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -215,11 +214,11 @@ func (r apiGetLatestPlatformVersionRequest) Execute() (ComponentVersion, *_netht
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
 type apiGetLatestScannerVersionRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	apiService *PublicApiService
 }
-
 
 /*
 GetLatestScannerVersion Returns latest scanner version.
@@ -229,7 +228,7 @@ GetLatestScannerVersion Returns latest scanner version.
 func (a *PublicApiService) GetLatestScannerVersion(ctx _context.Context) apiGetLatestScannerVersionRequest {
 	return apiGetLatestScannerVersionRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 

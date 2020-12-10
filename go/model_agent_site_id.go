@@ -23,7 +23,7 @@ type AgentSiteID struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgentSiteID(siteId string, ) *AgentSiteID {
+func NewAgentSiteID(siteId string) *AgentSiteID {
 	this := AgentSiteID{}
 	this.SiteId = siteId
 	return &this
@@ -39,7 +39,7 @@ func NewAgentSiteIDWithDefaults() *AgentSiteID {
 
 // GetSiteId returns the SiteId field value
 func (o *AgentSiteID) GetSiteId() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -50,7 +50,7 @@ func (o *AgentSiteID) GetSiteId() string {
 // GetSiteIdOk returns a tuple with the SiteId field value
 // and a boolean to check if the value has been set.
 func (o *AgentSiteID) GetSiteIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.SiteId, true

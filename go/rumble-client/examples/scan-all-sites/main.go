@@ -66,5 +66,4 @@ func main() {
 	// Build a map of SiteID to TaskID
 	log.Printf("siteMap: %#v", siteAgentMap)
 	log.Printf("taskMap: %#v", siteTaskMap)
-
 }

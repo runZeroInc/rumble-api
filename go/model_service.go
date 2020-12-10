@@ -16,70 +16,70 @@ import (
 
 // Service struct for Service
 type Service struct {
-	ServiceId string `json:"service_id"`
-	ServiceAssetId *string `json:"service_asset_id,omitempty"`
-	ServiceCreatedAt *int64 `json:"service_created_at,omitempty"`
-	ServiceUpdatedAt *int64 `json:"service_updated_at,omitempty"`
-	ServiceAddress *string `json:"service_address,omitempty"`
-	ServiceTransport *string `json:"service_transport,omitempty"`
-	ServiceVhost *string `json:"service_vhost,omitempty"`
-	ServicePort *string `json:"service_port,omitempty"`
-	ServiceData *map[string]string `json:"service_data,omitempty"`
-	ServiceProtocol *string `json:"service_protocol,omitempty"`
-	ServiceSummary *string `json:"service_summary,omitempty"`
-	ServiceScreenshotLink *string `json:"service_screenshot_link,omitempty"`
-	ServiceLink *string `json:"service_link,omitempty"`
-	Id string `json:"id"`
-	CreatedAt *int64 `json:"created_at,omitempty"`
-	UpdatedAt *int64 `json:"updated_at,omitempty"`
-	OrganizationId *string `json:"organization_id,omitempty"`
-	SiteId *string `json:"site_id,omitempty"`
-	Alive *bool `json:"alive,omitempty"`
-	FirstSeen *int64 `json:"first_seen,omitempty"`
-	LastSeen *int64 `json:"last_seen,omitempty"`
-	DetectedBy *string `json:"detected_by,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Os *string `json:"os,omitempty"`
-	OsVersion *string `json:"os_version,omitempty"`
-	Hw *string `json:"hw,omitempty"`
-	Addresses *[]string `json:"addresses,omitempty"`
-	AddressesExtra *[]string `json:"addresses_extra,omitempty"`
-	Macs *[]string `json:"macs,omitempty"`
-	MacVendors *[]string `json:"mac_vendors,omitempty"`
-	Names *[]string `json:"names,omitempty"`
-	Domains *[]string `json:"domains,omitempty"`
-	ServiceCount *int64 `json:"service_count,omitempty"`
-	ServiceCountTcp *int64 `json:"service_count_tcp,omitempty"`
-	ServiceCountUdp *int64 `json:"service_count_udp,omitempty"`
-	ServiceCountArp *int64 `json:"service_count_arp,omitempty"`
-	ServiceCountIcmp *int64 `json:"service_count_icmp,omitempty"`
-	LowestTtl *int64 `json:"lowest_ttl,omitempty"`
-	LowestRtt *int64 `json:"lowest_rtt,omitempty"`
-	LastAgentId *string `json:"last_agent_id,omitempty"`
-	LastTaskId *string `json:"last_task_id,omitempty"`
-	NewestMac *string `json:"newest_mac,omitempty"`
-	NewestMacVendor *string `json:"newest_mac_vendor,omitempty"`
-	NewestMacAge *int64 `json:"newest_mac_age,omitempty"`
-	Comments *string `json:"comments,omitempty"`
-	ServicePortsTcp *[]string `json:"service_ports_tcp,omitempty"`
-	ServicePortsUdp *[]string `json:"service_ports_udp,omitempty"`
-	ServicePortsProtocols *[]string `json:"service_ports_protocols,omitempty"`
-	ServicePortsProducts *[]string `json:"service_ports_products,omitempty"`
-	OrgName *string `json:"org_name,omitempty"`
-	SiteName *string `json:"site_name,omitempty"`
-	AgentName *string `json:"agent_name,omitempty"`
-	Tags *map[string]string `json:"tags,omitempty"`
-	Services *map[string]map[string]string `json:"services,omitempty"`
-	Rtts *map[string]map[string]interface{} `json:"rtts,omitempty"`
-	Credentials *map[string]map[string]bool `json:"credentials,omitempty"`
-	Attributes *map[string]string `json:"attributes,omitempty"`
+	ServiceId             string                             `json:"service_id"`
+	ServiceAssetId        *string                            `json:"service_asset_id,omitempty"`
+	ServiceCreatedAt      *int64                             `json:"service_created_at,omitempty"`
+	ServiceUpdatedAt      *int64                             `json:"service_updated_at,omitempty"`
+	ServiceAddress        *string                            `json:"service_address,omitempty"`
+	ServiceTransport      *string                            `json:"service_transport,omitempty"`
+	ServiceVhost          *string                            `json:"service_vhost,omitempty"`
+	ServicePort           *string                            `json:"service_port,omitempty"`
+	ServiceData           *map[string]string                 `json:"service_data,omitempty"`
+	ServiceProtocol       *string                            `json:"service_protocol,omitempty"`
+	ServiceSummary        *string                            `json:"service_summary,omitempty"`
+	ServiceScreenshotLink *string                            `json:"service_screenshot_link,omitempty"`
+	ServiceLink           *string                            `json:"service_link,omitempty"`
+	Id                    string                             `json:"id"`
+	CreatedAt             *int64                             `json:"created_at,omitempty"`
+	UpdatedAt             *int64                             `json:"updated_at,omitempty"`
+	OrganizationId        *string                            `json:"organization_id,omitempty"`
+	SiteId                *string                            `json:"site_id,omitempty"`
+	Alive                 *bool                              `json:"alive,omitempty"`
+	FirstSeen             *int64                             `json:"first_seen,omitempty"`
+	LastSeen              *int64                             `json:"last_seen,omitempty"`
+	DetectedBy            *string                            `json:"detected_by,omitempty"`
+	Type                  *string                            `json:"type,omitempty"`
+	Os                    *string                            `json:"os,omitempty"`
+	OsVersion             *string                            `json:"os_version,omitempty"`
+	Hw                    *string                            `json:"hw,omitempty"`
+	Addresses             *[]string                          `json:"addresses,omitempty"`
+	AddressesExtra        *[]string                          `json:"addresses_extra,omitempty"`
+	Macs                  *[]string                          `json:"macs,omitempty"`
+	MacVendors            *[]string                          `json:"mac_vendors,omitempty"`
+	Names                 *[]string                          `json:"names,omitempty"`
+	Domains               *[]string                          `json:"domains,omitempty"`
+	ServiceCount          *int64                             `json:"service_count,omitempty"`
+	ServiceCountTcp       *int64                             `json:"service_count_tcp,omitempty"`
+	ServiceCountUdp       *int64                             `json:"service_count_udp,omitempty"`
+	ServiceCountArp       *int64                             `json:"service_count_arp,omitempty"`
+	ServiceCountIcmp      *int64                             `json:"service_count_icmp,omitempty"`
+	LowestTtl             *int64                             `json:"lowest_ttl,omitempty"`
+	LowestRtt             *int64                             `json:"lowest_rtt,omitempty"`
+	LastAgentId           *string                            `json:"last_agent_id,omitempty"`
+	LastTaskId            *string                            `json:"last_task_id,omitempty"`
+	NewestMac             *string                            `json:"newest_mac,omitempty"`
+	NewestMacVendor       *string                            `json:"newest_mac_vendor,omitempty"`
+	NewestMacAge          *int64                             `json:"newest_mac_age,omitempty"`
+	Comments              *string                            `json:"comments,omitempty"`
+	ServicePortsTcp       *[]string                          `json:"service_ports_tcp,omitempty"`
+	ServicePortsUdp       *[]string                          `json:"service_ports_udp,omitempty"`
+	ServicePortsProtocols *[]string                          `json:"service_ports_protocols,omitempty"`
+	ServicePortsProducts  *[]string                          `json:"service_ports_products,omitempty"`
+	OrgName               *string                            `json:"org_name,omitempty"`
+	SiteName              *string                            `json:"site_name,omitempty"`
+	AgentName             *string                            `json:"agent_name,omitempty"`
+	Tags                  *map[string]string                 `json:"tags,omitempty"`
+	Services              *map[string]map[string]string      `json:"services,omitempty"`
+	Rtts                  *map[string]map[string]interface{} `json:"rtts,omitempty"`
+	Credentials           *map[string]map[string]bool        `json:"credentials,omitempty"`
+	Attributes            *map[string]string                 `json:"attributes,omitempty"`
 }
 
 // NewService instantiates a new Service object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewService(serviceId string, id string, ) *Service {
+func NewService(serviceId string, id string) *Service {
 	this := Service{}
 	this.ServiceId = serviceId
 	this.Id = id
@@ -96,7 +96,7 @@ func NewServiceWithDefaults() *Service {
 
 // GetServiceId returns the ServiceId field value
 func (o *Service) GetServiceId() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -107,7 +107,7 @@ func (o *Service) GetServiceId() string {
 // GetServiceIdOk returns a tuple with the ServiceId field value
 // and a boolean to check if the value has been set.
 func (o *Service) GetServiceIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ServiceId, true
@@ -504,7 +504,7 @@ func (o *Service) SetServiceLink(v string) {
 
 // GetId returns the Id field value
 func (o *Service) GetId() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -515,7 +515,7 @@ func (o *Service) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *Service) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true

@@ -27,13 +27,12 @@ var (
 type ExportApiService service
 
 type apiExportAssetSyncCreatedJSONRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	apiService *ExportApiService
-	search *string
-	fields *string
-	since *int64
+	search     *string
+	fields     *string
+	since      *int64
 }
-
 
 func (r apiExportAssetSyncCreatedJSONRequest) Search(search string) apiExportAssetSyncCreatedJSONRequest {
 	r.search = &search
@@ -58,7 +57,7 @@ ExportAssetSyncCreatedJSON Exports the asset inventory in a sync-friendly manner
 func (a *ExportApiService) ExportAssetSyncCreatedJSON(ctx _context.Context) apiExportAssetSyncCreatedJSONRequest {
 	return apiExportAssetSyncCreatedJSONRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -86,7 +85,7 @@ func (r apiExportAssetSyncCreatedJSONRequest) Execute() (AssetsWithCheckpoint, *
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-			
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -148,14 +147,14 @@ func (r apiExportAssetSyncCreatedJSONRequest) Execute() (AssetsWithCheckpoint, *
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiExportAssetSyncUpdatedJSONRequest struct {
-	ctx _context.Context
-	apiService *ExportApiService
-	search *string
-	fields *string
-	since *int64
-}
 
+type apiExportAssetSyncUpdatedJSONRequest struct {
+	ctx        _context.Context
+	apiService *ExportApiService
+	search     *string
+	fields     *string
+	since      *int64
+}
 
 func (r apiExportAssetSyncUpdatedJSONRequest) Search(search string) apiExportAssetSyncUpdatedJSONRequest {
 	r.search = &search
@@ -180,7 +179,7 @@ ExportAssetSyncUpdatedJSON Exports the asset inventory in a sync-friendly manner
 func (a *ExportApiService) ExportAssetSyncUpdatedJSON(ctx _context.Context) apiExportAssetSyncUpdatedJSONRequest {
 	return apiExportAssetSyncUpdatedJSONRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -208,7 +207,7 @@ func (r apiExportAssetSyncUpdatedJSONRequest) Execute() (AssetsWithCheckpoint, *
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-			
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -270,12 +269,12 @@ func (r apiExportAssetSyncUpdatedJSONRequest) Execute() (AssetsWithCheckpoint, *
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiExportAssetsCSVRequest struct {
-	ctx _context.Context
-	apiService *ExportApiService
-	search *string
-}
 
+type apiExportAssetsCSVRequest struct {
+	ctx        _context.Context
+	apiService *ExportApiService
+	search     *string
+}
 
 func (r apiExportAssetsCSVRequest) Search(search string) apiExportAssetsCSVRequest {
 	r.search = &search
@@ -290,7 +289,7 @@ ExportAssetsCSV Asset inventory as CSV.
 func (a *ExportApiService) ExportAssetsCSV(ctx _context.Context) apiExportAssetsCSVRequest {
 	return apiExportAssetsCSVRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -318,7 +317,7 @@ func (r apiExportAssetsCSVRequest) Execute() (*os.File, *_nethttp.Response, erro
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -374,13 +373,13 @@ func (r apiExportAssetsCSVRequest) Execute() (*os.File, *_nethttp.Response, erro
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiExportAssetsJSONRequest struct {
-	ctx _context.Context
-	apiService *ExportApiService
-	search *string
-	fields *string
-}
 
+type apiExportAssetsJSONRequest struct {
+	ctx        _context.Context
+	apiService *ExportApiService
+	search     *string
+	fields     *string
+}
 
 func (r apiExportAssetsJSONRequest) Search(search string) apiExportAssetsJSONRequest {
 	r.search = &search
@@ -400,7 +399,7 @@ ExportAssetsJSON Exports the asset inventory.
 func (a *ExportApiService) ExportAssetsJSON(ctx _context.Context) apiExportAssetsJSONRequest {
 	return apiExportAssetsJSONRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -428,7 +427,7 @@ func (r apiExportAssetsJSONRequest) Execute() ([]Asset, *_nethttp.Response, erro
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-		
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -487,13 +486,13 @@ func (r apiExportAssetsJSONRequest) Execute() ([]Asset, *_nethttp.Response, erro
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiExportAssetsJSONLRequest struct {
-	ctx _context.Context
-	apiService *ExportApiService
-	search *string
-	fields *string
-}
 
+type apiExportAssetsJSONLRequest struct {
+	ctx        _context.Context
+	apiService *ExportApiService
+	search     *string
+	fields     *string
+}
 
 func (r apiExportAssetsJSONLRequest) Search(search string) apiExportAssetsJSONLRequest {
 	r.search = &search
@@ -513,7 +512,7 @@ ExportAssetsJSONL Asset inventory as JSON line-delimited.
 func (a *ExportApiService) ExportAssetsJSONL(ctx _context.Context) apiExportAssetsJSONLRequest {
 	return apiExportAssetsJSONLRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -541,7 +540,7 @@ func (r apiExportAssetsJSONLRequest) Execute() (*os.File, *_nethttp.Response, er
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-		
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -600,12 +599,12 @@ func (r apiExportAssetsJSONLRequest) Execute() (*os.File, *_nethttp.Response, er
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiExportAssetsNmapXMLRequest struct {
-	ctx _context.Context
-	apiService *ExportApiService
-	search *string
-}
 
+type apiExportAssetsNmapXMLRequest struct {
+	ctx        _context.Context
+	apiService *ExportApiService
+	search     *string
+}
 
 func (r apiExportAssetsNmapXMLRequest) Search(search string) apiExportAssetsNmapXMLRequest {
 	r.search = &search
@@ -620,7 +619,7 @@ ExportAssetsNmapXML Asset inventory as Nmap-style XML.
 func (a *ExportApiService) ExportAssetsNmapXML(ctx _context.Context) apiExportAssetsNmapXMLRequest {
 	return apiExportAssetsNmapXMLRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -648,7 +647,7 @@ func (r apiExportAssetsNmapXMLRequest) Execute() (*os.File, *_nethttp.Response, 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -704,12 +703,12 @@ func (r apiExportAssetsNmapXMLRequest) Execute() (*os.File, *_nethttp.Response, 
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiExportServicesCSVRequest struct {
-	ctx _context.Context
-	apiService *ExportApiService
-	search *string
-}
 
+type apiExportServicesCSVRequest struct {
+	ctx        _context.Context
+	apiService *ExportApiService
+	search     *string
+}
 
 func (r apiExportServicesCSVRequest) Search(search string) apiExportServicesCSVRequest {
 	r.search = &search
@@ -724,7 +723,7 @@ ExportServicesCSV Service inventory as CSV.
 func (a *ExportApiService) ExportServicesCSV(ctx _context.Context) apiExportServicesCSVRequest {
 	return apiExportServicesCSVRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -752,7 +751,7 @@ func (r apiExportServicesCSVRequest) Execute() (*os.File, *_nethttp.Response, er
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -808,13 +807,13 @@ func (r apiExportServicesCSVRequest) Execute() (*os.File, *_nethttp.Response, er
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiExportServicesJSONRequest struct {
-	ctx _context.Context
-	apiService *ExportApiService
-	search *string
-	fields *string
-}
 
+type apiExportServicesJSONRequest struct {
+	ctx        _context.Context
+	apiService *ExportApiService
+	search     *string
+	fields     *string
+}
 
 func (r apiExportServicesJSONRequest) Search(search string) apiExportServicesJSONRequest {
 	r.search = &search
@@ -834,7 +833,7 @@ ExportServicesJSON Service inventory as JSON.
 func (a *ExportApiService) ExportServicesJSON(ctx _context.Context) apiExportServicesJSONRequest {
 	return apiExportServicesJSONRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -862,7 +861,7 @@ func (r apiExportServicesJSONRequest) Execute() ([]Service, *_nethttp.Response, 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-		
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -921,13 +920,13 @@ func (r apiExportServicesJSONRequest) Execute() ([]Service, *_nethttp.Response, 
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiExportServicesJSONLRequest struct {
-	ctx _context.Context
-	apiService *ExportApiService
-	search *string
-	fields *string
-}
 
+type apiExportServicesJSONLRequest struct {
+	ctx        _context.Context
+	apiService *ExportApiService
+	search     *string
+	fields     *string
+}
 
 func (r apiExportServicesJSONLRequest) Search(search string) apiExportServicesJSONLRequest {
 	r.search = &search
@@ -947,7 +946,7 @@ ExportServicesJSONL Service inventory as JSON line-delimited.
 func (a *ExportApiService) ExportServicesJSONL(ctx _context.Context) apiExportServicesJSONLRequest {
 	return apiExportServicesJSONLRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -975,7 +974,7 @@ func (r apiExportServicesJSONLRequest) Execute() (*os.File, *_nethttp.Response, 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-		
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -1034,11 +1033,11 @@ func (r apiExportServicesJSONLRequest) Execute() (*os.File, *_nethttp.Response, 
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
 type apiExportSitesCSVRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	apiService *ExportApiService
 }
-
 
 /*
 ExportSitesCSV Site list as CSV.
@@ -1048,7 +1047,7 @@ ExportSitesCSV Site list as CSV.
 func (a *ExportApiService) ExportSitesCSV(ctx _context.Context) apiExportSitesCSVRequest {
 	return apiExportSitesCSVRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1129,13 +1128,13 @@ func (r apiExportSitesCSVRequest) Execute() (*os.File, *_nethttp.Response, error
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiExportSitesJSONRequest struct {
-	ctx _context.Context
-	apiService *ExportApiService
-	search *string
-	fields *string
-}
 
+type apiExportSitesJSONRequest struct {
+	ctx        _context.Context
+	apiService *ExportApiService
+	search     *string
+	fields     *string
+}
 
 func (r apiExportSitesJSONRequest) Search(search string) apiExportSitesJSONRequest {
 	r.search = &search
@@ -1155,7 +1154,7 @@ ExportSitesJSON Export all sites.
 func (a *ExportApiService) ExportSitesJSON(ctx _context.Context) apiExportSitesJSONRequest {
 	return apiExportSitesJSONRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1183,7 +1182,7 @@ func (r apiExportSitesJSONRequest) Execute() ([]Site, *_nethttp.Response, error)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-		
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -1242,13 +1241,13 @@ func (r apiExportSitesJSONRequest) Execute() ([]Site, *_nethttp.Response, error)
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiExportSitesJSONLRequest struct {
-	ctx _context.Context
-	apiService *ExportApiService
-	search *string
-	fields *string
-}
 
+type apiExportSitesJSONLRequest struct {
+	ctx        _context.Context
+	apiService *ExportApiService
+	search     *string
+	fields     *string
+}
 
 func (r apiExportSitesJSONLRequest) Search(search string) apiExportSitesJSONLRequest {
 	r.search = &search
@@ -1268,7 +1267,7 @@ ExportSitesJSONL Site list as JSON line-delimited.
 func (a *ExportApiService) ExportSitesJSONL(ctx _context.Context) apiExportSitesJSONLRequest {
 	return apiExportSitesJSONLRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1296,7 +1295,7 @@ func (r apiExportSitesJSONLRequest) Execute() (*os.File, *_nethttp.Response, err
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-		
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -1355,12 +1354,12 @@ func (r apiExportSitesJSONLRequest) Execute() (*os.File, *_nethttp.Response, err
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiExportWirelessCSVRequest struct {
-	ctx _context.Context
-	apiService *ExportApiService
-	search *string
-}
 
+type apiExportWirelessCSVRequest struct {
+	ctx        _context.Context
+	apiService *ExportApiService
+	search     *string
+}
 
 func (r apiExportWirelessCSVRequest) Search(search string) apiExportWirelessCSVRequest {
 	r.search = &search
@@ -1375,7 +1374,7 @@ ExportWirelessCSV Wireless inventory as CSV.
 func (a *ExportApiService) ExportWirelessCSV(ctx _context.Context) apiExportWirelessCSVRequest {
 	return apiExportWirelessCSVRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1403,7 +1402,7 @@ func (r apiExportWirelessCSVRequest) Execute() (*os.File, *_nethttp.Response, er
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -1459,13 +1458,13 @@ func (r apiExportWirelessCSVRequest) Execute() (*os.File, *_nethttp.Response, er
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiExportWirelessJSONRequest struct {
-	ctx _context.Context
-	apiService *ExportApiService
-	search *string
-	fields *string
-}
 
+type apiExportWirelessJSONRequest struct {
+	ctx        _context.Context
+	apiService *ExportApiService
+	search     *string
+	fields     *string
+}
 
 func (r apiExportWirelessJSONRequest) Search(search string) apiExportWirelessJSONRequest {
 	r.search = &search
@@ -1485,7 +1484,7 @@ ExportWirelessJSON Wireless inventory as JSON.
 func (a *ExportApiService) ExportWirelessJSON(ctx _context.Context) apiExportWirelessJSONRequest {
 	return apiExportWirelessJSONRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1513,7 +1512,7 @@ func (r apiExportWirelessJSONRequest) Execute() ([]Wireless, *_nethttp.Response,
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-		
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -1572,13 +1571,13 @@ func (r apiExportWirelessJSONRequest) Execute() ([]Wireless, *_nethttp.Response,
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiExportWirelessJSONLRequest struct {
-	ctx _context.Context
-	apiService *ExportApiService
-	search *string
-	fields *string
-}
 
+type apiExportWirelessJSONLRequest struct {
+	ctx        _context.Context
+	apiService *ExportApiService
+	search     *string
+	fields     *string
+}
 
 func (r apiExportWirelessJSONLRequest) Search(search string) apiExportWirelessJSONLRequest {
 	r.search = &search
@@ -1598,7 +1597,7 @@ ExportWirelessJSONL Wireless inventory as JSON line-delimited.
 func (a *ExportApiService) ExportWirelessJSONL(ctx _context.Context) apiExportWirelessJSONLRequest {
 	return apiExportWirelessJSONLRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1626,7 +1625,7 @@ func (r apiExportWirelessJSONLRequest) Execute() (*os.File, *_nethttp.Response, 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-		
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}

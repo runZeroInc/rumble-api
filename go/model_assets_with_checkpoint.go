@@ -16,7 +16,7 @@ import (
 
 // AssetsWithCheckpoint struct for AssetsWithCheckpoint
 type AssetsWithCheckpoint struct {
-	Since int64 `json:"since"`
+	Since  int64   `json:"since"`
 	Assets []Asset `json:"assets"`
 }
 
@@ -24,7 +24,7 @@ type AssetsWithCheckpoint struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAssetsWithCheckpoint(since int64, assets []Asset, ) *AssetsWithCheckpoint {
+func NewAssetsWithCheckpoint(since int64, assets []Asset) *AssetsWithCheckpoint {
 	this := AssetsWithCheckpoint{}
 	this.Since = since
 	this.Assets = assets
@@ -41,7 +41,7 @@ func NewAssetsWithCheckpointWithDefaults() *AssetsWithCheckpoint {
 
 // GetSince returns the Since field value
 func (o *AssetsWithCheckpoint) GetSince() int64 {
-	if o == nil  {
+	if o == nil {
 		var ret int64
 		return ret
 	}
@@ -52,7 +52,7 @@ func (o *AssetsWithCheckpoint) GetSince() int64 {
 // GetSinceOk returns a tuple with the Since field value
 // and a boolean to check if the value has been set.
 func (o *AssetsWithCheckpoint) GetSinceOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Since, true
@@ -65,7 +65,7 @@ func (o *AssetsWithCheckpoint) SetSince(v int64) {
 
 // GetAssets returns the Assets field value
 func (o *AssetsWithCheckpoint) GetAssets() []Asset {
-	if o == nil  {
+	if o == nil {
 		var ret []Asset
 		return ret
 	}
@@ -76,7 +76,7 @@ func (o *AssetsWithCheckpoint) GetAssets() []Asset {
 // GetAssetsOk returns a tuple with the Assets field value
 // and a boolean to check if the value has been set.
 func (o *AssetsWithCheckpoint) GetAssetsOk() (*[]Asset, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Assets, true

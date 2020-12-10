@@ -23,7 +23,7 @@ type AssetTags struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAssetTags(tags map[string]string, ) *AssetTags {
+func NewAssetTags(tags map[string]string) *AssetTags {
 	this := AssetTags{}
 	this.Tags = tags
 	return &this
@@ -39,7 +39,7 @@ func NewAssetTagsWithDefaults() *AssetTags {
 
 // GetTags returns the Tags field value
 func (o *AssetTags) GetTags() map[string]string {
-	if o == nil  {
+	if o == nil {
 		var ret map[string]string
 		return ret
 	}
@@ -50,7 +50,7 @@ func (o *AssetTags) GetTags() map[string]string {
 // GetTagsOk returns a tuple with the Tags field value
 // and a boolean to check if the value has been set.
 func (o *AssetTags) GetTagsOk() (*map[string]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Tags, true

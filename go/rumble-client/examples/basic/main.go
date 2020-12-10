@@ -9,7 +9,6 @@ import (
 )
 
 func main() {
-
 	var res *http.Response
 	var err error
 
@@ -53,5 +52,4 @@ func main() {
 	log.Printf("Organization %s has %d assets", org.GetName(), int64(org.GetAssetCount()))
 
 	_ = res
-
 }

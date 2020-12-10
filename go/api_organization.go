@@ -15,8 +15,8 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"strings"
 	"os"
+	"strings"
 )
 
 // Linger please
@@ -28,12 +28,11 @@ var (
 type OrganizationApiService service
 
 type apiCreateScanRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	siteId string
+	ctx         _context.Context
+	apiService  *OrganizationApiService
+	siteId      string
 	scanOptions *ScanOptions
 }
-
 
 func (r apiCreateScanRequest) ScanOptions(scanOptions ScanOptions) apiCreateScanRequest {
 	r.scanOptions = &scanOptions
@@ -49,8 +48,8 @@ CreateScan Create a scan task for a given site.
 func (a *OrganizationApiService) CreateScan(ctx _context.Context, siteId string) apiCreateScanRequest {
 	return apiCreateScanRequest{
 		apiService: a,
-		ctx: ctx,
-		siteId: siteId,
+		ctx:        ctx,
+		siteId:     siteId,
 	}
 }
 
@@ -74,13 +73,12 @@ func (r apiCreateScanRequest) Execute() (Task, *_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/sites/{site_id}/scan"
-	localVarPath = strings.Replace(localVarPath, "{"+"site_id"+"}", _neturl.QueryEscape(parameterToString(r.siteId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"site_id"+"}", _neturl.QueryEscape(parameterToString(r.siteId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
-	
+
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"text/json"}
 
@@ -135,12 +133,12 @@ func (r apiCreateScanRequest) Execute() (Task, *_nethttp.Response, error) {
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
 type apiCreateSiteRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
+	ctx         _context.Context
+	apiService  *OrganizationApiService
 	siteOptions *SiteOptions
 }
-
 
 func (r apiCreateSiteRequest) SiteOptions(siteOptions SiteOptions) apiCreateSiteRequest {
 	r.siteOptions = &siteOptions
@@ -155,7 +153,7 @@ CreateSite Create a new site.
 func (a *OrganizationApiService) CreateSite(ctx _context.Context) apiCreateSiteRequest {
 	return apiCreateSiteRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -183,7 +181,7 @@ func (r apiCreateSiteRequest) Execute() (Site, *_nethttp.Response, error) {
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
+
 	if r.siteOptions == nil {
 		return localVarReturnValue, nil, reportError("siteOptions is required and must be specified")
 	}
@@ -242,12 +240,12 @@ func (r apiCreateSiteRequest) Execute() (Site, *_nethttp.Response, error) {
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiGetAgentRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	agentId string
-}
 
+type apiGetAgentRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	agentId    string
+}
 
 /*
 GetAgent Get details for a single agent.
@@ -258,8 +256,8 @@ GetAgent Get details for a single agent.
 func (a *OrganizationApiService) GetAgent(ctx _context.Context, agentId string) apiGetAgentRequest {
 	return apiGetAgentRequest{
 		apiService: a,
-		ctx: ctx,
-		agentId: agentId,
+		ctx:        ctx,
+		agentId:    agentId,
 	}
 }
 
@@ -283,12 +281,11 @@ func (r apiGetAgentRequest) Execute() (Agent, *_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/agents/{agent_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"agent_id"+"}", _neturl.QueryEscape(parameterToString(r.agentId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"agent_id"+"}", _neturl.QueryEscape(parameterToString(r.agentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -342,11 +339,11 @@ func (r apiGetAgentRequest) Execute() (Agent, *_nethttp.Response, error) {
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
 type apiGetAgentsRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	apiService *OrganizationApiService
 }
-
 
 /*
 GetAgents Get all agents.
@@ -356,7 +353,7 @@ GetAgents Get all agents.
 func (a *OrganizationApiService) GetAgents(ctx _context.Context) apiGetAgentsRequest {
 	return apiGetAgentsRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -437,12 +434,12 @@ func (r apiGetAgentsRequest) Execute() ([]Agent, *_nethttp.Response, error) {
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiGetAssetRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	assetId string
-}
 
+type apiGetAssetRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	assetId    string
+}
 
 /*
 GetAsset Get asset details.
@@ -453,8 +450,8 @@ GetAsset Get asset details.
 func (a *OrganizationApiService) GetAsset(ctx _context.Context, assetId string) apiGetAssetRequest {
 	return apiGetAssetRequest{
 		apiService: a,
-		ctx: ctx,
-		assetId: assetId,
+		ctx:        ctx,
+		assetId:    assetId,
 	}
 }
 
@@ -478,12 +475,11 @@ func (r apiGetAssetRequest) Execute() (Asset, *_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/assets/{asset_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"asset_id"+"}", _neturl.QueryEscape(parameterToString(r.assetId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"asset_id"+"}", _neturl.QueryEscape(parameterToString(r.assetId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -537,12 +533,12 @@ func (r apiGetAssetRequest) Execute() (Asset, *_nethttp.Response, error) {
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiGetAssetsRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	search *string
-}
 
+type apiGetAssetsRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	search     *string
+}
 
 func (r apiGetAssetsRequest) Search(search string) apiGetAssetsRequest {
 	r.search = &search
@@ -557,7 +553,7 @@ GetAssets Get all assets.
 func (a *OrganizationApiService) GetAssets(ctx _context.Context) apiGetAssetsRequest {
 	return apiGetAssetsRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -585,7 +581,7 @@ func (r apiGetAssetsRequest) Execute() ([]Asset, *_nethttp.Response, error) {
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -641,11 +637,11 @@ func (r apiGetAssetsRequest) Execute() ([]Asset, *_nethttp.Response, error) {
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
 type apiGetKeyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	apiService *OrganizationApiService
 }
-
 
 /*
 GetKey Get API key details.
@@ -655,7 +651,7 @@ GetKey Get API key details.
 func (a *OrganizationApiService) GetKey(ctx _context.Context) apiGetKeyRequest {
 	return apiGetKeyRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -736,11 +732,11 @@ func (r apiGetKeyRequest) Execute() (APIKey, *_nethttp.Response, error) {
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
 type apiGetOrganizationRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	apiService *OrganizationApiService
 }
-
 
 /*
 GetOrganization Get organization details.
@@ -750,7 +746,7 @@ GetOrganization Get organization details.
 func (a *OrganizationApiService) GetOrganization(ctx _context.Context) apiGetOrganizationRequest {
 	return apiGetOrganizationRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -831,12 +827,12 @@ func (r apiGetOrganizationRequest) Execute() (Organization, *_nethttp.Response, 
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiGetServiceRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	serviceId string
-}
 
+type apiGetServiceRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	serviceId  string
+}
 
 /*
 GetService Get service details.
@@ -847,8 +843,8 @@ GetService Get service details.
 func (a *OrganizationApiService) GetService(ctx _context.Context, serviceId string) apiGetServiceRequest {
 	return apiGetServiceRequest{
 		apiService: a,
-		ctx: ctx,
-		serviceId: serviceId,
+		ctx:        ctx,
+		serviceId:  serviceId,
 	}
 }
 
@@ -872,12 +868,11 @@ func (r apiGetServiceRequest) Execute() (Service, *_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/services/{service_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"service_id"+"}", _neturl.QueryEscape(parameterToString(r.serviceId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"service_id"+"}", _neturl.QueryEscape(parameterToString(r.serviceId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -931,12 +926,12 @@ func (r apiGetServiceRequest) Execute() (Service, *_nethttp.Response, error) {
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiGetServicesRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	search *string
-}
 
+type apiGetServicesRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	search     *string
+}
 
 func (r apiGetServicesRequest) Search(search string) apiGetServicesRequest {
 	r.search = &search
@@ -951,7 +946,7 @@ GetServices Get all services.
 func (a *OrganizationApiService) GetServices(ctx _context.Context) apiGetServicesRequest {
 	return apiGetServicesRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -979,7 +974,7 @@ func (r apiGetServicesRequest) Execute() ([]Service, *_nethttp.Response, error) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -1035,12 +1030,12 @@ func (r apiGetServicesRequest) Execute() ([]Service, *_nethttp.Response, error) 
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiGetSiteRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	siteId string
-}
 
+type apiGetSiteRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	siteId     string
+}
 
 /*
 GetSite Get site details.
@@ -1051,8 +1046,8 @@ GetSite Get site details.
 func (a *OrganizationApiService) GetSite(ctx _context.Context, siteId string) apiGetSiteRequest {
 	return apiGetSiteRequest{
 		apiService: a,
-		ctx: ctx,
-		siteId: siteId,
+		ctx:        ctx,
+		siteId:     siteId,
 	}
 }
 
@@ -1076,12 +1071,11 @@ func (r apiGetSiteRequest) Execute() (Site, *_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/sites/{site_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"site_id"+"}", _neturl.QueryEscape(parameterToString(r.siteId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"site_id"+"}", _neturl.QueryEscape(parameterToString(r.siteId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1135,11 +1129,11 @@ func (r apiGetSiteRequest) Execute() (Site, *_nethttp.Response, error) {
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
 type apiGetSitesRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	apiService *OrganizationApiService
 }
-
 
 /*
 GetSites Get all sites.
@@ -1149,7 +1143,7 @@ GetSites Get all sites.
 func (a *OrganizationApiService) GetSites(ctx _context.Context) apiGetSitesRequest {
 	return apiGetSitesRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1230,12 +1224,12 @@ func (r apiGetSitesRequest) Execute() ([]Site, *_nethttp.Response, error) {
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiGetTaskRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	taskId string
-}
 
+type apiGetTaskRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	taskId     string
+}
 
 /*
 GetTask Get task details.
@@ -1246,8 +1240,8 @@ GetTask Get task details.
 func (a *OrganizationApiService) GetTask(ctx _context.Context, taskId string) apiGetTaskRequest {
 	return apiGetTaskRequest{
 		apiService: a,
-		ctx: ctx,
-		taskId: taskId,
+		ctx:        ctx,
+		taskId:     taskId,
 	}
 }
 
@@ -1271,12 +1265,11 @@ func (r apiGetTaskRequest) Execute() (Task, *_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/tasks/{task_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"task_id"+"}", _neturl.QueryEscape(parameterToString(r.taskId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"task_id"+"}", _neturl.QueryEscape(parameterToString(r.taskId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1330,12 +1323,12 @@ func (r apiGetTaskRequest) Execute() (Task, *_nethttp.Response, error) {
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiGetTaskChangeReportRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	taskId string
-}
 
+type apiGetTaskChangeReportRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	taskId     string
+}
 
 /*
 GetTaskChangeReport Returns a temporary task change report data url.
@@ -1346,8 +1339,8 @@ GetTaskChangeReport Returns a temporary task change report data url.
 func (a *OrganizationApiService) GetTaskChangeReport(ctx _context.Context, taskId string) apiGetTaskChangeReportRequest {
 	return apiGetTaskChangeReportRequest{
 		apiService: a,
-		ctx: ctx,
-		taskId: taskId,
+		ctx:        ctx,
+		taskId:     taskId,
 	}
 }
 
@@ -1362,7 +1355,6 @@ func (r apiGetTaskChangeReportRequest) Execute() (*_nethttp.Response, error) {
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		
 	)
 
 	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiService.GetTaskChangeReport")
@@ -1371,12 +1363,11 @@ func (r apiGetTaskChangeReportRequest) Execute() (*_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/tasks/{task_id}/changes"
-	localVarPath = strings.Replace(localVarPath, "{"+"task_id"+"}", _neturl.QueryEscape(parameterToString(r.taskId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"task_id"+"}", _neturl.QueryEscape(parameterToString(r.taskId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1421,12 +1412,12 @@ func (r apiGetTaskChangeReportRequest) Execute() (*_nethttp.Response, error) {
 
 	return localVarHTTPResponse, nil
 }
-type apiGetTaskScanDataRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	taskId string
-}
 
+type apiGetTaskScanDataRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	taskId     string
+}
 
 /*
 GetTaskScanData Returns a temporary task scan data url.
@@ -1437,8 +1428,8 @@ GetTaskScanData Returns a temporary task scan data url.
 func (a *OrganizationApiService) GetTaskScanData(ctx _context.Context, taskId string) apiGetTaskScanDataRequest {
 	return apiGetTaskScanDataRequest{
 		apiService: a,
-		ctx: ctx,
-		taskId: taskId,
+		ctx:        ctx,
+		taskId:     taskId,
 	}
 }
 
@@ -1453,7 +1444,6 @@ func (r apiGetTaskScanDataRequest) Execute() (*_nethttp.Response, error) {
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		
 	)
 
 	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiService.GetTaskScanData")
@@ -1462,12 +1452,11 @@ func (r apiGetTaskScanDataRequest) Execute() (*_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/tasks/{task_id}/data"
-	localVarPath = strings.Replace(localVarPath, "{"+"task_id"+"}", _neturl.QueryEscape(parameterToString(r.taskId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"task_id"+"}", _neturl.QueryEscape(parameterToString(r.taskId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1512,12 +1501,12 @@ func (r apiGetTaskScanDataRequest) Execute() (*_nethttp.Response, error) {
 
 	return localVarHTTPResponse, nil
 }
-type apiGetTasksRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	status *string
-}
 
+type apiGetTasksRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	status     *string
+}
 
 func (r apiGetTasksRequest) Status(status string) apiGetTasksRequest {
 	r.status = &status
@@ -1532,7 +1521,7 @@ GetTasks Get all tasks (last 1000).
 func (a *OrganizationApiService) GetTasks(ctx _context.Context) apiGetTasksRequest {
 	return apiGetTasksRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1560,7 +1549,7 @@ func (r apiGetTasksRequest) Execute() ([]Task, *_nethttp.Response, error) {
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
+
 	if r.status != nil {
 		localVarQueryParams.Add("status", parameterToString(*r.status, ""))
 	}
@@ -1616,12 +1605,12 @@ func (r apiGetTasksRequest) Execute() ([]Task, *_nethttp.Response, error) {
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
 type apiGetWirelessLANRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	apiService *OrganizationApiService
 	wirelessId string
 }
-
 
 /*
 GetWirelessLAN Get wireless LAN details.
@@ -1632,7 +1621,7 @@ GetWirelessLAN Get wireless LAN details.
 func (a *OrganizationApiService) GetWirelessLAN(ctx _context.Context, wirelessId string) apiGetWirelessLANRequest {
 	return apiGetWirelessLANRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		wirelessId: wirelessId,
 	}
 }
@@ -1657,12 +1646,11 @@ func (r apiGetWirelessLANRequest) Execute() (Wireless, *_nethttp.Response, error
 	}
 
 	localVarPath := localBasePath + "/org/wirelesss/{wireless_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"wireless_id"+"}", _neturl.QueryEscape(parameterToString(r.wirelessId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"wireless_id"+"}", _neturl.QueryEscape(parameterToString(r.wirelessId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1716,12 +1704,12 @@ func (r apiGetWirelessLANRequest) Execute() (Wireless, *_nethttp.Response, error
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiGetWirelessLANsRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	search *string
-}
 
+type apiGetWirelessLANsRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	search     *string
+}
 
 func (r apiGetWirelessLANsRequest) Search(search string) apiGetWirelessLANsRequest {
 	r.search = &search
@@ -1736,7 +1724,7 @@ GetWirelessLANs Get all wireless LANs.
 func (a *OrganizationApiService) GetWirelessLANs(ctx _context.Context) apiGetWirelessLANsRequest {
 	return apiGetWirelessLANsRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1764,7 +1752,7 @@ func (r apiGetWirelessLANsRequest) Execute() ([]Wireless, *_nethttp.Response, er
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
+
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -1820,12 +1808,12 @@ func (r apiGetWirelessLANsRequest) Execute() ([]Wireless, *_nethttp.Response, er
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiHideTaskRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	taskId string
-}
 
+type apiHideTaskRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	taskId     string
+}
 
 /*
 HideTask Signal that a completed task should be hidden.
@@ -1836,8 +1824,8 @@ HideTask Signal that a completed task should be hidden.
 func (a *OrganizationApiService) HideTask(ctx _context.Context, taskId string) apiHideTaskRequest {
 	return apiHideTaskRequest{
 		apiService: a,
-		ctx: ctx,
-		taskId: taskId,
+		ctx:        ctx,
+		taskId:     taskId,
 	}
 }
 
@@ -1852,7 +1840,6 @@ func (r apiHideTaskRequest) Execute() (*_nethttp.Response, error) {
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		
 	)
 
 	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiService.HideTask")
@@ -1861,12 +1848,11 @@ func (r apiHideTaskRequest) Execute() (*_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/tasks/{task_id}/hide"
-	localVarPath = strings.Replace(localVarPath, "{"+"task_id"+"}", _neturl.QueryEscape(parameterToString(r.taskId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"task_id"+"}", _neturl.QueryEscape(parameterToString(r.taskId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1911,13 +1897,13 @@ func (r apiHideTaskRequest) Execute() (*_nethttp.Response, error) {
 
 	return localVarHTTPResponse, nil
 }
-type apiImportScanDataRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	siteId string
-	body **os.File
-}
 
+type apiImportScanDataRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	siteId     string
+	body       **os.File
+}
 
 func (r apiImportScanDataRequest) Body(body *os.File) apiImportScanDataRequest {
 	r.body = &body
@@ -1933,8 +1919,8 @@ ImportScanData Import a scan data file into a site.
 func (a *OrganizationApiService) ImportScanData(ctx _context.Context, siteId string) apiImportScanDataRequest {
 	return apiImportScanDataRequest{
 		apiService: a,
-		ctx: ctx,
-		siteId: siteId,
+		ctx:        ctx,
+		siteId:     siteId,
 	}
 }
 
@@ -1958,13 +1944,12 @@ func (r apiImportScanDataRequest) Execute() (Task, *_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/sites/{site_id}/import"
-	localVarPath = strings.Replace(localVarPath, "{"+"site_id"+"}", _neturl.QueryEscape(parameterToString(r.siteId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"site_id"+"}", _neturl.QueryEscape(parameterToString(r.siteId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
-	
+
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/octet-stream"}
 
@@ -2019,12 +2004,12 @@ func (r apiImportScanDataRequest) Execute() (Task, *_nethttp.Response, error) {
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiRemoveAgentRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	agentId string
-}
 
+type apiRemoveAgentRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	agentId    string
+}
 
 /*
 RemoveAgent Remove and uninstall an agent.
@@ -2035,8 +2020,8 @@ RemoveAgent Remove and uninstall an agent.
 func (a *OrganizationApiService) RemoveAgent(ctx _context.Context, agentId string) apiRemoveAgentRequest {
 	return apiRemoveAgentRequest{
 		apiService: a,
-		ctx: ctx,
-		agentId: agentId,
+		ctx:        ctx,
+		agentId:    agentId,
 	}
 }
 
@@ -2051,7 +2036,6 @@ func (r apiRemoveAgentRequest) Execute() (*_nethttp.Response, error) {
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		
 	)
 
 	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiService.RemoveAgent")
@@ -2060,12 +2044,11 @@ func (r apiRemoveAgentRequest) Execute() (*_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/agents/{agent_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"agent_id"+"}", _neturl.QueryEscape(parameterToString(r.agentId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"agent_id"+"}", _neturl.QueryEscape(parameterToString(r.agentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2110,12 +2093,12 @@ func (r apiRemoveAgentRequest) Execute() (*_nethttp.Response, error) {
 
 	return localVarHTTPResponse, nil
 }
-type apiRemoveAssetRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	assetId string
-}
 
+type apiRemoveAssetRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	assetId    string
+}
 
 /*
 RemoveAsset Remove an asset.
@@ -2126,8 +2109,8 @@ RemoveAsset Remove an asset.
 func (a *OrganizationApiService) RemoveAsset(ctx _context.Context, assetId string) apiRemoveAssetRequest {
 	return apiRemoveAssetRequest{
 		apiService: a,
-		ctx: ctx,
-		assetId: assetId,
+		ctx:        ctx,
+		assetId:    assetId,
 	}
 }
 
@@ -2142,7 +2125,6 @@ func (r apiRemoveAssetRequest) Execute() (*_nethttp.Response, error) {
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		
 	)
 
 	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiService.RemoveAsset")
@@ -2151,12 +2133,11 @@ func (r apiRemoveAssetRequest) Execute() (*_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/assets/{asset_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"asset_id"+"}", _neturl.QueryEscape(parameterToString(r.assetId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"asset_id"+"}", _neturl.QueryEscape(parameterToString(r.assetId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2201,12 +2182,12 @@ func (r apiRemoveAssetRequest) Execute() (*_nethttp.Response, error) {
 
 	return localVarHTTPResponse, nil
 }
-type apiRemoveServiceRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	serviceId string
-}
 
+type apiRemoveServiceRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	serviceId  string
+}
 
 /*
 RemoveService Remove a service.
@@ -2217,8 +2198,8 @@ RemoveService Remove a service.
 func (a *OrganizationApiService) RemoveService(ctx _context.Context, serviceId string) apiRemoveServiceRequest {
 	return apiRemoveServiceRequest{
 		apiService: a,
-		ctx: ctx,
-		serviceId: serviceId,
+		ctx:        ctx,
+		serviceId:  serviceId,
 	}
 }
 
@@ -2233,7 +2214,6 @@ func (r apiRemoveServiceRequest) Execute() (*_nethttp.Response, error) {
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		
 	)
 
 	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiService.RemoveService")
@@ -2242,12 +2222,11 @@ func (r apiRemoveServiceRequest) Execute() (*_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/services/{service_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"service_id"+"}", _neturl.QueryEscape(parameterToString(r.serviceId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"service_id"+"}", _neturl.QueryEscape(parameterToString(r.serviceId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2292,12 +2271,12 @@ func (r apiRemoveServiceRequest) Execute() (*_nethttp.Response, error) {
 
 	return localVarHTTPResponse, nil
 }
-type apiRemoveSiteRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	siteId string
-}
 
+type apiRemoveSiteRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	siteId     string
+}
 
 /*
 RemoveSite Remove a site and associated assets.
@@ -2308,8 +2287,8 @@ RemoveSite Remove a site and associated assets.
 func (a *OrganizationApiService) RemoveSite(ctx _context.Context, siteId string) apiRemoveSiteRequest {
 	return apiRemoveSiteRequest{
 		apiService: a,
-		ctx: ctx,
-		siteId: siteId,
+		ctx:        ctx,
+		siteId:     siteId,
 	}
 }
 
@@ -2324,7 +2303,6 @@ func (r apiRemoveSiteRequest) Execute() (*_nethttp.Response, error) {
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		
 	)
 
 	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiService.RemoveSite")
@@ -2333,12 +2311,11 @@ func (r apiRemoveSiteRequest) Execute() (*_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/sites/{site_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"site_id"+"}", _neturl.QueryEscape(parameterToString(r.siteId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"site_id"+"}", _neturl.QueryEscape(parameterToString(r.siteId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2383,12 +2360,12 @@ func (r apiRemoveSiteRequest) Execute() (*_nethttp.Response, error) {
 
 	return localVarHTTPResponse, nil
 }
+
 type apiRemoveWirelessLANRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	apiService *OrganizationApiService
 	wirelessId string
 }
-
 
 /*
 RemoveWirelessLAN Remove a wireless LAN.
@@ -2399,7 +2376,7 @@ RemoveWirelessLAN Remove a wireless LAN.
 func (a *OrganizationApiService) RemoveWirelessLAN(ctx _context.Context, wirelessId string) apiRemoveWirelessLANRequest {
 	return apiRemoveWirelessLANRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		wirelessId: wirelessId,
 	}
 }
@@ -2415,7 +2392,6 @@ func (r apiRemoveWirelessLANRequest) Execute() (*_nethttp.Response, error) {
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		
 	)
 
 	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiService.RemoveWirelessLAN")
@@ -2424,12 +2400,11 @@ func (r apiRemoveWirelessLANRequest) Execute() (*_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/wirelesss/{wireless_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"wireless_id"+"}", _neturl.QueryEscape(parameterToString(r.wirelessId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"wireless_id"+"}", _neturl.QueryEscape(parameterToString(r.wirelessId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2474,12 +2449,12 @@ func (r apiRemoveWirelessLANRequest) Execute() (*_nethttp.Response, error) {
 
 	return localVarHTTPResponse, nil
 }
-type apiStopTaskRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	taskId string
-}
 
+type apiStopTaskRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	taskId     string
+}
 
 /*
 StopTask Signal that a task should be stopped or canceled.
@@ -2490,8 +2465,8 @@ StopTask Signal that a task should be stopped or canceled.
 func (a *OrganizationApiService) StopTask(ctx _context.Context, taskId string) apiStopTaskRequest {
 	return apiStopTaskRequest{
 		apiService: a,
-		ctx: ctx,
-		taskId: taskId,
+		ctx:        ctx,
+		taskId:     taskId,
 	}
 }
 
@@ -2506,7 +2481,6 @@ func (r apiStopTaskRequest) Execute() (*_nethttp.Response, error) {
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		
 	)
 
 	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiService.StopTask")
@@ -2515,12 +2489,11 @@ func (r apiStopTaskRequest) Execute() (*_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/tasks/{task_id}/stop"
-	localVarPath = strings.Replace(localVarPath, "{"+"task_id"+"}", _neturl.QueryEscape(parameterToString(r.taskId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"task_id"+"}", _neturl.QueryEscape(parameterToString(r.taskId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2565,13 +2538,13 @@ func (r apiStopTaskRequest) Execute() (*_nethttp.Response, error) {
 
 	return localVarHTTPResponse, nil
 }
+
 type apiUpdateAgentSiteRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	agentId string
+	ctx         _context.Context
+	apiService  *OrganizationApiService
+	agentId     string
 	agentSiteID *AgentSiteID
 }
-
 
 func (r apiUpdateAgentSiteRequest) AgentSiteID(agentSiteID AgentSiteID) apiUpdateAgentSiteRequest {
 	r.agentSiteID = &agentSiteID
@@ -2587,8 +2560,8 @@ UpdateAgentSite Update the site associated with agent.
 func (a *OrganizationApiService) UpdateAgentSite(ctx _context.Context, agentId string) apiUpdateAgentSiteRequest {
 	return apiUpdateAgentSiteRequest{
 		apiService: a,
-		ctx: ctx,
-		agentId: agentId,
+		ctx:        ctx,
+		agentId:    agentId,
 	}
 }
 
@@ -2612,13 +2585,12 @@ func (r apiUpdateAgentSiteRequest) Execute() (Agent, *_nethttp.Response, error) 
 	}
 
 	localVarPath := localBasePath + "/org/agents/{agent_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"agent_id"+"}", _neturl.QueryEscape(parameterToString(r.agentId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"agent_id"+"}", _neturl.QueryEscape(parameterToString(r.agentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
-	
+
 	if r.agentSiteID == nil {
 		return localVarReturnValue, nil, reportError("agentSiteID is required and must be specified")
 	}
@@ -2677,13 +2649,13 @@ func (r apiUpdateAgentSiteRequest) Execute() (Agent, *_nethttp.Response, error) 
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
 type apiUpdateAssetCommentsRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	assetId string
+	ctx           _context.Context
+	apiService    *OrganizationApiService
+	assetId       string
 	assetComments *AssetComments
 }
-
 
 func (r apiUpdateAssetCommentsRequest) AssetComments(assetComments AssetComments) apiUpdateAssetCommentsRequest {
 	r.assetComments = &assetComments
@@ -2699,8 +2671,8 @@ UpdateAssetComments Update asset comments.
 func (a *OrganizationApiService) UpdateAssetComments(ctx _context.Context, assetId string) apiUpdateAssetCommentsRequest {
 	return apiUpdateAssetCommentsRequest{
 		apiService: a,
-		ctx: ctx,
-		assetId: assetId,
+		ctx:        ctx,
+		assetId:    assetId,
 	}
 }
 
@@ -2724,13 +2696,12 @@ func (r apiUpdateAssetCommentsRequest) Execute() (Asset, *_nethttp.Response, err
 	}
 
 	localVarPath := localBasePath + "/org/assets/{asset_id}/comments"
-	localVarPath = strings.Replace(localVarPath, "{"+"asset_id"+"}", _neturl.QueryEscape(parameterToString(r.assetId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"asset_id"+"}", _neturl.QueryEscape(parameterToString(r.assetId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
-	
+
 	if r.assetComments == nil {
 		return localVarReturnValue, nil, reportError("assetComments is required and must be specified")
 	}
@@ -2789,13 +2760,13 @@ func (r apiUpdateAssetCommentsRequest) Execute() (Asset, *_nethttp.Response, err
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiUpdateAssetTagsRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	assetId string
-	assetTags *AssetTags
-}
 
+type apiUpdateAssetTagsRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	assetId    string
+	assetTags  *AssetTags
+}
 
 func (r apiUpdateAssetTagsRequest) AssetTags(assetTags AssetTags) apiUpdateAssetTagsRequest {
 	r.assetTags = &assetTags
@@ -2811,8 +2782,8 @@ UpdateAssetTags Update asset tags.
 func (a *OrganizationApiService) UpdateAssetTags(ctx _context.Context, assetId string) apiUpdateAssetTagsRequest {
 	return apiUpdateAssetTagsRequest{
 		apiService: a,
-		ctx: ctx,
-		assetId: assetId,
+		ctx:        ctx,
+		assetId:    assetId,
 	}
 }
 
@@ -2836,13 +2807,12 @@ func (r apiUpdateAssetTagsRequest) Execute() (Asset, *_nethttp.Response, error) 
 	}
 
 	localVarPath := localBasePath + "/org/assets/{asset_id}/tags"
-	localVarPath = strings.Replace(localVarPath, "{"+"asset_id"+"}", _neturl.QueryEscape(parameterToString(r.assetId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"asset_id"+"}", _neturl.QueryEscape(parameterToString(r.assetId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
-	
+
 	if r.assetTags == nil {
 		return localVarReturnValue, nil, reportError("assetTags is required and must be specified")
 	}
@@ -2901,12 +2871,12 @@ func (r apiUpdateAssetTagsRequest) Execute() (Asset, *_nethttp.Response, error) 
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
 type apiUpdateOrganizationRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	apiService *OrganizationApiService
 	orgOptions *OrgOptions
 }
-
 
 func (r apiUpdateOrganizationRequest) OrgOptions(orgOptions OrgOptions) apiUpdateOrganizationRequest {
 	r.orgOptions = &orgOptions
@@ -2921,7 +2891,7 @@ UpdateOrganization Update organization details.
 func (a *OrganizationApiService) UpdateOrganization(ctx _context.Context) apiUpdateOrganizationRequest {
 	return apiUpdateOrganizationRequest{
 		apiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2949,7 +2919,7 @@ func (r apiUpdateOrganizationRequest) Execute() (Organization, *_nethttp.Respons
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
+
 	if r.orgOptions == nil {
 		return localVarReturnValue, nil, reportError("orgOptions is required and must be specified")
 	}
@@ -3008,13 +2978,13 @@ func (r apiUpdateOrganizationRequest) Execute() (Organization, *_nethttp.Respons
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
 type apiUpdateSiteRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	siteId string
+	ctx         _context.Context
+	apiService  *OrganizationApiService
+	siteId      string
 	siteOptions *SiteOptions
 }
-
 
 func (r apiUpdateSiteRequest) SiteOptions(siteOptions SiteOptions) apiUpdateSiteRequest {
 	r.siteOptions = &siteOptions
@@ -3030,8 +3000,8 @@ UpdateSite Update a site definition.
 func (a *OrganizationApiService) UpdateSite(ctx _context.Context, siteId string) apiUpdateSiteRequest {
 	return apiUpdateSiteRequest{
 		apiService: a,
-		ctx: ctx,
-		siteId: siteId,
+		ctx:        ctx,
+		siteId:     siteId,
 	}
 }
 
@@ -3055,13 +3025,12 @@ func (r apiUpdateSiteRequest) Execute() (Site, *_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/sites/{site_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"site_id"+"}", _neturl.QueryEscape(parameterToString(r.siteId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"site_id"+"}", _neturl.QueryEscape(parameterToString(r.siteId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
-	
+
 	if r.siteOptions == nil {
 		return localVarReturnValue, nil, reportError("siteOptions is required and must be specified")
 	}
@@ -3120,13 +3089,13 @@ func (r apiUpdateSiteRequest) Execute() (Site, *_nethttp.Response, error) {
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiUpdateTaskRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	taskId string
-	task *Task
-}
 
+type apiUpdateTaskRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	taskId     string
+	task       *Task
+}
 
 func (r apiUpdateTaskRequest) Task(task Task) apiUpdateTaskRequest {
 	r.task = &task
@@ -3142,8 +3111,8 @@ UpdateTask Update task parameters.
 func (a *OrganizationApiService) UpdateTask(ctx _context.Context, taskId string) apiUpdateTaskRequest {
 	return apiUpdateTaskRequest{
 		apiService: a,
-		ctx: ctx,
-		taskId: taskId,
+		ctx:        ctx,
+		taskId:     taskId,
 	}
 }
 
@@ -3167,13 +3136,12 @@ func (r apiUpdateTaskRequest) Execute() (Task, *_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/tasks/{task_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"task_id"+"}", _neturl.QueryEscape(parameterToString(r.taskId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"task_id"+"}", _neturl.QueryEscape(parameterToString(r.taskId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
-	
+
 	if r.task == nil {
 		return localVarReturnValue, nil, reportError("task is required and must be specified")
 	}
@@ -3232,12 +3200,12 @@ func (r apiUpdateTaskRequest) Execute() (Task, *_nethttp.Response, error) {
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiUpgradeAgentRequest struct {
-	ctx _context.Context
-	apiService *OrganizationApiService
-	agentId string
-}
 
+type apiUpgradeAgentRequest struct {
+	ctx        _context.Context
+	apiService *OrganizationApiService
+	agentId    string
+}
 
 /*
 UpgradeAgent Force an agent to update and restart.
@@ -3248,8 +3216,8 @@ UpgradeAgent Force an agent to update and restart.
 func (a *OrganizationApiService) UpgradeAgent(ctx _context.Context, agentId string) apiUpgradeAgentRequest {
 	return apiUpgradeAgentRequest{
 		apiService: a,
-		ctx: ctx,
-		agentId: agentId,
+		ctx:        ctx,
+		agentId:    agentId,
 	}
 }
 
@@ -3264,7 +3232,6 @@ func (r apiUpgradeAgentRequest) Execute() (*_nethttp.Response, error) {
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		
 	)
 
 	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiService.UpgradeAgent")
@@ -3273,12 +3240,11 @@ func (r apiUpgradeAgentRequest) Execute() (*_nethttp.Response, error) {
 	}
 
 	localVarPath := localBasePath + "/org/agents/{agent_id}/update"
-	localVarPath = strings.Replace(localVarPath, "{"+"agent_id"+"}", _neturl.QueryEscape(parameterToString(r.agentId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"agent_id"+"}", _neturl.QueryEscape(parameterToString(r.agentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

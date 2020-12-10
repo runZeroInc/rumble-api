@@ -23,7 +23,7 @@ type AssetComments struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAssetComments(comments string, ) *AssetComments {
+func NewAssetComments(comments string) *AssetComments {
 	this := AssetComments{}
 	this.Comments = comments
 	return &this
@@ -39,7 +39,7 @@ func NewAssetCommentsWithDefaults() *AssetComments {
 
 // GetComments returns the Comments field value
 func (o *AssetComments) GetComments() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -50,7 +50,7 @@ func (o *AssetComments) GetComments() string {
 // GetCommentsOk returns a tuple with the Comments field value
 // and a boolean to check if the value has been set.
 func (o *AssetComments) GetCommentsOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Comments, true

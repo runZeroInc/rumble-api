@@ -16,21 +16,21 @@ import (
 
 // Site struct for Site
 type Site struct {
-	Id string `json:"id"`
-	CreatedAt *int64 `json:"created_at,omitempty"`
-	UpdatedAt *int64 `json:"updated_at,omitempty"`
-	Permanent *bool `json:"permanent,omitempty"`
-	Name string `json:"name"`
+	Id          string  `json:"id"`
+	CreatedAt   *int64  `json:"created_at,omitempty"`
+	UpdatedAt   *int64  `json:"updated_at,omitempty"`
+	Permanent   *bool   `json:"permanent,omitempty"`
+	Name        string  `json:"name"`
 	Description *string `json:"description,omitempty"`
-	Scope *string `json:"scope,omitempty"`
-	Excludes *string `json:"excludes,omitempty"`
+	Scope       *string `json:"scope,omitempty"`
+	Excludes    *string `json:"excludes,omitempty"`
 }
 
 // NewSite instantiates a new Site object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSite(id string, name string, ) *Site {
+func NewSite(id string, name string) *Site {
 	this := Site{}
 	this.Id = id
 	this.Name = name
@@ -47,7 +47,7 @@ func NewSiteWithDefaults() *Site {
 
 // GetId returns the Id field value
 func (o *Site) GetId() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *Site) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *Site) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -167,7 +167,7 @@ func (o *Site) SetPermanent(v bool) {
 
 // GetName returns the Name field value
 func (o *Site) GetName() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -178,7 +178,7 @@ func (o *Site) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Site) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true

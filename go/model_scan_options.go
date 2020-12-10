@@ -16,21 +16,21 @@ import (
 
 // ScanOptions struct for ScanOptions
 type ScanOptions struct {
-	Targets string `json:"targets"`
-	Excludes *string `json:"excludes,omitempty"`
-	ScanName *string `json:"scan-name,omitempty"`
+	Targets         string  `json:"targets"`
+	Excludes        *string `json:"excludes,omitempty"`
+	ScanName        *string `json:"scan-name,omitempty"`
 	ScanDescription *string `json:"scan-description,omitempty"`
-	ScanFrequency *string `json:"scan-frequency,omitempty"`
-	ScanStart *int32 `json:"scan-start,omitempty"`
-	Agent *string `json:"agent,omitempty"`
-	Rate *int32 `json:"rate,omitempty"`
-	MaxHostRate *int32 `json:"max-host-rate,omitempty"`
-	Passes *int32 `json:"passes,omitempty"`
-	MaxSockets *int32 `json:"max-sockets,omitempty"`
-	MaxGroupSize *int32 `json:"max-group-size,omitempty"`
-	TcpPorts *string `json:"tcp-ports,omitempty"`
-	Screenshots *bool `json:"screenshots,omitempty"`
-	Nameservers *string `json:"nameservers,omitempty"`
+	ScanFrequency   *string `json:"scan-frequency,omitempty"`
+	ScanStart       *int32  `json:"scan-start,omitempty"`
+	Agent           *string `json:"agent,omitempty"`
+	Rate            *int32  `json:"rate,omitempty"`
+	MaxHostRate     *int32  `json:"max-host-rate,omitempty"`
+	Passes          *int32  `json:"passes,omitempty"`
+	MaxSockets      *int32  `json:"max-sockets,omitempty"`
+	MaxGroupSize    *int32  `json:"max-group-size,omitempty"`
+	TcpPorts        *string `json:"tcp-ports,omitempty"`
+	Screenshots     *bool   `json:"screenshots,omitempty"`
+	Nameservers     *string `json:"nameservers,omitempty"`
 	// Optional probe list, otherwise all probes are used
 	Probes *string `json:"probes,omitempty"`
 }
@@ -39,7 +39,7 @@ type ScanOptions struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScanOptions(targets string, ) *ScanOptions {
+func NewScanOptions(targets string) *ScanOptions {
 	this := ScanOptions{}
 	this.Targets = targets
 	return &this
@@ -55,7 +55,7 @@ func NewScanOptionsWithDefaults() *ScanOptions {
 
 // GetTargets returns the Targets field value
 func (o *ScanOptions) GetTargets() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -66,7 +66,7 @@ func (o *ScanOptions) GetTargets() string {
 // GetTargetsOk returns a tuple with the Targets field value
 // and a boolean to check if the value has been set.
 func (o *ScanOptions) GetTargetsOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Targets, true

@@ -16,7 +16,7 @@ import (
 
 // ComponentVersion A component ID and version
 type ComponentVersion struct {
-	Id string `json:"id"`
+	Id      string `json:"id"`
 	Version string `json:"version"`
 }
 
@@ -24,7 +24,7 @@ type ComponentVersion struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewComponentVersion(id string, version string, ) *ComponentVersion {
+func NewComponentVersion(id string, version string) *ComponentVersion {
 	this := ComponentVersion{}
 	this.Id = id
 	this.Version = version
@@ -41,7 +41,7 @@ func NewComponentVersionWithDefaults() *ComponentVersion {
 
 // GetId returns the Id field value
 func (o *ComponentVersion) GetId() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -52,7 +52,7 @@ func (o *ComponentVersion) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ComponentVersion) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -65,7 +65,7 @@ func (o *ComponentVersion) SetId(v string) {
 
 // GetVersion returns the Version field value
 func (o *ComponentVersion) GetVersion() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -76,7 +76,7 @@ func (o *ComponentVersion) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value
 // and a boolean to check if the value has been set.
 func (o *ComponentVersion) GetVersionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Version, true

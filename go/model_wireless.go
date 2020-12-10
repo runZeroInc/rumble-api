@@ -16,34 +16,34 @@ import (
 
 // Wireless struct for Wireless
 type Wireless struct {
-	Id string `json:"id"`
-	CreatedAt *int64 `json:"created_at,omitempty"`
-	LastSeen *int64 `json:"last_seen,omitempty"`
-	OrganizationId *string `json:"organization_id,omitempty"`
-	SiteId *string `json:"site_id,omitempty"`
-	LastAgentId *string `json:"last_agent_id,omitempty"`
-	LastTaskId *string `json:"last_task_id,omitempty"`
-	Essid *string `json:"essid,omitempty"`
-	Bssid *string `json:"bssid,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Authentication *string `json:"authentication,omitempty"`
-	Encryption *string `json:"encryption,omitempty"`
-	Signal *int32 `json:"signal,omitempty"`
-	Channels *string `json:"channels,omitempty"`
-	Interface *string `json:"interface,omitempty"`
-	Vendor *string `json:"vendor,omitempty"`
-	Family *string `json:"family,omitempty"`
-	Data *map[string]string `json:"data,omitempty"`
-	OrgName *string `json:"org_name,omitempty"`
-	SiteName *string `json:"site_name,omitempty"`
-	AgentName *string `json:"agent_name,omitempty"`
+	Id             string             `json:"id"`
+	CreatedAt      *int64             `json:"created_at,omitempty"`
+	LastSeen       *int64             `json:"last_seen,omitempty"`
+	OrganizationId *string            `json:"organization_id,omitempty"`
+	SiteId         *string            `json:"site_id,omitempty"`
+	LastAgentId    *string            `json:"last_agent_id,omitempty"`
+	LastTaskId     *string            `json:"last_task_id,omitempty"`
+	Essid          *string            `json:"essid,omitempty"`
+	Bssid          *string            `json:"bssid,omitempty"`
+	Type           *string            `json:"type,omitempty"`
+	Authentication *string            `json:"authentication,omitempty"`
+	Encryption     *string            `json:"encryption,omitempty"`
+	Signal         *int32             `json:"signal,omitempty"`
+	Channels       *string            `json:"channels,omitempty"`
+	Interface      *string            `json:"interface,omitempty"`
+	Vendor         *string            `json:"vendor,omitempty"`
+	Family         *string            `json:"family,omitempty"`
+	Data           *map[string]string `json:"data,omitempty"`
+	OrgName        *string            `json:"org_name,omitempty"`
+	SiteName       *string            `json:"site_name,omitempty"`
+	AgentName      *string            `json:"agent_name,omitempty"`
 }
 
 // NewWireless instantiates a new Wireless object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWireless(id string, ) *Wireless {
+func NewWireless(id string) *Wireless {
 	this := Wireless{}
 	this.Id = id
 	return &this
@@ -59,7 +59,7 @@ func NewWirelessWithDefaults() *Wireless {
 
 // GetId returns the Id field value
 func (o *Wireless) GetId() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -70,7 +70,7 @@ func (o *Wireless) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *Wireless) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true

@@ -14,7 +14,6 @@ type Config struct {
 
 // NewClient retuns a ready to use Rumble API Client
 func NewClient(c *Config) *rapi.APIClient {
-
 	// Configure the endpoint host
 	apiURL := "https://console.rumble.run/api/v1.0"
 	if envHost := os.Getenv("RUMBLE_API_URL"); envHost != "" {

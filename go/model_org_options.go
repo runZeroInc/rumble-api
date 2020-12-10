@@ -16,7 +16,7 @@ import (
 
 // OrgOptions struct for OrgOptions
 type OrgOptions struct {
-	Name *string `json:"name,omitempty"`
+	Name        *string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 }
 
