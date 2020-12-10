@@ -21,15 +21,15 @@ type ScanOptions struct {
 	ScanName        *string `json:"scan-name,omitempty"`
 	ScanDescription *string `json:"scan-description,omitempty"`
 	ScanFrequency   *string `json:"scan-frequency,omitempty"`
-	ScanStart       *int32  `json:"scan-start,omitempty"`
+	ScanStart       *string `json:"scan-start,omitempty"`
 	Agent           *string `json:"agent,omitempty"`
-	Rate            *int32  `json:"rate,omitempty"`
-	MaxHostRate     *int32  `json:"max-host-rate,omitempty"`
-	Passes          *int32  `json:"passes,omitempty"`
-	MaxSockets      *int32  `json:"max-sockets,omitempty"`
-	MaxGroupSize    *int32  `json:"max-group-size,omitempty"`
+	Rate            *string `json:"rate,omitempty"`
+	MaxHostRate     *string `json:"max-host-rate,omitempty"`
+	Passes          *string `json:"passes,omitempty"`
+	MaxSockets      *string `json:"max-sockets,omitempty"`
+	MaxGroupSize    *string `json:"max-group-size,omitempty"`
 	TcpPorts        *string `json:"tcp-ports,omitempty"`
-	Screenshots     *bool   `json:"screenshots,omitempty"`
+	Screenshots     *string `json:"screenshots,omitempty"`
 	Nameservers     *string `json:"nameservers,omitempty"`
 	// Optional probe list, otherwise all probes are used
 	Probes *string `json:"probes,omitempty"`
@@ -206,9 +206,9 @@ func (o *ScanOptions) SetScanFrequency(v string) {
 }
 
 // GetScanStart returns the ScanStart field value if set, zero value otherwise.
-func (o *ScanOptions) GetScanStart() int32 {
+func (o *ScanOptions) GetScanStart() string {
 	if o == nil || o.ScanStart == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.ScanStart
@@ -216,7 +216,7 @@ func (o *ScanOptions) GetScanStart() int32 {
 
 // GetScanStartOk returns a tuple with the ScanStart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScanOptions) GetScanStartOk() (*int32, bool) {
+func (o *ScanOptions) GetScanStartOk() (*string, bool) {
 	if o == nil || o.ScanStart == nil {
 		return nil, false
 	}
@@ -232,8 +232,8 @@ func (o *ScanOptions) HasScanStart() bool {
 	return false
 }
 
-// SetScanStart gets a reference to the given int32 and assigns it to the ScanStart field.
-func (o *ScanOptions) SetScanStart(v int32) {
+// SetScanStart gets a reference to the given string and assigns it to the ScanStart field.
+func (o *ScanOptions) SetScanStart(v string) {
 	o.ScanStart = &v
 }
 
@@ -270,9 +270,9 @@ func (o *ScanOptions) SetAgent(v string) {
 }
 
 // GetRate returns the Rate field value if set, zero value otherwise.
-func (o *ScanOptions) GetRate() int32 {
+func (o *ScanOptions) GetRate() string {
 	if o == nil || o.Rate == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.Rate
@@ -280,7 +280,7 @@ func (o *ScanOptions) GetRate() int32 {
 
 // GetRateOk returns a tuple with the Rate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScanOptions) GetRateOk() (*int32, bool) {
+func (o *ScanOptions) GetRateOk() (*string, bool) {
 	if o == nil || o.Rate == nil {
 		return nil, false
 	}
@@ -296,15 +296,15 @@ func (o *ScanOptions) HasRate() bool {
 	return false
 }
 
-// SetRate gets a reference to the given int32 and assigns it to the Rate field.
-func (o *ScanOptions) SetRate(v int32) {
+// SetRate gets a reference to the given string and assigns it to the Rate field.
+func (o *ScanOptions) SetRate(v string) {
 	o.Rate = &v
 }
 
 // GetMaxHostRate returns the MaxHostRate field value if set, zero value otherwise.
-func (o *ScanOptions) GetMaxHostRate() int32 {
+func (o *ScanOptions) GetMaxHostRate() string {
 	if o == nil || o.MaxHostRate == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.MaxHostRate
@@ -312,7 +312,7 @@ func (o *ScanOptions) GetMaxHostRate() int32 {
 
 // GetMaxHostRateOk returns a tuple with the MaxHostRate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScanOptions) GetMaxHostRateOk() (*int32, bool) {
+func (o *ScanOptions) GetMaxHostRateOk() (*string, bool) {
 	if o == nil || o.MaxHostRate == nil {
 		return nil, false
 	}
@@ -328,15 +328,15 @@ func (o *ScanOptions) HasMaxHostRate() bool {
 	return false
 }
 
-// SetMaxHostRate gets a reference to the given int32 and assigns it to the MaxHostRate field.
-func (o *ScanOptions) SetMaxHostRate(v int32) {
+// SetMaxHostRate gets a reference to the given string and assigns it to the MaxHostRate field.
+func (o *ScanOptions) SetMaxHostRate(v string) {
 	o.MaxHostRate = &v
 }
 
 // GetPasses returns the Passes field value if set, zero value otherwise.
-func (o *ScanOptions) GetPasses() int32 {
+func (o *ScanOptions) GetPasses() string {
 	if o == nil || o.Passes == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.Passes
@@ -344,7 +344,7 @@ func (o *ScanOptions) GetPasses() int32 {
 
 // GetPassesOk returns a tuple with the Passes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScanOptions) GetPassesOk() (*int32, bool) {
+func (o *ScanOptions) GetPassesOk() (*string, bool) {
 	if o == nil || o.Passes == nil {
 		return nil, false
 	}
@@ -360,15 +360,15 @@ func (o *ScanOptions) HasPasses() bool {
 	return false
 }
 
-// SetPasses gets a reference to the given int32 and assigns it to the Passes field.
-func (o *ScanOptions) SetPasses(v int32) {
+// SetPasses gets a reference to the given string and assigns it to the Passes field.
+func (o *ScanOptions) SetPasses(v string) {
 	o.Passes = &v
 }
 
 // GetMaxSockets returns the MaxSockets field value if set, zero value otherwise.
-func (o *ScanOptions) GetMaxSockets() int32 {
+func (o *ScanOptions) GetMaxSockets() string {
 	if o == nil || o.MaxSockets == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.MaxSockets
@@ -376,7 +376,7 @@ func (o *ScanOptions) GetMaxSockets() int32 {
 
 // GetMaxSocketsOk returns a tuple with the MaxSockets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScanOptions) GetMaxSocketsOk() (*int32, bool) {
+func (o *ScanOptions) GetMaxSocketsOk() (*string, bool) {
 	if o == nil || o.MaxSockets == nil {
 		return nil, false
 	}
@@ -392,15 +392,15 @@ func (o *ScanOptions) HasMaxSockets() bool {
 	return false
 }
 
-// SetMaxSockets gets a reference to the given int32 and assigns it to the MaxSockets field.
-func (o *ScanOptions) SetMaxSockets(v int32) {
+// SetMaxSockets gets a reference to the given string and assigns it to the MaxSockets field.
+func (o *ScanOptions) SetMaxSockets(v string) {
 	o.MaxSockets = &v
 }
 
 // GetMaxGroupSize returns the MaxGroupSize field value if set, zero value otherwise.
-func (o *ScanOptions) GetMaxGroupSize() int32 {
+func (o *ScanOptions) GetMaxGroupSize() string {
 	if o == nil || o.MaxGroupSize == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.MaxGroupSize
@@ -408,7 +408,7 @@ func (o *ScanOptions) GetMaxGroupSize() int32 {
 
 // GetMaxGroupSizeOk returns a tuple with the MaxGroupSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScanOptions) GetMaxGroupSizeOk() (*int32, bool) {
+func (o *ScanOptions) GetMaxGroupSizeOk() (*string, bool) {
 	if o == nil || o.MaxGroupSize == nil {
 		return nil, false
 	}
@@ -424,8 +424,8 @@ func (o *ScanOptions) HasMaxGroupSize() bool {
 	return false
 }
 
-// SetMaxGroupSize gets a reference to the given int32 and assigns it to the MaxGroupSize field.
-func (o *ScanOptions) SetMaxGroupSize(v int32) {
+// SetMaxGroupSize gets a reference to the given string and assigns it to the MaxGroupSize field.
+func (o *ScanOptions) SetMaxGroupSize(v string) {
 	o.MaxGroupSize = &v
 }
 
@@ -462,9 +462,9 @@ func (o *ScanOptions) SetTcpPorts(v string) {
 }
 
 // GetScreenshots returns the Screenshots field value if set, zero value otherwise.
-func (o *ScanOptions) GetScreenshots() bool {
+func (o *ScanOptions) GetScreenshots() string {
 	if o == nil || o.Screenshots == nil {
-		var ret bool
+		var ret string
 		return ret
 	}
 	return *o.Screenshots
@@ -472,7 +472,7 @@ func (o *ScanOptions) GetScreenshots() bool {
 
 // GetScreenshotsOk returns a tuple with the Screenshots field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScanOptions) GetScreenshotsOk() (*bool, bool) {
+func (o *ScanOptions) GetScreenshotsOk() (*string, bool) {
 	if o == nil || o.Screenshots == nil {
 		return nil, false
 	}
@@ -489,7 +489,7 @@ func (o *ScanOptions) HasScreenshots() bool {
 }
 
 // SetScreenshots gets a reference to the given bool and assigns it to the Screenshots field.
-func (o *ScanOptions) SetScreenshots(v bool) {
+func (o *ScanOptions) SetScreenshots(v string) {
 	o.Screenshots = &v
 }
 
