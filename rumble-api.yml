@@ -1460,11 +1460,14 @@ components:
           example: Scan of Wireless
         scan-frequency:
           type: string
-          enum: [once, hourly, daily, weekly, monthly]
+          enum: [once, hourly, daily, weekly, monthly, continuous]
         scan-start:
           type: string
           format: unixtime
           example: "1578155820"
+        scan-tags:
+          type: string
+          example: "owner=IT location=Texas"          
         agent:
           type: string
           format: uuid
