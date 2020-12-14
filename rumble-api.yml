@@ -82,7 +82,7 @@ paths:
           description: an optional list of fields to export, comma-separated
           required: false
           schema:
-            type: string            
+            type: string
       responses:
         '200':
           description: filtered asset results
@@ -115,7 +115,7 @@ paths:
           description: an optional list of fields to export, comma-separated
           required: false
           schema:
-            type: string               
+            type: string
       responses:
         '200':
           # This is a streaming response of one Asset object per line in JSON format
@@ -200,7 +200,7 @@ paths:
           description: an optional list of fields to export, comma-separated
           required: false
           schema:
-            type: string               
+            type: string
         - in: query
           name: since
           description: an optional unix timestamp to use as a checkpoint
@@ -239,7 +239,7 @@ paths:
           description: an optional list of fields to export, comma-separated
           required: false
           schema:
-            type: string               
+            type: string
         - in: query
           name: since
           description: an optional unix timestamp to use as a checkpoint
@@ -278,7 +278,7 @@ paths:
           description: an optional list of fields to export, comma-separated
           required: false
           schema:
-            type: string               
+            type: string
       responses:
         '200':
           description: filtered service results
@@ -311,7 +311,7 @@ paths:
           description: an optional list of fields to export, comma-separated
           required: false
           schema:
-            type: string               
+            type: string
       responses:
         '200':
           description: filtered service results
@@ -371,7 +371,7 @@ paths:
           description: an optional list of fields to export, comma-separated
           required: false
           schema:
-            type: string         
+            type: string
       responses:
         '200':
           description: all sites
@@ -404,7 +404,7 @@ paths:
           description: an optional list of fields to export, comma-separated
           required: false
           schema:
-            type: string         
+            type: string
       responses:
         '200':
           description: all sites
@@ -457,7 +457,7 @@ paths:
           description: an optional list of fields to export, comma-separated
           required: false
           schema:
-            type: string               
+            type: string
       responses:
         '200':
           description: filtered wireless results
@@ -490,7 +490,7 @@ paths:
           description: an optional list of fields to export, comma-separated
           required: false
           schema:
-            type: string               
+            type: string
       responses:
         '200':
           description: filtered wireless results
@@ -1467,7 +1467,10 @@ components:
           example: "1578155820"
         scan-tags:
           type: string
-          example: "owner=IT location=Texas"          
+          example: "owner=IT location=Texas"
+        scan-grace-period:
+          type: string
+          example: "4"
         agent:
           type: string
           format: uuid
