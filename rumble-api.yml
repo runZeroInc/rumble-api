@@ -4,7 +4,7 @@ servers:
     url: https://console.rumble.run/api/v1.0
 info:
   description: Rumble Network Discovery API
-  version: "1.0.5"
+  version: "1.0.6"
   title: Rumble API
   contact:
     email: support@rumble.run
@@ -2251,6 +2251,9 @@ components:
         inactive:
           type: boolean
           example: tue
+        type:
+          type: string
+          example: org          
 
     Agent:
       type: object
