@@ -1630,6 +1630,31 @@ paths:
                   $ref: '#/components/schemas/APIKey'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
+    put:
+      tags:
+        - Client
+      operationId: createClientKey
+      summary: Create a new key.
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: key parameters
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/APIKeyOptions"
+      responses:
+        '200':
+          description: key details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIKey'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
 
   /client/keys/{key_id}:
     get:
@@ -1860,6 +1885,16 @@ components:
         excludes:
           type: string
           example: 192.168.10.1
+    APIKeyOptions:
+      type: object
+      properties:
+        comment:
+          type: string
+          example: Splunk integration key
+        organization_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
     AssetsWithCheckpoint:
       type: object
       required:
