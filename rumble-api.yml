@@ -588,6 +588,36 @@ paths:
                 $ref: '#/components/schemas/APIKey'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
+    delete:
+      tags:
+        - Organization
+      operationId: removeKey
+      summary: Remove the current API key.
+      security:
+        - bearerAuth: []
+      responses:
+        '204':
+          description: empty response
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /org/key/rotate:
+    patch:
+      tags:
+        - Organization
+      operationId: rotateKey
+      summary: Rotate the API key secret and return the updated key.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: api key details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIKey'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
 
   /org/agents:
     get:
@@ -1401,6 +1431,275 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
 
+  /client/orgs:
+    get:
+      tags:
+        - Client
+      operationId: getClientOrganizations
+      summary: Get all organization details.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: array of organizations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Organization'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    put:
+      tags:
+        - Client
+      operationId: createClientOrganization
+      summary: Create a new organization.
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: organization definition
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrgOptions"
+      responses:
+        '200':
+          description: organization details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /client/orgs/{org_id}:
+    get:
+      tags:
+        - Client
+      operationId: getClientOrganization
+      summary: Get organization details.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: org_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the organization to retrieve
+      responses:
+        '200':
+          $ref: '#/components/schemas/Organization'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    patch:
+      tags:
+        - Client
+      operationId: updateClientOrganization
+      summary: Update organization details.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: org_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the organization to retrieve
+      requestBody:
+        description: organization options
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrgOptions'
+      responses:
+        '200':
+          description: organization details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    delete:
+      tags:
+        - Client
+      operationId: removeClientOrganization
+      summary: Remove this organization.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: org_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the organization to retrieve
+      responses:
+        '204':
+          description: empty response
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /client/orgs/{org_id}/exportToken:
+    delete:
+      tags:
+        - Client
+      operationId: deleteClientOrganizationExportToken
+      summary: Removes the export token from the specified organization.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: org_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the organization to retrieve
+      responses:
+        '204':
+          description: empty response
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /client/orgs/{org_id}/exportToken/rotate:
+    patch:
+      tags:
+        - Client
+      operationId: rotateClientOrganizationExportToken
+      summary: Rotates the organization export token and returns the updated organization.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: org_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the organization to retrieve
+      responses:
+        '200':
+          description: organization details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /client/license:
+    get:
+      tags:
+        - Client
+      operationId: getClientLicense
+      summary: Get license details.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          $ref: '#/components/schemas/License'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /client/keys:
+    get:
+      tags:
+        - Client
+      operationId: getClientKeys
+      summary: Get all active API keys.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: array of keys
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/APIKey'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /client/keys/{key_id}:
+    get:
+      tags:
+        - Client
+      operationId: getClientKey
+      summary: Get key details.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: key_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the key to retrieve
+      responses:
+        '200':
+          $ref: '#/components/schemas/APIKey'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    delete:
+      tags:
+        - Client
+      operationId: removeClientKey
+      summary: Remove this key.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: key_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the key to retrieve
+      responses:
+        '204':
+          description: empty response
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /client/keys/{key_id}/rotate:
+    patch:
+      tags:
+        - Client
+      operationId: rotateClientKey
+      summary: Rotates the key secret.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: key_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the key to retrieve
+      responses:
+        '200':
+          description: key details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIKey'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+
 components:
   securitySchemes:
     bearerAuth:
@@ -1522,6 +1821,28 @@ components:
         description:
           type: string
           example: Wobbly Widgets, Inc.
+        export_token:
+          type: string
+          example: ETXXXXXXXXXXXXXXXX
+        project:
+          type: boolean
+          example: false
+        parent_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        expiration_assets_stale:
+          type: integer
+          format: int64
+          example: 365
+        expiration_assets_offline:
+          type: integer
+          format: int64
+          example: 365
+        expiration_scans:
+          type: integer
+          format: int64
+          example: 365
     SiteOptions:
       type: object
       required:
@@ -2194,6 +2515,25 @@ components:
           type: integer
           format: int64
           example: 0
+        project:
+          type: boolean
+          example: false
+        parent_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        expiration_assets_stale:
+          type: integer
+          format: int64
+          example: 365
+        expiration_assets_offline:
+          type: integer
+          format: int64
+          example: 365
+        expiration_scans:
+          type: integer
+          format: int64
+          example: 365
 
     APIKey:
       type: object
@@ -2253,7 +2593,7 @@ components:
           example: tue
         type:
           type: string
-          example: org          
+          example: org
 
     Agent:
       type: object
@@ -2424,3 +2764,112 @@ components:
           type: string
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+
+    License:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        created_at:
+          type: integer
+          format: int64
+          example: 1576300370
+        updated_at:
+          type: integer
+          format: int64
+          example: 1576300370
+        name:
+          type: string
+          example: My Company
+        activated_at:
+          type: integer
+          format: int64
+          example: 1576300370
+        license_type:
+          type: string
+          example: platform
+        license_expiration:
+          type: integer
+          format: int64
+          example: 1576300370
+        license_max_assets:
+          type: integer
+          format: int64
+          example: 1000000
+        license_live_asset_count:
+          type: integer
+          format: int64
+          example: 1000
+        license_project_asset_count:
+          type: integer
+          format: int64
+          example: 5000
+        via_reseller:
+          type: boolean
+          example: false
+        phone:
+          type: string
+          example: 512-555-5555
+        address_street:
+          type: string
+          example: 1111 Main St
+        address_country:
+          type: string
+          example: US
+        address_city:
+          type: string
+          example: Austin
+        address_region:
+          type: string
+          example: Texas
+        address_postal:
+          type: string
+          example: 78700
+        subscription_period_start:
+          type: integer
+          format: int64
+          example: 1576300370
+        subscription_period_end:
+          type: integer
+          format: int64
+          example: 1576300370
+        subscription_cancel_at:
+          type: integer
+          format: int64
+          example: 1576300370
+        subscription_canceled_at:
+          type: integer
+          format: int64
+          example: 1576300370
+        settings:
+          type: object
+          additionalProperties: true
+        sso_type:
+          type: string
+          example: saml20
+        sso_domain:
+          type: string
+          example: rumble.run
+        sso_mode:
+          type: string
+          example: required
+        sso_login_message:
+          type: string
+          example: Hello
+        sso_login_issuer_url:
+          type: string
+          example: https://accounts.google.com/o/saml2?idpid=issuer
+        sso_login_login_url:
+          type: string
+          example: https://accounts.google.com/o/saml2?idpid=login
+        sso_login_logout_url:
+          type: string
+          example: https://accounts.google.com/o/saml2?idpid=logout
+        sso_default_role:
+          type: string
+          example: viewer
+        partner:
+          type: string
+          example: Rumble
