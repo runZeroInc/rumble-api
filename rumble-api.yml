@@ -1724,6 +1724,71 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
+  /client/events.json:
+    get:
+      tags:
+        - Client
+      operationId: exportEventsJSON
+      summary: System event log as JSON
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: fields
+          description: an optional list of fields to export, comma-separated
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: filtered event results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+ 
+  /client/events.jsonl:
+    get:
+      tags:
+        - Client
+      operationId: exportEventsJSONL
+      summary: System event log as JSON line-delimited
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: fields
+          description: an optional list of fields to export, comma-separated
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: filtered event results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
 
 components:
   securitySchemes:
@@ -2622,7 +2687,7 @@ components:
           example: 10000
         token:
           type: string
-          example:
+          example: CTXXXXXXXXXXXXX
         inactive:
           type: boolean
           example: tue
@@ -2908,3 +2973,67 @@ components:
         partner:
           type: string
           example: Rumble
+          
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        created_at:
+          type: integer
+          format: int64
+          example: 1576300370
+        client_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        organization_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        site_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        action:
+          type: string
+          example: login
+        source_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8          
+        source_name:
+          type: string
+          example: SiteName
+        source_type:
+          type: string
+          example: api
+        target_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8          
+        target_name:
+          type: string
+          example: SiteName
+        target_type:
+          type: string
+          example: api
+        success:
+          type: boolean
+          example: true
+        details:
+          type: object
+          additionalProperties: true
+        state:
+          type: string
+          example: SiteName
+        processor_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8    
+        processed_at:
+          type: integer
+          format: int64
+          example: 0
