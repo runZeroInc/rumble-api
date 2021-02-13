@@ -1264,6 +1264,12 @@ paths:
           required: false
           schema:
             type: string
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: array of tasks
@@ -1439,6 +1445,13 @@ paths:
       summary: Get all organization details.
       security:
         - bearerAuth: []
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: array of organizations
@@ -1626,7 +1639,7 @@ paths:
           description: an optional search string for filtering results
           required: false
           schema:
-            type: string        
+            type: string
       responses:
         '200':
           description: array of sites
@@ -1784,7 +1797,7 @@ paths:
                   $ref: '#/components/schemas/Event'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
- 
+
   /account/events.jsonl:
     get:
       tags:
@@ -1832,7 +1845,7 @@ paths:
           description: an optional search string for filtering results
           required: false
           schema:
-            type: string        
+            type: string
       responses:
         '200':
           description: array of tasks
@@ -1859,7 +1872,7 @@ paths:
           description: an optional search string for filtering results
           required: false
           schema:
-            type: string        
+            type: string
       responses:
         '200':
           description: array of tasks
@@ -1879,7 +1892,7 @@ paths:
       operationId: getAccountUsers
       summary: Get all users
       security:
-        - bearerAuth: [] 
+        - bearerAuth: []
       responses:
         '200':
           description: array of users
@@ -1889,6 +1902,194 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    put:
+      tags:
+        - Account
+      operationId: createAccountUser
+      summary: Create a new user account
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: user parameters
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserOptions"
+      responses:
+        '200':
+          description: key details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /account/users/invite:
+    put:
+      tags:
+        - Account
+      operationId: createAccountUserInvite
+      summary: Create a new user account and send an email invite
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: user invite parameters
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserInviteOptions"
+      responses:
+        '200':
+          description: key details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /account/users/{user_id}:
+    get:
+      tags:
+        - Account
+      operationId: getAccountUser
+      summary: Get user details.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: user_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the user to retrieve
+      responses:
+        '200':
+          $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    delete:
+      tags:
+        - Account
+      operationId: removeAccountUser
+      summary: Remove this user
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: user_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the user to delete
+      responses:
+        '204':
+          description: empty response
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    patch:
+      tags:
+        - Account
+      operationId: updateAccountUser
+      summary: Update a user's details
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: user_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the user to retrieve
+      requestBody:
+        description: user parameters
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserOptions"
+      responses:
+        '200':
+          $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /account/users/{user_id}/resetMFA:
+    patch:
+      tags:
+        - Account
+      operationId: resetAccountUserMFA
+      summary: Resets the user's MFA tokens
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: user_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the user to retrieve
+      responses:
+        '200':
+          $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+
+  /account/users/{user_id}/resetLockout:
+    patch:
+      tags:
+        - Account
+      operationId: resetAccountUserLockout
+      summary: Resets the user's lockout status
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: user_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the user to retrieve
+      responses:
+        '200':
+          $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /account/users/{user_id}/resetPassword:
+    patch:
+      tags:
+        - Account
+      operationId: resetAccountUserPassword
+      summary: Sends the user a password reset email
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: user_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the user to retrieve
+      responses:
+        '200':
+          $ref: '#/components/schemas/User'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
@@ -3075,7 +3276,7 @@ components:
         partner:
           type: string
           example: Rumble
-          
+
     Event:
       type: object
       properties:
@@ -3105,7 +3306,7 @@ components:
         source_id:
           type: string
           format: uuid
-          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8          
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         source_name:
           type: string
           example: SiteName
@@ -3115,7 +3316,7 @@ components:
         target_id:
           type: string
           format: uuid
-          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8          
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         target_name:
           type: string
           example: SiteName
@@ -3134,7 +3335,7 @@ components:
         processor_id:
           type: string
           format: uuid
-          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8    
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         processed_at:
           type: integer
           format: int64
@@ -3160,13 +3361,13 @@ components:
         updated_at:
           type: integer
           format: int64
-          example: 1576300370 
+          example: 1576300370
         first_name:
           type: string
-          example: James        
+          example: James
         last_name:
           type: string
-          example: James
+          example: Smith
         email:
           type: string
           example: jsmith@example.com
@@ -3182,14 +3383,14 @@ components:
         reset_token_expiration:
           type: integer
           format: int64
-          example: 1576300370 
+          example: 1576300370
         invite_token_expiration:
           type: integer
           format: int64
           example: 1576300370
         last_login_ip:
           type: string
-          example: admin
+          example: 192.168.0.1
         last_login_at:
           type: integer
           format: int64
@@ -3197,10 +3398,60 @@ components:
         last_login_ua:
           type: string
           example: curl/1.0
-        sso_only: 
+        sso_only:
           type: boolean
           example: false
         login_failures:
           type: integer
           format: int64
           example: 0
+
+    UserOptions:
+      type: object
+      properties:
+        first_name:
+          type: string
+          example: James
+        last_name:
+          type: string
+          example: Smith
+        email:
+          type: string
+          example: jsmith@example.com
+        client_admin:
+          type: boolean
+          example: true
+        org_default_role:
+          type: string
+          example: admin
+        org_roles:
+          type: object
+          additionalProperties: true
+
+    UserInviteOptions:
+      type: object
+      properties:
+        first_name:
+          type: string
+          example: James
+        last_name:
+          type: string
+          example: Smith
+        email:
+          type: string
+          example: jsmith@example.com
+        client_admin:
+          type: boolean
+          example: true
+        org_default_role:
+          type: string
+          example: admin
+        org_roles:
+          type: object
+          additionalProperties: true
+        subject:
+          type: string
+          example: Welcome to Rumble
+        message:
+          type: string
+          example: You have been invited to the Rumble Network Discovery platform
