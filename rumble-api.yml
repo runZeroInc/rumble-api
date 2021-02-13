@@ -1431,11 +1431,11 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
 
-  /client/orgs:
+  /account/orgs:
     get:
       tags:
-        - Client
-      operationId: getClientOrganizations
+        - Account
+      operationId: getAccountOrganizations
       summary: Get all organization details.
       security:
         - bearerAuth: []
@@ -1452,8 +1452,8 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
     put:
       tags:
-        - Client
-      operationId: createClientOrganization
+        - Account
+      operationId: createAccountOrganization
       summary: Create a new organization.
       security:
         - bearerAuth: []
@@ -1476,11 +1476,11 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
 
-  /client/orgs/{org_id}:
+  /account/orgs/{org_id}:
     get:
       tags:
-        - Client
-      operationId: getClientOrganization
+        - Account
+      operationId: getAccountOrganization
       summary: Get organization details.
       security:
         - bearerAuth: []
@@ -1499,8 +1499,8 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
     patch:
       tags:
-        - Client
-      operationId: updateClientOrganization
+        - Account
+      operationId: updateAccountOrganization
       summary: Update organization details.
       security:
         - bearerAuth: []
@@ -1530,8 +1530,8 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
     delete:
       tags:
-        - Client
-      operationId: removeClientOrganization
+        - Account
+      operationId: removeAccountOrganization
       summary: Remove this organization.
       security:
         - bearerAuth: []
@@ -1549,11 +1549,11 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
-  /client/orgs/{org_id}/exportToken:
+  /account/orgs/{org_id}/exportToken:
     delete:
       tags:
-        - Client
-      operationId: deleteClientOrganizationExportToken
+        - Account
+      operationId: deleteAccountOrganizationExportToken
       summary: Removes the export token from the specified organization.
       security:
         - bearerAuth: []
@@ -1571,11 +1571,11 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
-  /client/orgs/{org_id}/exportToken/rotate:
+  /account/orgs/{org_id}/exportToken/rotate:
     patch:
       tags:
-        - Client
-      operationId: rotateClientOrganizationExportToken
+        - Account
+      operationId: rotateAccountOrganizationExportToken
       summary: Rotates the organization export token and returns the updated organization.
       security:
         - bearerAuth: []
@@ -1597,11 +1597,11 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
-  /client/license:
+  /account/license:
     get:
       tags:
-        - Client
-      operationId: getClientLicense
+        - Account
+      operationId: getAccountLicense
       summary: Get license details.
       security:
         - bearerAuth: []
@@ -1611,11 +1611,39 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
-  /client/keys:
+
+  /account/sites:
     get:
       tags:
-        - Client
-      operationId: getClientKeys
+        - Account
+      operationId: getAccountSites
+      summary: Get all sites details across all organizations.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string        
+      responses:
+        '200':
+          description: array of sites
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Site'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /account/keys:
+    get:
+      tags:
+        - Account
+      operationId: getAccountKeys
       summary: Get all active API keys.
       security:
         - bearerAuth: []
@@ -1632,8 +1660,8 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
     put:
       tags:
-        - Client
-      operationId: createClientKey
+        - Account
+      operationId: createAccountKey
       summary: Create a new key.
       security:
         - bearerAuth: []
@@ -1656,11 +1684,11 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
 
-  /client/keys/{key_id}:
+  /account/keys/{key_id}:
     get:
       tags:
-        - Client
-      operationId: getClientKey
+        - Account
+      operationId: getAccountKey
       summary: Get key details.
       security:
         - bearerAuth: []
@@ -1679,8 +1707,8 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
     delete:
       tags:
-        - Client
-      operationId: removeClientKey
+        - Account
+      operationId: removeAccountKey
       summary: Remove this key.
       security:
         - bearerAuth: []
@@ -1698,11 +1726,11 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
-  /client/keys/{key_id}/rotate:
+  /account/keys/{key_id}/rotate:
     patch:
       tags:
-        - Client
-      operationId: rotateClientKey
+        - Account
+      operationId: rotateAccountKey
       summary: Rotates the key secret.
       security:
         - bearerAuth: []
@@ -1724,10 +1752,10 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
-  /client/events.json:
+  /account/events.json:
     get:
       tags:
-        - Client
+        - Account
       operationId: exportEventsJSON
       summary: System event log as JSON
       security:
@@ -1757,10 +1785,10 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
  
-  /client/events.jsonl:
+  /account/events.jsonl:
     get:
       tags:
-        - Client
+        - Account
       operationId: exportEventsJSONL
       summary: System event log as JSON line-delimited
       security:
@@ -1787,6 +1815,80 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Event'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /account/tasks:
+    get:
+      tags:
+        - Account
+      operationId: getAccountTasks
+      summary: Get all task details across all organizations (up to 1000)
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string        
+      responses:
+        '200':
+          description: array of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /account/agents:
+    get:
+      tags:
+        - Account
+      operationId: getAccountAgents
+      summary: Get all agents across all organizations
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string        
+      responses:
+        '200':
+          description: array of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Agent'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /account/users:
+    get:
+      tags:
+        - Account
+      operationId: getAccountUsers
+      summary: Get all users
+      security:
+        - bearerAuth: [] 
+      responses:
+        '200':
+          description: array of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
@@ -3034,6 +3136,71 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8    
         processed_at:
+          type: integer
+          format: int64
+          example: 0
+
+    User:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        client_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        created_at:
+          type: integer
+          format: int64
+          example: 1576300370
+        updated_at:
+          type: integer
+          format: int64
+          example: 1576300370 
+        first_name:
+          type: string
+          example: James        
+        last_name:
+          type: string
+          example: James
+        email:
+          type: string
+          example: jsmith@example.com
+        client_admin:
+          type: boolean
+          example: true
+        org_default_role:
+          type: string
+          example: admin
+        org_roles:
+          type: object
+          additionalProperties: true
+        reset_token_expiration:
+          type: integer
+          format: int64
+          example: 1576300370 
+        invite_token_expiration:
+          type: integer
+          format: int64
+          example: 1576300370
+        last_login_ip:
+          type: string
+          example: admin
+        last_login_at:
+          type: integer
+          format: int64
+          example: 1576300370
+        last_login_ua:
+          type: string
+          example: curl/1.0
+        sso_only: 
+          type: boolean
+          example: false
+        login_failures:
           type: integer
           format: int64
           example: 0
