@@ -2094,6 +2094,65 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
+
+  /export/org/assets.servicenow.csv:
+    get:
+      tags:
+        - ServiceNow
+      operationId: snowExportAssetsCSV
+      summary: Export an asset inventory as CSV for ServiceNow integration
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: asset export
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /export/org/assets.servicenow.json:
+    get:
+      tags:
+        - ServiceNow
+      operationId: snowExportAssetsJSON
+      summary: Exports the asset inventory as JSON
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: filtered asset results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AssetServiceNow'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /export/org/services.servicenow.csv:
+    get:
+      tags:
+        - ServiceNow
+      operationId: snowExportServicesCSV
+      summary: Export a service inventory as CSV for ServiceNow integration
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: services export
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
 components:
   securitySchemes:
     bearerAuth:
@@ -3456,3 +3515,125 @@ components:
         message:
           type: string
           example: You have been invited to the Rumble Network Discovery platform
+
+    AssetServiceNow:
+      type: object
+      required:
+        - asset_id
+      properties:
+        asset_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        organization:
+          type: string
+          example: Headquarters
+        site:
+          type: string
+          example: Primary   
+        detected_by:
+          type: string
+          example: icmp
+        type:
+          type: string
+          example: Server
+        sys_class_name:
+          type: string
+          example: cmdb_ci_iot
+        os_vendor:
+          type: string
+          example: Microsoft
+        os_product:
+          type: string
+          example: Windows 10
+        os_version:
+          type: string
+          example: 1903
+        hw_vendor:
+          type: string
+          example: Dell
+        hw_product:
+          type: string
+          example: PowerEdge
+        hw_version:
+          type: string
+          example: 2.0
+        ip_address:
+          type: string
+          example: 192.168.0.1
+        addresses_scope:
+          type: string
+          example: 192.168.100.1;192.168.100.2
+        addresses_extra:
+          type: string
+          example: 192.168.0.5;192.168.0.3
+        mac_address:
+          type: string
+          format: mac
+          example: 11:22:33:44:55:66
+        mac_manufacturer:
+          type: string
+          example: Dell         
+        newest_mac_age:
+          type: string
+          example: 2020-01-01 
+        macs:
+          type: string
+          format: mac
+          example: 11:22:33:44:55:66
+        mac_vendors:
+          type: string
+          example: Dell
+        name:
+          type: string
+          example: www;server
+        tags:
+          type: string
+          example: owner=IT;location=Austin
+        domains:
+          type: string
+          example: rumble.run;rumble.local.lan
+        service_count:
+          type: integer
+          format: int64
+          example: 10
+        service_count_tcp:
+          type: integer
+          format: int64
+          example: 7
+        service_count_udp:
+          type: integer
+          format: int64
+          example: 1
+        service_count_arp:
+          type: integer
+          format: int64
+          example: 1
+        service_count_icmp:
+          type: integer
+          format: int64
+          example: 1
+        lowest_ttl:
+          type: integer
+          format: int64
+          example: 0
+        lowest_rtt:
+          type: integer
+          format: int64
+          example: 1
+        alive:
+          type: boolean
+          format: boolean
+          example: true
+        first_discovered:
+          type: string
+          example: 2006-01-02 15:04:05
+        last_discovered:
+          type: string
+          example: 2006-01-02 15:04:05
+        last_updated:
+          type: string
+          example: 2006-01-02 15:04:05
+        comments:
+          type: string
+          example: File Server
