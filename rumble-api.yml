@@ -4,7 +4,7 @@ servers:
     url: https://console.rumble.run/api/v1.0
 info:
   description: Rumble Network Discovery API
-  version: "2.0.0"
+  version: "2.0.1"
   title: Rumble API
   contact:
     email: support@rumble.run
@@ -2200,10 +2200,9 @@ components:
       properties:
         targets:
           type: string
-          example: "192.168.0.0/24"
+          example: "defaults"
         excludes:
           type: string
-          example: 192.168.0.3
         scan-name:
           type: string
           example: My Scan
@@ -2216,7 +2215,7 @@ components:
         scan-start:
           type: string
           format: unixtime
-          example: "1578155820"
+          example: "0"
         scan-tags:
           type: string
           example: "owner=IT location=Texas"
@@ -2278,7 +2277,8 @@ components:
           type: string
           example: ETXXXXXXXXXXXXXXXX
         project:
-          type: boolean
+          type: string
+          format: boolean
           example: false
         parent_id:
           type: string
