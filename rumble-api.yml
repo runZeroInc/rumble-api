@@ -2015,7 +2015,7 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
-          
+
   /export/org/assets/sync/created/assets.json:
     get:
       tags:
@@ -2285,17 +2285,17 @@ components:
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         expiration_assets_stale:
-          type: integer
-          format: int64
-          example: 365
+          type: string
+          format: number
+          example: "365"
         expiration_assets_offline:
-          type: integer
-          format: int64
-          example: 365
+          type: string
+          format: number
+          example: "365"
         expiration_scans:
-          type: integer
-          format: int64
-          example: 365
+          type: string
+          format: number
+          example: "365"
     SiteOptions:
       type: object
       required:
@@ -3530,7 +3530,7 @@ components:
           example: Headquarters
         site:
           type: string
-          example: Primary   
+          example: Primary
         detected_by:
           type: string
           example: icmp
@@ -3573,10 +3573,10 @@ components:
           example: 11:22:33:44:55:66
         mac_manufacturer:
           type: string
-          example: Dell         
+          example: Dell
         newest_mac_age:
           type: string
-          example: 2020-01-01 
+          example: 2020-01-01
         macs:
           type: string
           format: mac
