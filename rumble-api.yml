@@ -4,7 +4,7 @@ servers:
     url: https://console.rumble.run/api/v1.0
 info:
   description: Rumble Network Discovery API
-  version: "2.0.1"
+  version: "2.0.2"
   title: Rumble API
   contact:
     email: support@rumble.run
@@ -2145,6 +2145,33 @@ paths:
       responses:
         '200':
           description: services export
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+
+  /export/org/assets.cisco.csv:
+    get:
+      tags:
+        - Cisco SNTC
+      operationId: exportAssetsCiscoCSV
+      summary: Cisco serial number and model name export for Cisco Smart Net Total Care Service.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: filtered asset results
           content:
             text/csv:
               schema:
