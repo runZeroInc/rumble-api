@@ -5,7 +5,7 @@ or be served from a webserver such as Apache or NGINX.
 ## Using the offline documentation
 You have two options for using this documentation.
 ### Open locally in your browser
-You can open the provided `index.html` in your browser. This will expose all the API endpoints you can use. You will
+You can open the provided `index.html` in your browser. This will show you all the API endpoints you can use. You will
 need to change the server URL to be your self-hosted console or `console.rumble.run`.
 
 ### Hosting behind a webserver
