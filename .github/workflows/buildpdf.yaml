@@ -26,11 +26,11 @@ jobs:
           mkdir rumble-api
           cp rumble-api.yml rumble-api/
           cp -r node_modules/swagger-ui-dist/* rumble-api/
-          sed -e 's/url:\s+https:.*swagger.io\/.*\.json",/url: "rumble-api.yml",/' -i rumble-api/index.html
+          sed -e 's/url:.*swagger.io.*\.json",/url: "rumble-api.yml",/' -i rumble-api/index.html
           zip -9vr rumble-api.zip rumble-api
       - name: Commit files
         run: |
-          git config --local user.name "GitHub Build PDF action"
+          git config --local user.name "GitHub action"
           git add rumble-api.pdf
           git add rumble-api.zip
           git commit -m "Update offline PDF and zip"
