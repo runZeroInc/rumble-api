@@ -1,4 +1,4 @@
-name: Build PDF
+name: Build PDF and zip
 
 on:
   push:
