@@ -3,7 +3,7 @@ name: Build PDF
 on:
   push:
     paths: [rumble-api.yml]
-  workflow_dispatch
+  workflow_dispatch:
 
 jobs:
   build:
