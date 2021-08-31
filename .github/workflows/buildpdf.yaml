@@ -24,7 +24,7 @@ jobs:
       - name: Commit files
         run: |
           git config --local user.name "GitHub Build PDF action"
-          git add rumble-api.pdf'
+          git add rumble-api.pdf
           git commit -m "Update PDF"
       - name: Push changes
         uses: ad-m/github-push-action@master
