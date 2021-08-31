@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.3.10",
+    "puppeteer": "^10.2.0"
+  }
+}
