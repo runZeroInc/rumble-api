@@ -26,6 +26,7 @@ jobs:
           mkdir rumble-api
           cp -r node_modules/swagger-ui-dist/* rumble-api/
           node offline-docs/splice.js
+          rm rumble-api.zip
           zip -9vr rumble-api.zip rumble-api
       - name: Commit files
         run: |
