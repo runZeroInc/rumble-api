@@ -1,0 +1,41 @@
+name: Build PDF and zip
+
+on:
+  push:
+    paths: [rumble-api.yml]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build PDF
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install dependencies
+        run: npm install
+      - name: Generate HTML docs
+        run: npx openapi-generator-cli generate -i rumble-api.yml -g html -o pdfgen/html -c pdfgen/config.yaml
+      - name: HTML to PDF
+        run: node pdfgen/makepdf.js
+      - name: Build swagger-ui-dist version of docs
+        run: |
+          mkdir rumble-api
+          cp -r node_modules/swagger-ui-dist/* rumble-api/
+          node offline-docs/splice.js
+          rm rumble-api.zip
+          zip -9vr rumble-api.zip rumble-api
+      - name: Commit files
+        run: |
+          git config --local user.name "GitHub action"
+          git add rumble-api.pdf
+          git add rumble-api.zip
+          git commit -m "Update offline PDF and zip"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true

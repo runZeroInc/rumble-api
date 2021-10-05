@@ -1727,6 +1727,107 @@ paths:
                   $ref: '#/components/schemas/Site'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
+  /account/credentials:
+    get:
+      tags:
+        - Account
+      operationId: getAccountCredentials
+      summary: Get all account credentials
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: array of credentials
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Credential'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    put:
+      tags:
+        - Account
+      operationId: createAccountCredential
+      summary: Create a new credential
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: credential parameters
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CredentialOptions"
+      responses:
+        '200':
+          description: credential details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Credential'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /account/credentials/{credential_id}:
+    get:
+      tags:
+        - Account
+      operationId: getAccountCredential
+      summary: Get credential details
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: credential_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the credential to retrieve
+      responses:
+        '200':
+          description: credential details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Credential'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+    delete:
+      tags:
+        - Account
+      operationId: removeAccountCredential
+      summary: Remove this credential
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: credential_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the credential to delete
+      responses:
+        '204':
+          description: empty response
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
 
   /account/keys:
     get:
@@ -1772,7 +1873,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         '404':
           $ref: '#/components/responses/NotFoundError'
-
   /account/keys/{key_id}:
     get:
       tags:
@@ -2349,6 +2449,38 @@ components:
     NotFoundError:
       description: Resource not found
   schemas:
+    MiradoreCredentialFields:
+      type: object
+      required:
+        - hostname
+        - api_key
+      properties:
+        hostname:
+          type: string
+          format: string
+          example: yourcompanyinc.online.miradore.com
+        api_key:
+          type: string
+          format: string
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+    AWSCredentialFields:
+      type: object
+      required:
+        - access_key
+        - secret_access_key
+      properties:
+        access_key:
+          type: string
+          format: string
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        secret_access_key:
+          type: string
+          format: string
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        regions:
+          type: string
+          format: string
+          example: "us-west-1, us-east-2"
     ComponentVersion:
       type: object
       description: A component ID and version
@@ -2494,6 +2626,39 @@ components:
         excludes:
           type: string
           example: 192.168.10.1
+
+    CredentialOptions:
+      type: object
+      properties:
+        name:
+          type: string
+          example: credentials_name
+        type:
+          type: string
+          enum: [miradore_api_key_v1, aws_access_secret]
+          example: miradore_api_key_v1
+        acl:
+          type: object
+          additionalProperties: true
+          example:
+            e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8: user
+            e77602e0-3fb8-4734-aef9-fbc6fdcb0fa9: none
+        global:
+          type: boolean
+          example: false
+        cidrs:
+          type: string
+          example: "10.0.0.17/32, 192.168.1.0/24"
+        secret:
+          type: object
+          additionalProperties: true
+          oneOf:
+            - $ref: '#/components/schemas/AWSCredentialFields'
+            - $ref: '#/components/schemas/MiradoreCredentialFields'
+          example:
+            hostname: yourcompanyinc.online.miradore.com
+            api_key: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+
     APIKeyOptions:
       type: object
       properties:
@@ -3178,6 +3343,62 @@ components:
           type: integer
           format: int64
           example: 365
+
+    Credential:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        client_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        name:
+          type: string
+          example: credentials_name
+        type:
+          type: string
+          enum: [miradore_api_key_v1, aws_access_secret]
+          description: The service the credentials are for.
+        created_at:
+          type: integer
+          format: int64
+          example: 1576300370
+        created_by_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        created_by_email:
+          type: string
+          format: email
+          example: user@example.com
+        acl:
+          type: object
+          additionalProperties: true
+          example:
+            e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8: user
+        global:
+          type: boolean
+          example: false
+        cidrs:
+          type: array
+          items:
+            type: string
+          example:
+            - 10.0.0.47/32
+            - 192.168.1.0/24
+        last_used_at:
+          type: integer
+          format: int64
+          example: 1576300370
+        last_used_by_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
 
     APIKey:
       type: object

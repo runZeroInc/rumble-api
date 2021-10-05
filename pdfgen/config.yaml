@@ -1,0 +1,5 @@
+templateDir: pdfgen
+additionalProperties:
+  infoUrl: https://www.rumble.run/
+  appName: "Rumble Network Discovery"
+  moreInformation: https://www.rumble.run/
