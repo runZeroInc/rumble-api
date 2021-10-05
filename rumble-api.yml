@@ -456,7 +456,7 @@ paths:
       tags:
         - Export
       operationId: exportAssetTopTypesCSV
-      summary: Asset top types as CSV
+      summary: Top asset types as CSV
       security:
         - bearerAuth: []
       responses:
@@ -475,7 +475,7 @@ paths:
       tags:
         - Export
       operationId: exportAssetTopOSCSV
-      summary: Asset top operating systems as CSV
+      summary: Top asset operating systems as CSV
       security:
         - bearerAuth: []
       responses:
@@ -494,7 +494,7 @@ paths:
       tags:
         - Export
       operationId: exportAssetTopHWCSV
-      summary: Asset top hardware products as CSV
+      summary: Top asset hardware products as CSV
       security:
         - bearerAuth: []
       responses:
@@ -513,7 +513,7 @@ paths:
       tags:
         - Export
       operationId: exportAssetTopTagsCSV
-      summary: Asset top tags as CSV
+      summary: Top asset tags as CSV
       security:
         - bearerAuth: []
       responses:
