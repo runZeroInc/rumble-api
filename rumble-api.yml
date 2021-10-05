@@ -4,13 +4,13 @@ servers:
     url: https://console.rumble.run/api/v1.0
 info:
   description: Rumble Network Discovery API
-  version: "2.0.2"
+  version: "2.7.0"
   title: Rumble API
   contact:
     email: support@rumble.run
   license:
     name: Commercial
-    url: 'https://www.rumble.run/terms'
+    url: 'https://www.rumble.run/legal/terms'
 tags:
   - name: Organization
     description: Requires Organization Key
@@ -450,6 +450,160 @@ paths:
                 format: binary
         '401':
           $ref: '#/components/responses/UnauthorizedError'
+
+  /org/assets/top.types.csv:
+    get:
+      tags:
+        - Export
+      operationId: exportAssetTopTypesCSV
+      summary: Asset top types as CSV
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: top asset types and counts as csv
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /org/assets/top.os.csv:
+    get:
+      tags:
+        - Export
+      operationId: exportAssetTopOSCSV
+      summary: Asset top operating systems as CSV
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: top operating systems and counts as csv
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /org/assets/top.hw.csv:
+    get:
+      tags:
+        - Export
+      operationId: exportAssetTopHWCSV
+      summary: Asset top hardware products as CSV
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: top asset hardware platforms and counts as csv
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /org/assets/top.tags.csv:
+    get:
+      tags:
+        - Export
+      operationId: exportAssetTopTagsCSV
+      summary: Asset top tags as CSV
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: top asset tags and counts as csv
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'                    
+
+
+
+  /org/services/top.tcp.csv:
+    get:
+      tags:
+        - Export
+      operationId: exportServicesTopTCPCSV
+      summary: Top TCP services as CSV
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: top TCP services and counts as csv
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'      
+
+  /org/services/top.udp.csv:
+    get:
+      tags:
+        - Export
+      operationId: exportServicesTopUDPCSV
+      summary: Top UDP services as CSV
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: top UDP services and counts as csv
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'  
+
+  /org/services/top.protocols.csv:
+    get:
+      tags:
+        - Export
+      operationId: exportServicesTopProtocolsCSV
+      summary: Top service protocols as CSV
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: top service protocols and counts as csv
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'  
+
+  /org/services/top.products.csv:
+    get:
+      tags:
+        - Export
+      operationId: exportServicesTopProductsCSV
+      summary: Top service products as CSV
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: top service products and counts as csv
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'  
 
   /org:
     get:
