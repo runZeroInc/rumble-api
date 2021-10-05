@@ -605,6 +605,32 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'  
 
+  /org/services/subnet.stats.csv:
+    get:
+      tags:
+        - Export
+      operationId: exportSubnetUtilizationStatsCSV
+      summary: Subnet utilization statistics as as CSV
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: mask
+          description: an optional subnet mask size (ex:24)
+          required: false
+          schema:
+            type: string        
+      responses:
+        '200':
+          description: subnet utilization stats as csv
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'  
+
   /org:
     get:
       tags:
