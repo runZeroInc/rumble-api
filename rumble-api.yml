@@ -1491,6 +1491,30 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
 
+  /org/tasks/{task_id}/log:
+    get:
+      tags:
+        - Organization
+      operationId: getTaskLog
+      summary: Returns a temporary task log data url
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: task_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the task
+      responses:
+        '200':
+          $ref: '#/components/schemas/URL'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
   /org/tasks/{task_id}/stop:
     post:
       tags:
