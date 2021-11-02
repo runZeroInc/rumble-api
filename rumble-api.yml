@@ -2507,6 +2507,162 @@ components:
           type: string
           format: string
           example: "us-west-1, us-east-2"
+        use_cross_account_org:
+          type: string
+          format: string
+          example: "true"
+        role:
+          type: string
+          format: string
+          example: "rumble-role"
+    AzureClientSecretCredentialFields:
+      type: object
+      required:
+        - client_id
+        - client_secret
+        - tenant_id
+      properties:
+        client_id:
+          type: string
+          format: string
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        client_secret:
+          type: string
+          format: string
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        tenant_id:
+          type: string
+          format: string
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        multi_subscription:
+          type: string
+          format: string
+          example: "true"
+        subscription_id:
+          type: string
+          format: string
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+    AzureUsernamePasswordCredentialFields:
+      type: object
+      required: 
+        - client_id
+        - tenant_id
+        - username
+        - password
+      properties:
+        client_id:
+          type: string
+          format: string
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        tenant_id:
+          type: string
+          format: string
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        username:
+          type: string
+          format: string
+          example: user@example.com
+        password:
+          type: string
+          format: string
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+    CrowdstrikeCredentialFields:
+      type: object
+      required:
+        - client_id
+        - client_secret
+        - api_url
+      properties:
+        client_id:
+          type: string
+          format: string
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        client_secret:
+          type: string
+          format: string
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        api_url:
+          type: string
+          format: string
+          example: example.crowdstrike.com
+    CensysCredentialFields:
+      type: object
+      required:
+        - client_id
+        - client_secret
+      properties:
+        client_id:
+          type: string
+          format: string
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        client_secret:
+          type: string
+          format: string
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        api_url:
+          type: string
+          format: string
+          example: https://search.censys.io
+    SNMPv2CommunitiesCredentialFields:
+      type: object
+      required:
+        - community
+      properties:
+        community:
+          type: string
+          format: string
+          example: "public,private"
+    SNMPv3CredentialFields:
+      type: object
+      required:
+        - username
+      properties:
+        username:
+          type: string
+          format: string
+          example: user
+        context:
+          type: string
+          format: string
+          example: vlan-32
+        auth-protocol:
+          type: string
+          format: string
+          example: sha
+        auth-passphrase:
+          type: string
+          format: string
+          example: authpass
+        privacy-protocol:
+          type: string
+          format: string
+          example: aes
+        privacy-passphrase:
+          type: string
+          format: string
+          example: privpass
+    VMwareCredentialFields:
+      type: object
+      required: 
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          format: string
+          example: user
+        password:
+          type: string
+          format: string
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        insecure:
+          type: string
+          format: string
+          example: "true"
+        thumbprints:
+          type: string
+          format: string
+          example: IP=SHA256:B64HASH
     ComponentVersion:
       type: object
       description: A component ID and version
@@ -2679,8 +2835,15 @@ components:
           type: object
           additionalProperties: true
           oneOf:
-            - $ref: '#/components/schemas/AWSCredentialFields'
             - $ref: '#/components/schemas/MiradoreCredentialFields'
+            - $ref: '#/components/schemas/AWSCredentialFields'
+            - $ref: '#/components/schemas/AzureClientSecretCredentialFields'
+            - $ref: '#/components/schemas/AzureUsernamePasswordCredentialFields'
+            - $ref: '#/components/schemas/CrowdstrikeCredentialFields'
+            - $ref: '#/components/schemas/CensysCredentialFields'
+            - $ref: '#/components/schemas/SNMPv2CommunitiesCredentialFields'
+            - $ref: '#/components/schemas/SNMPv3CredentialFields'
+            - $ref: '#/components/schemas/VMwareCredentialFields'
           example:
             hostname: yourcompanyinc.online.miradore.com
             api_key: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
