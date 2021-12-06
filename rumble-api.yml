@@ -4,7 +4,7 @@ servers:
     url: https://console.rumble.run/api/v1.0
 info:
   description: Rumble Network Discovery API
-  version: "2.7.0"
+  version: "2.9.0"
   title: Rumble API
   contact:
     email: support@rumble.run
@@ -3368,6 +3368,9 @@ components:
         excludes:
           type: string
           example: "192.168.0.5"
+        subnets:
+          type: object
+          additionalProperties: true          
 
     Wireless:
       type: object
@@ -3575,7 +3578,7 @@ components:
           example: credentials_name
         type:
           type: string
-          enum: [miradore_api_key_v1, aws_access_secret]
+          enum: [miradore_api_key_v1, aws_access_secret, crowdstrike_api_key, azure_client_secret, azure_username_password, censys_search_api_key, snmpv2_community, snmpv3_credential, vmware_username_password]
           description: The service the credentials are for.
         created_at:
           type: integer
