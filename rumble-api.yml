@@ -2833,6 +2833,18 @@ components:
           type: string
           example: 192.168.10.1
 
+    CredentialFields:
+      oneOf:
+        - $ref: '#/components/schemas/MiradoreCredentialFields'
+        - $ref: '#/components/schemas/AWSCredentialFields'
+        - $ref: '#/components/schemas/AzureClientSecretCredentialFields'
+        - $ref: '#/components/schemas/AzureUsernamePasswordCredentialFields'
+        - $ref: '#/components/schemas/CrowdstrikeCredentialFields'
+        - $ref: '#/components/schemas/CensysCredentialFields'
+        - $ref: '#/components/schemas/SNMPv2CommunitiesCredentialFields'
+        - $ref: '#/components/schemas/SNMPv3CredentialFields'
+        - $ref: '#/components/schemas/VMwareCredentialFields'
+
     CredentialOptions:
       type: object
       properties:
@@ -2856,21 +2868,7 @@ components:
           type: string
           example: "10.0.0.17/32, 192.168.1.0/24"
         secret:
-          type: object
-          additionalProperties: true
-          oneOf:
-            - $ref: '#/components/schemas/MiradoreCredentialFields'
-            - $ref: '#/components/schemas/AWSCredentialFields'
-            - $ref: '#/components/schemas/AzureClientSecretCredentialFields'
-            - $ref: '#/components/schemas/AzureUsernamePasswordCredentialFields'
-            - $ref: '#/components/schemas/CrowdstrikeCredentialFields'
-            - $ref: '#/components/schemas/CensysCredentialFields'
-            - $ref: '#/components/schemas/SNMPv2CommunitiesCredentialFields'
-            - $ref: '#/components/schemas/SNMPv3CredentialFields'
-            - $ref: '#/components/schemas/VMwareCredentialFields'
-          example:
-            hostname: yourcompanyinc.online.miradore.com
-            api_key: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+          $ref: '#/components/schemas/CredentialFields'
 
     APIKeyOptions:
       type: object
