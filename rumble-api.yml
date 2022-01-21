@@ -2754,21 +2754,42 @@ components:
         passes:
           type: string
           example: "3"
+        max-attempts:
+          type: string
+          example: "3"
         max-sockets:
           type: string
           example: "500"
         max-group-size:
           type: string
           example: "4096"
+        max-ttl:
+          type: string
+          example: "255"
         tcp-ports:
           type: string
           example: "1-1000,5000-6000"
+        tcp-excludes:
+          type: string
+          example: "9500"
         screenshots:
           type: string
           example: "true"
         nameservers:
           type: string
           example: "8.8.8.8"
+        subnet-ping:
+          type: string
+          example: "true"
+        subnet-ping-net-size:
+          type: string
+          example: "256"
+        subnet-ping-sample-rate:
+          type: string
+          example: "3"
+        host-ping:
+          type: string
+          example: "false"
         probes:
           type: string
           description: Optional probe list, otherwise all probes are used
