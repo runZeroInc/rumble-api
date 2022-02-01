@@ -1302,7 +1302,7 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
-  /org/wirelesss/{wireless_id}:
+  /org/wireless/{wireless_id}:
     get:
       tags:
         - Organization
