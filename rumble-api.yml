@@ -2345,6 +2345,11 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/GroupPost"
+      responses:
+        '200':
+          $ref: '#/components/schemas/Group'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
     put:
       tags:
         - Account
@@ -2358,6 +2363,11 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/GroupPut"
+      responses:
+        '200':
+          $ref: '#/components/schemas/Group'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
 
   /account/groups/{group_id}:
     parameters:
