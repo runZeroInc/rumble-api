@@ -2405,6 +2405,92 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
+  /account/sso/groups:
+    get:
+      tags:
+        - Account
+      operationId: getAccountGroupMappings
+      summary: Get all SSO group mappings
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          $ref: '#/components/schemas/GroupMapping'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    post:
+      tags:
+        - Account
+      operationId: createAccountGroupMapping
+      summary: Create a new SSO group mapping
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GroupMapping"
+      responses:
+        '200':
+          $ref: '#/components/schemas/GroupMapping'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    put:
+      tags:
+        - Account
+      operationId: updateAccountGroupMapping
+      summary: Update an existing SSO group mapping
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GroupMapping"
+      responses:
+        '200':
+          $ref: '#/components/schemas/GroupMapping'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /account/sso/groups/{group_mapping_id}:
+    parameters:
+      - in: path
+        name: group_mapping_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+        description: UUID of the SSO group mapping
+    get:
+      tags:
+        - Account
+      operationId: getAccountGroupMapping
+      summary: Get SSO group mapping details
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          $ref: '#/components/schemas/GroupMapping'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+    delete:
+      tags:
+        - Account
+      operationId: removeAccountGroupMapping
+      summary: Remove this SSO group mapping
+      security:
+        - bearerAuth: []
+      responses:
+        '204':
+          description: empty response
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
   /export/org/assets/sync/created/assets.json:
     get:
       tags:
@@ -4283,6 +4369,46 @@ components:
             "1a5e612e-4d64-45fe-aa3e-afba5cf3b9bf": "viewer",
             "fd6d6662-732b-4c4b-8331-051178994384": "admin"
           }
+
+    GroupMapping:
+      type: object
+      required:
+        - id
+        - group_id
+        - sso_attribute
+        - sso_value
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: f6cfb91a-52ea-4a86-bf9a-5a891a26f52b
+        group_id:
+          type: string
+          format: uuid
+          example: 2b096711-4d28-4417-8635-64af4f62c1ae
+        group_name:
+          type: string
+          example: Viewers Group
+        sso_attribute:
+          type: string
+          example: basic-attribute
+        sso_value:
+          type: string
+          example: basic-attribute-value
+        description:
+          type: string
+          example: Maps basic-attribute to Viewers Group
+        created_by_email:
+          type: string
+          example: jsmith@example.com
+        created_at:
+          type: integer
+          format: int64
+          example: 1576300370
+        updated_at:
+          type: integer
+          format: int64
+          example: 1576300370
 
     UserOptions:
       type: object
