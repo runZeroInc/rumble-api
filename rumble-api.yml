@@ -4,7 +4,7 @@ servers:
     url: https://console.rumble.run/api/v1.0
 info:
   description: Rumble Network Discovery API
-  version: "2.10.0"
+  version: "2.12.0"
   title: Rumble API
   contact:
     email: support@rumble.run
@@ -1193,6 +1193,60 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Asset'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /org/assets/bulk/tags:
+    patch:
+      tags:
+        - Organization
+      operationId: updateBulkAssetTags
+      summary: Update tags across multiple assets based on a search query
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: search query to filter and tags to apply
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetTagsWithSearch'
+      responses:
+        '200':
+          description: status message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/StatusMessage'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /org/assets/bulk/clearTags:
+    post:
+      tags:
+        - Organization
+      operationId: clearBulkAssetTags
+      summary: Clear all tags across multiple assets based on a search query
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: search query to filter
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Search'
+      responses:
+        '200':
+          description: status message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/StatusMessage'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
         '404':
@@ -2669,6 +2723,8 @@ components:
       description: Request could not be processed
     NotFoundError:
       description: Resource not found
+    StatusMessage:
+      description: Summary of operation results
   schemas:
     MiradoreCredentialFields:
       type: object
@@ -2684,6 +2740,7 @@ components:
           type: string
           format: string
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+
     AWSCredentialFields:
       type: object
       required:
@@ -2710,6 +2767,7 @@ components:
           type: string
           format: string
           example: "rumble-role"
+
     AzureClientSecretCredentialFields:
       type: object
       required:
@@ -2737,6 +2795,7 @@ components:
           type: string
           format: string
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+
     AzureUsernamePasswordCredentialFields:
       type: object
       required: 
@@ -2761,6 +2820,7 @@ components:
           type: string
           format: string
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+
     CrowdstrikeCredentialFields:
       type: object
       required:
@@ -2780,6 +2840,7 @@ components:
           type: string
           format: string
           example: example.crowdstrike.com
+
     CensysCredentialFields:
       type: object
       required:
@@ -2798,6 +2859,7 @@ components:
           type: string
           format: string
           example: https://search.censys.io
+
     SNMPv2CommunitiesCredentialFields:
       type: object
       required:
@@ -2807,6 +2869,7 @@ components:
           type: string
           format: string
           example: "public,private"
+
     SNMPv3CredentialFields:
       type: object
       required:
@@ -2836,6 +2899,7 @@ components:
           type: string
           format: string
           example: privpass
+
     VMwareCredentialFields:
       type: object
       required: 
@@ -2858,6 +2922,7 @@ components:
           type: string
           format: string
           example: IP=SHA256:B64HASH
+
     ComponentVersion:
       type: object
       description: A component ID and version
@@ -2873,6 +2938,7 @@ components:
           type: string
           format: string
           example: '1.0.0'
+
     URL:
       description: A URL to a resource
       type: object
@@ -2883,6 +2949,7 @@ components:
           type: string
           format: url
           example: https://www.rumble.run/docs/
+
     ScanOptions:
       type: object
       required:
@@ -2966,6 +3033,7 @@ components:
           description: Optional probe list, otherwise all probes are used
           example: arp,bacnet,connect,dns,echo,ike,ipmi,mdns,memcache,mssql,natpmp,netbios,pca,rdns,rpcbind,sip,snmp,ssdp,syn,ubnt,wlan-list,wsd
         # Probe options are also supported with values like: dns-port: "53"
+
     AgentSiteID:
       type: object
       required:
@@ -3072,6 +3140,7 @@ components:
           type: string
           format: uuid
           example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+
     AssetsWithCheckpoint:
       type: object
       required:
@@ -3086,6 +3155,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Asset'
+
     AssetComments:
       type: object
       required:
@@ -3094,6 +3164,7 @@ components:
         comments:
           type: string
           example: Sales Laptop
+
     AssetTags:
       type: object
       required:
@@ -3104,6 +3175,31 @@ components:
           additionalProperties:
             type: string
             example: TagValue
+
+    AssetTagsWithSearch:
+      type: object
+      required:
+        - tags
+        - search
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+            example: ThisTag=Value -OldTag
+        search:
+          type: string
+          example: alive:true and os:windows
+
+    Search:
+      type: object
+      required:
+        - search
+      properties:
+        search:
+          type: string
+          example: alive:true and os:windows
+
     Asset:
       type: object
       required:
@@ -3292,6 +3388,7 @@ components:
           type: object
           additionalProperties:
             type: string
+
     Service:
       type: object
       required:
@@ -3525,6 +3622,7 @@ components:
           type: object
           additionalProperties:
             type: string
+
     Site:
       type: object
       required:
