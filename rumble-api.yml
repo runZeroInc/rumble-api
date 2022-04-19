@@ -3171,10 +3171,8 @@ components:
         - tags
       properties:
         tags:
-          type: object
-          additionalProperties:
-            type: string
-            example: TagValue
+          type: string
+          example: ThisTag=Value -OldTag
 
     AssetTagsWithSearch:
       type: object
@@ -3183,10 +3181,8 @@ components:
         - search
       properties:
         tags:
-          type: object
-          additionalProperties:
-            type: string
-            example: ThisTag=Value -OldTag
+          type: string
+          example: ThisTag=Value -OldTag
         search:
           type: string
           example: alive:true and os:windows
