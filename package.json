@@ -2,7 +2,7 @@
   "dependencies": {
     "@openapitools/openapi-generator-cli": "^2.4.24",
     "js-yaml": "^4.1.0",
-    "puppeteer": "^10.2.0",
-    "swagger-ui-dist": "^4.0.0-beta.4"
+    "puppeteer": "^14.0.0",
+    "swagger-ui-dist": "=4.11.0"
   }
 }

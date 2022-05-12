@@ -1,7 +1,8 @@
 const yaml = require('js-yaml');
 const fs   = require('fs');
 
-const indexFile = 'rumble-api/index.html';
+// const indexFile = 'rumble-api/index.html';
+const indexFile = 'rumble-api/swagger-initializer.js';
 const specYAML = 'rumble-api.yml';
 
 try {
