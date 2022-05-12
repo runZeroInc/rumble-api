@@ -9,6 +9,10 @@ try {
   const jsonData = JSON.stringify(doc, null, 2);
   const index = fs.readFileSync(indexFile, 'utf8');
   const newIndex = index.replace(/url:.*swagger.io.*\.json",/m, `  spec: ${jsonData},`);
+  if (index === newIndex) {
+    console.log("Index replacement failed");
+    process.exit(1);
+  }
   fs.writeFileSync(indexFile, newIndex, 'utf8');
   console.log(`Updated ${indexFile}`);
 } catch (e) {

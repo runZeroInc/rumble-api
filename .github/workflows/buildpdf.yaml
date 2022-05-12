@@ -14,7 +14,7 @@ jobs:
       - name: Install NodeJS
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '17'
       - name: Install dependencies
         run: npm install
       - name: Generate HTML docs
@@ -28,6 +28,7 @@ jobs:
         run: |
           mkdir rumble-api
           cp -r node_modules/swagger-ui-dist/* rumble-api/
+          cp offline-docs/README.md rumble-api
           node offline-docs/splice.js
           rm rumble-api.zip
           zip -9vr rumble-api.zip rumble-api
