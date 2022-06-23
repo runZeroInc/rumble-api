@@ -2185,7 +2185,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#components/schemas/ScanTemplate'
+                $ref: '#/components/schemas/ScanTemplate'
         '401': 
           $ref: '#/components/responses/UnauthorizedError'
         '422':
@@ -2211,7 +2211,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#components/schemas/ScanTemplate'
+                $ref: '#/components/schemas/ScanTemplate'
         '401': 
           $ref: '#/components/responses/UnauthorizedError'
         '422':
@@ -2243,7 +2243,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#components/schemas/ScanTemplate'
+                $ref: '#/components/schemas/ScanTemplate'
         '401': 
           $ref: '#/components/responses/UnauthorizedError'
         '422': 
@@ -2271,7 +2271,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#components/schemas/ScanTemplate'
+                $ref: '#/components/schemas/ScanTemplate'
         '401': 
           $ref: '#/components/responses/UnauthorizedError'
         '422':
