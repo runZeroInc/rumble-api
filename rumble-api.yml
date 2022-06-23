@@ -2138,6 +2138,148 @@ paths:
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
+  /account/tasks/templates:
+    get:
+      tags:
+        - Account
+      operationId: getAccountScanTemplates
+      summary: Get all scan templates across all organizations (up to 1000)
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: search
+          description: an optional search string for filtering results
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: array of scan templates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScanTemplate'
+        '422':
+          description: failed to parse search string
+        '401': 
+          $ref: '#/components/responses/UnauthorizedError'
+    post:
+      tags:
+        - Account
+      operationId: createAccountScanTemplate
+      summary: Create a new scan template
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ScanTemplateOptions"
+      responses:
+        '200':
+          description: scan template
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/ScanTemplate'
+        '401': 
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          description: invalid request body
+        '400':
+          description: invalid request body
+    put:
+      tags:
+        - Account
+      operationId: updateAccountScanTemplate
+      summary: Update scan template
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ScanTemplate"
+      responses:
+        '200':
+          description: scan template
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/ScanTemplate'
+        '401': 
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          description: invalid request body
+        '400':
+          description: invalid request body
+        '404':
+          description: scan template or permissions not found
+
+  /account/tasks/templates/{scan_template_id}:
+    get:
+      tags:
+        - Account
+      operationId: getAccountScanTemplate
+      summary: Get scan template details
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: scan_template_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the scan template to retrieve
+      responses:
+        '200':
+          description: scan template
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/ScanTemplate'
+        '401': 
+          $ref: '#/components/responses/UnauthorizedError'
+        '422': 
+          description: invalid scan template id
+        '404':
+          description: scan template not found      
+    delete:
+      tags:
+        - Account
+      operationId: removeAccountScanTemplate
+      summary: Remove scan template
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: scan_template_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the scan template to remove
+      responses:
+        '200':
+          description: scan template
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/ScanTemplate'
+        '401': 
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          description: invalid request
+        '404':
+          description: scan template not found 
+        
+
   /account/agents:
     get:
       tags:
@@ -3033,6 +3175,169 @@ components:
           description: Optional probe list, otherwise all probes are used
           example: arp,bacnet,connect,dns,echo,ike,ipmi,mdns,memcache,mssql,natpmp,netbios,pca,rdns,rpcbind,sip,snmp,ssdp,syn,ubnt,wlan-list,wsd
         # Probe options are also supported with values like: dns-port: "53"
+
+    ScanTemplateOptions:
+      type: object
+      required:
+        - name
+        - global
+        - acl
+      properties:        
+        name:
+          type: string
+          example: My Scan Template
+        description:
+          type: string
+          example: My Scan Template
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        global:
+          type: boolean
+          example: false
+        acl:
+          type: object
+          additionalProperties: true
+          example:
+            e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8: user
+
+    ScanTemplate:
+      type: object
+      required:
+        - id
+        - global
+        - acl
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        client_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        organization_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        agent_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        site_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        cruncher_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        created_at:
+          type: integer
+          format: int64
+          example: 1576300370
+        created_by:
+          type: string
+          format: email
+          example: user@example.com
+        created_by_user_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        updated_at:
+          type: integer
+          format: int64
+          example: 1576300370
+        type:
+          type: string
+          example: scan
+        status:
+          type: string
+          example: processed
+        error:
+          type: string
+          example: agent unavailable
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        stats:
+          type: object
+          additionalProperties: true
+        hidden:
+          type: boolean
+          example: false
+        parent_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        recur:
+          type: boolean
+          example: false
+        recur_frequency:
+          type: string
+          example: hour
+        start_time:
+          type: integer
+          format: int64
+          example: 1576300370
+        recur_last:
+          type: integer
+          format: int64
+          example: 1576300370
+        recur_next:
+          type: integer
+          format: int64
+          example: 1576300370
+        recur_last_task_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        name:
+          type: string
+          example: My Scan Template
+        description:
+          type: string
+          example: My Scan Template
+        grace_period:
+          type: string
+          example: "4"
+        source_id:
+          type: string
+          example: "1"
+        template_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        size_site:
+          type: integer
+          format: int64
+          example: 0
+        size_data:
+          type: integer
+          format: int64
+          example: 0
+        size_results:
+          type: integer
+          format: int64
+          example: 0
+        hosted_zone_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
+        linked_task_count:
+          type: integer
+          format: int32
+          example: 1
+        global:
+          type: boolean
+          example: false
+        acl:
+          type: object
+          additionalProperties: true
+          example:
+            e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8: user
 
     AgentSiteID:
       type: object
