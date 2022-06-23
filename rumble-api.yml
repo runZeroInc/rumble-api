@@ -2868,6 +2868,8 @@ components:
     StatusMessage:
       description: Summary of operation results
   schemas:
+    StatusMessage:
+      type: object
     MiradoreCredentialFields:
       type: object
       required:
@@ -4353,6 +4355,10 @@ components:
         description:
           type: string
           example: Scan the headquarters hourly
+        template_id:
+          type: string
+          format: uuid
+          example: e77602e0-3fb8-4734-aef9-fbc6fdcb0fa8
         client_id:
           type: string
           format: uuid
