@@ -1014,6 +1014,44 @@ paths:
         '500':
           $ref: '#/components/responses/ProcessingError'
 
+  /org/sites/{site_id}/import/nessus:
+    put:
+      tags:
+        - Organization
+      operationId: importNessusScanData
+      summary: Import a Nessus scan data file into a site
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: site_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID or name of the site to import Nessus scan data into
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: import task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/LicenseExpiredError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/ProcessingError'
+
   /org/sites/{site_id}/scan:
     put:
       tags:
