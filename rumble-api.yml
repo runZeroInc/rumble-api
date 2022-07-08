@@ -1216,7 +1216,7 @@ paths:
             type: string
             format: uuid
           required: true
-          description: UUID of the agent to update
+          description: UUID of the asset to update
       requestBody:
         description: tags to apply to the asset
         required: true
