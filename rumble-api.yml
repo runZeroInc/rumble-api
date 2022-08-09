@@ -3,14 +3,17 @@ servers:
   - description: Rumble Console
     url: https://console.rumble.run/api/v1.0
 info:
-  description: Rumble Network Discovery API
-  version: "2.14.10"
-  title: Rumble API
+  description: >
+    <p><b><i>Rumble Network Discovery is now runZero. <a href="https://www.runzero.com/blog/introducing-runzero/">Read the announcement</a></i></b>.</p>
+    <p>This API is frozen and no longer being updated as of version 2.15.0.</p>
+    <p>See our latest API documentation at <a href="https://app.swaggerhub.com/apis-docs/runZero/runZero">swaggerhub.com/apis-docs/runZero/runZero</a>.</p>
+  version: 2.15.0
+  title: Rumble API (deprecated)
   contact:
-    email: support@rumble.run
+    email: support@runzero.com
   license:
     name: Commercial
-    url: 'https://www.rumble.run/legal/terms'
+    url: 'https://www.runzero.com/legal/terms'
 tags:
   - name: Organization
     description: Requires Organization Key
